@@ -1,0 +1,838 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C2C3DF4154FFEF7002BF68D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F991547F589003B5AB9 /* OpenGLES.framework */; };
+		1C2C3DF5154FFEF7002BF68D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F961547F583003B5AB9 /* GLKit.framework */; };
+		1C2C3DF6154FFEF7002BF68D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F351547D53D003B5AB9 /* UIKit.framework */; };
+		1C2C3DF7154FFEF7002BF68D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F371547D53D003B5AB9 /* Foundation.framework */; };
+		1C2C3DF8154FFEF7002BF68D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
+		1C2C44DF15501299002BF68D /* libBullet_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */; };
+		1C2C44E0155012A6002BF68D /* libBullet_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */; };
+		1C5A915A155849480095209F /* avatar.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9127155849290095209F /* avatar.mdl */; };
+		1C5A915B155849480095209F /* avatar.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9128155849290095209F /* avatar.pvr */; };
+		1C5A915C155849480095209F /* crate.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9129155849290095209F /* crate.pvr */; };
+		1C5A915D155849480095209F /* cube.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912A155849290095209F /* cube.mdl */; };
+		1C5A915E155849480095209F /* cubes.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912B155849290095209F /* cubes.mdl */; };
+		1C5A915F155849480095209F /* lightmap_brighter.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912C155849290095209F /* lightmap_brighter.pvr */; };
+		1C5A9160155849480095209F /* model.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912D155849290095209F /* model.mdl */; };
+		1C5A9161155849480095209F /* PlayerShip.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912E155849290095209F /* PlayerShip.mdl */; };
+		1C5A9162155849480095209F /* scene.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912F155849290095209F /* scene.mdl */; };
+		1C5A9163155849480095209F /* SimpleColor.fs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9130155849290095209F /* SimpleColor.fs */; };
+		1C5A9164155849480095209F /* SimpleColor.vs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9131155849290095209F /* SimpleColor.vs */; };
+		1C5A9165155849480095209F /* SimpleShader.fs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9132155849290095209F /* SimpleShader.fs */; };
+		1C5A9166155849480095209F /* SimpleShader.vs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9133155849290095209F /* SimpleShader.vs */; };
+		1C5A9167155849480095209F /* sphere.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9134155849290095209F /* sphere.mdl */; };
+		1C5A9168155849480095209F /* texture-inspiration16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9135155849290095209F /* texture-inspiration16.jpg */; };
+		1C5A9169155849480095209F /* texture.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9136155849290095209F /* texture.pvr */; };
+		1C5A916A155849480095209F /* trooper.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9137155849290095209F /* trooper.pvr */; };
+		1C5A916B155849560095209F /* avatar.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9127155849290095209F /* avatar.mdl */; };
+		1C5A916C155849560095209F /* avatar.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9128155849290095209F /* avatar.pvr */; };
+		1C5A916D155849560095209F /* crate.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9129155849290095209F /* crate.pvr */; };
+		1C5A916E155849560095209F /* cube.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912A155849290095209F /* cube.mdl */; };
+		1C5A916F155849560095209F /* cubes.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912B155849290095209F /* cubes.mdl */; };
+		1C5A9170155849560095209F /* lightmap_brighter.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912C155849290095209F /* lightmap_brighter.pvr */; };
+		1C5A9171155849560095209F /* model.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912D155849290095209F /* model.mdl */; };
+		1C5A9172155849560095209F /* PlayerShip.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912E155849290095209F /* PlayerShip.mdl */; };
+		1C5A9173155849560095209F /* scene.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A912F155849290095209F /* scene.mdl */; };
+		1C5A9174155849560095209F /* SimpleColor.fs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9130155849290095209F /* SimpleColor.fs */; };
+		1C5A9175155849560095209F /* SimpleColor.vs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9131155849290095209F /* SimpleColor.vs */; };
+		1C5A9176155849560095209F /* SimpleShader.fs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9132155849290095209F /* SimpleShader.fs */; };
+		1C5A9177155849560095209F /* SimpleShader.vs in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9133155849290095209F /* SimpleShader.vs */; };
+		1C5A9178155849560095209F /* sphere.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9134155849290095209F /* sphere.mdl */; };
+		1C5A9179155849560095209F /* texture-inspiration16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9135155849290095209F /* texture-inspiration16.jpg */; };
+		1C5A917A155849560095209F /* texture.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9136155849290095209F /* texture.pvr */; };
+		1C5A917B155849560095209F /* trooper.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9137155849290095209F /* trooper.pvr */; };
+		1C5A940A155854660095209F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93CC155854660095209F /* Camera.cpp */; };
+		1C5A940B155854660095209F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93CC155854660095209F /* Camera.cpp */; };
+		1C5A940C155854660095209F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93CE155854660095209F /* Component.cpp */; };
+		1C5A940D155854660095209F /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93CE155854660095209F /* Component.cpp */; };
+		1C5A940E155854660095209F /* MeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D1155854660095209F /* MeshRenderer.cpp */; };
+		1C5A940F155854660095209F /* MeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D1155854660095209F /* MeshRenderer.cpp */; };
+		1C5A9410155854660095209F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D3155854660095209F /* Renderer.cpp */; };
+		1C5A9411155854660095209F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D3155854660095209F /* Renderer.cpp */; };
+		1C5A9412155854660095209F /* Rigidbody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D5155854660095209F /* Rigidbody.cpp */; };
+		1C5A9413155854660095209F /* Rigidbody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D5155854660095209F /* Rigidbody.cpp */; };
+		1C5A9414155854660095209F /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D7155854660095209F /* Transform.cpp */; };
+		1C5A9415155854660095209F /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93D7155854660095209F /* Transform.cpp */; };
+		1C5A9416155854660095209F /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93DA155854660095209F /* GameObject.cpp */; };
+		1C5A9417155854660095209F /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93DA155854660095209F /* GameObject.cpp */; };
+		1C5A9418155854660095209F /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93DC155854660095209F /* Input.cpp */; };
+		1C5A9419155854660095209F /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93DC155854660095209F /* Input.cpp */; };
+		1C5A941A155854660095209F /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93DE155854660095209F /* Physics.cpp */; };
+		1C5A941B155854660095209F /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93DE155854660095209F /* Physics.cpp */; };
+		1C5A941C155854660095209F /* Prefab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E1155854660095209F /* Prefab.cpp */; };
+		1C5A941D155854660095209F /* Prefab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E1155854660095209F /* Prefab.cpp */; };
+		1C5A941E155854660095209F /* Resource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E3155854660095209F /* Resource.cpp */; };
+		1C5A941F155854660095209F /* Resource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E3155854660095209F /* Resource.cpp */; };
+		1C5A9420155854660095209F /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E5155854660095209F /* Scene.cpp */; };
+		1C5A9421155854660095209F /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E5155854660095209F /* Scene.cpp */; };
+		1C5A9422155854660095209F /* SceneGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E7155854660095209F /* SceneGraph.cpp */; };
+		1C5A9423155854660095209F /* SceneGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93E7155854660095209F /* SceneGraph.cpp */; };
+		1C5A9424155854660095209F /* CameraMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93EA155854660095209F /* CameraMover.cpp */; };
+		1C5A9425155854660095209F /* CameraMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93EA155854660095209F /* CameraMover.cpp */; };
+		1C5A9426155854660095209F /* CreationUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93EC155854660095209F /* CreationUtility.cpp */; };
+		1C5A9427155854660095209F /* CreationUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93EC155854660095209F /* CreationUtility.cpp */; };
+		1C5A9428155854660095209F /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93EE155854660095209F /* PlayerController.cpp */; };
+		1C5A9429155854660095209F /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93EE155854660095209F /* PlayerController.cpp */; };
+		1C5A942A155854660095209F /* PlayerShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F0155854660095209F /* PlayerShip.cpp */; };
+		1C5A942B155854660095209F /* PlayerShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F0155854660095209F /* PlayerShip.cpp */; };
+		1C5A942C155854660095209F /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F3155854660095209F /* Sphere.cpp */; };
+		1C5A942D155854660095209F /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F3155854660095209F /* Sphere.cpp */; };
+		1C5A942E155854660095209F /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F5155854660095209F /* Game.cpp */; };
+		1C5A942F155854660095209F /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F5155854660095209F /* Game.cpp */; };
+		1C5A9430155854660095209F /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F8155854660095209F /* Material.cpp */; };
+		1C5A9431155854660095209F /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93F8155854660095209F /* Material.cpp */; };
+		1C5A9432155854660095209F /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93FA155854660095209F /* Mesh.cpp */; };
+		1C5A9433155854660095209F /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93FA155854660095209F /* Mesh.cpp */; };
+		1C5A9434155854660095209F /* RenderPipeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93FD155854660095209F /* RenderPipeline.cpp */; };
+		1C5A9435155854660095209F /* RenderPipeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93FD155854660095209F /* RenderPipeline.cpp */; };
+		1C5A9436155854660095209F /* RenderState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93FF155854660095209F /* RenderState.cpp */; };
+		1C5A9437155854660095209F /* RenderState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A93FF155854660095209F /* RenderState.cpp */; };
+		1C5A9438155854660095209F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9401155854660095209F /* Shader.cpp */; };
+		1C5A9439155854660095209F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9401155854660095209F /* Shader.cpp */; };
+		1C5A943A155854660095209F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9403155854660095209F /* Texture.cpp */; };
+		1C5A943B155854660095209F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9403155854660095209F /* Texture.cpp */; };
+		1C5A943C155854660095209F /* MyMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9406155854660095209F /* MyMath.cpp */; };
+		1C5A943D155854660095209F /* MyMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9406155854660095209F /* MyMath.cpp */; };
+		1C5A943E155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
+		1C5A943F155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
+		1CE215A21558565A00BD2D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215961558565A00BD2D2D /* AppDelegate.m */; };
+		1CE215A31558565A00BD2D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215961558565A00BD2D2D /* AppDelegate.m */; };
+		1CE215A61558565A00BD2D2D /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159A1558565A00BD2D2D /* GameView.m */; };
+		1CE215A71558565A00BD2D2D /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159A1558565A00BD2D2D /* GameView.m */; };
+		1CE215AA1558565A00BD2D2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159C1558565A00BD2D2D /* main.m */; };
+		1CE215AB1558565A00BD2D2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159C1558565A00BD2D2D /* main.m */; };
+		1CE215AC1558565A00BD2D2D /* Platform_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159E1558565A00BD2D2D /* Platform_iOS.mm */; };
+		1CE215AD1558565A00BD2D2D /* Platform_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159E1558565A00BD2D2D /* Platform_iOS.mm */; };
+		1CE215AE1558565A00BD2D2D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215A11558565A00BD2D2D /* ViewController.mm */; };
+		1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215A11558565A00BD2D2D /* ViewController.mm */; };
+		8E976F361547D53D003B5AB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F351547D53D003B5AB9 /* UIKit.framework */; };
+		8E976F381547D53D003B5AB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F371547D53D003B5AB9 /* Foundation.framework */; };
+		8E976F3A1547D53D003B5AB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
+		8E976F971547F583003B5AB9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F961547F583003B5AB9 /* GLKit.framework */; };
+		8E976F9A1547F589003B5AB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F991547F589003B5AB9 /* OpenGLES.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C2C3E0F154FFEF7002BF68D /* SurviveInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurviveInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBullet_iOS_device.a; sourceTree = "<group>"; };
+		1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBullet_iOS_simulator.a; sourceTree = "<group>"; };
+		1C5A9127155849290095209F /* avatar.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.mdl; sourceTree = "<group>"; };
+		1C5A9128155849290095209F /* avatar.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.pvr; sourceTree = "<group>"; };
+		1C5A9129155849290095209F /* crate.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = crate.pvr; sourceTree = "<group>"; };
+		1C5A912A155849290095209F /* cube.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = cube.mdl; sourceTree = "<group>"; };
+		1C5A912B155849290095209F /* cubes.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = cubes.mdl; sourceTree = "<group>"; };
+		1C5A912C155849290095209F /* lightmap_brighter.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = lightmap_brighter.pvr; sourceTree = "<group>"; };
+		1C5A912D155849290095209F /* model.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = model.mdl; sourceTree = "<group>"; };
+		1C5A912E155849290095209F /* PlayerShip.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayerShip.mdl; sourceTree = "<group>"; };
+		1C5A912F155849290095209F /* scene.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = scene.mdl; sourceTree = "<group>"; };
+		1C5A9130155849290095209F /* SimpleColor.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SimpleColor.fs; sourceTree = "<group>"; };
+		1C5A9131155849290095209F /* SimpleColor.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SimpleColor.vs; sourceTree = "<group>"; };
+		1C5A9132155849290095209F /* SimpleShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SimpleShader.fs; sourceTree = "<group>"; };
+		1C5A9133155849290095209F /* SimpleShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SimpleShader.vs; sourceTree = "<group>"; };
+		1C5A9134155849290095209F /* sphere.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = sphere.mdl; sourceTree = "<group>"; };
+		1C5A9135155849290095209F /* texture-inspiration16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "texture-inspiration16.jpg"; sourceTree = "<group>"; };
+		1C5A9136155849290095209F /* texture.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = texture.pvr; sourceTree = "<group>"; };
+		1C5A9137155849290095209F /* trooper.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = trooper.pvr; sourceTree = "<group>"; };
+		1C5A93CC155854660095209F /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		1C5A93CD155854660095209F /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		1C5A93CE155854660095209F /* Component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
+		1C5A93CF155854660095209F /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
+		1C5A93D0155854660095209F /* ComponentDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentDeclaration.h; sourceTree = "<group>"; };
+		1C5A93D1155854660095209F /* MeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshRenderer.cpp; sourceTree = "<group>"; };
+		1C5A93D2155854660095209F /* MeshRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshRenderer.h; sourceTree = "<group>"; };
+		1C5A93D3155854660095209F /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
+		1C5A93D4155854660095209F /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		1C5A93D5155854660095209F /* Rigidbody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rigidbody.cpp; sourceTree = "<group>"; };
+		1C5A93D6155854660095209F /* Rigidbody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rigidbody.h; sourceTree = "<group>"; };
+		1C5A93D7155854660095209F /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transform.cpp; sourceTree = "<group>"; };
+		1C5A93D8155854660095209F /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
+		1C5A93DA155854660095209F /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
+		1C5A93DB155854660095209F /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		1C5A93DC155854660095209F /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		1C5A93DD155854660095209F /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
+		1C5A93DE155854660095209F /* Physics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Physics.cpp; sourceTree = "<group>"; };
+		1C5A93DF155854660095209F /* Physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Physics.h; sourceTree = "<group>"; };
+		1C5A93E0155854660095209F /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		1C5A93E1155854660095209F /* Prefab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prefab.cpp; sourceTree = "<group>"; };
+		1C5A93E2155854660095209F /* Prefab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefab.h; sourceTree = "<group>"; };
+		1C5A93E3155854660095209F /* Resource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Resource.cpp; sourceTree = "<group>"; };
+		1C5A93E4155854660095209F /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resource.h; sourceTree = "<group>"; };
+		1C5A93E5155854660095209F /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		1C5A93E6155854660095209F /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		1C5A93E7155854660095209F /* SceneGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneGraph.cpp; sourceTree = "<group>"; };
+		1C5A93E8155854660095209F /* SceneGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneGraph.h; sourceTree = "<group>"; };
+		1C5A93EA155854660095209F /* CameraMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraMover.cpp; sourceTree = "<group>"; };
+		1C5A93EB155854660095209F /* CameraMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraMover.h; sourceTree = "<group>"; };
+		1C5A93EC155854660095209F /* CreationUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreationUtility.cpp; sourceTree = "<group>"; };
+		1C5A93ED155854660095209F /* CreationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreationUtility.h; sourceTree = "<group>"; };
+		1C5A93EE155854660095209F /* PlayerController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerController.cpp; sourceTree = "<group>"; };
+		1C5A93EF155854660095209F /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
+		1C5A93F0155854660095209F /* PlayerShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerShip.cpp; sourceTree = "<group>"; };
+		1C5A93F1155854660095209F /* PlayerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerShip.h; sourceTree = "<group>"; };
+		1C5A93F3155854660095209F /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = "<group>"; };
+		1C5A93F4155854660095209F /* Sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
+		1C5A93F5155854660095209F /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		1C5A93F6155854660095209F /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		1C5A93F8155854660095209F /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		1C5A93F9155854660095209F /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		1C5A93FA155854660095209F /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		1C5A93FB155854660095209F /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		1C5A93FC155854660095209F /* Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Render.h; sourceTree = "<group>"; };
+		1C5A93FD155854660095209F /* RenderPipeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderPipeline.cpp; sourceTree = "<group>"; };
+		1C5A93FE155854660095209F /* RenderPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderPipeline.h; sourceTree = "<group>"; };
+		1C5A93FF155854660095209F /* RenderState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderState.cpp; sourceTree = "<group>"; };
+		1C5A9400155854660095209F /* RenderState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderState.h; sourceTree = "<group>"; };
+		1C5A9401155854660095209F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		1C5A9402155854660095209F /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		1C5A9403155854660095209F /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		1C5A9404155854660095209F /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		1C5A9406155854660095209F /* MyMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyMath.cpp; sourceTree = "<group>"; };
+		1C5A9407155854660095209F /* MyMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMath.h; sourceTree = "<group>"; };
+		1C5A9408155854660095209F /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		1C5A9409155854660095209F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1CE215951558565A00BD2D2D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1CE215961558565A00BD2D2D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1CE215981558565A00BD2D2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1CE215991558565A00BD2D2D /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		1CE2159A1558565A00BD2D2D /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		1CE2159B1558565A00BD2D2D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CE2159C1558565A00BD2D2D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1CE2159D1558565A00BD2D2D /* Platform_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform_iOS.h; sourceTree = "<group>"; };
+		1CE2159E1558565A00BD2D2D /* Platform_iOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Platform_iOS.mm; sourceTree = "<group>"; };
+		1CE2159F1558565A00BD2D2D /* SurviveInSpace-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SurviveInSpace-Prefix.pch"; sourceTree = "<group>"; };
+		1CE215A01558565A00BD2D2D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1CE215A11558565A00BD2D2D /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		8E976F311547D53D003B5AB9 /* SurviveInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurviveInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E976F351547D53D003B5AB9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8E976F371547D53D003B5AB9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8E976F391547D53D003B5AB9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8E976F961547F583003B5AB9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		8E976F991547F589003B5AB9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C2C3DF3154FFEF7002BF68D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C2C3DF4154FFEF7002BF68D /* OpenGLES.framework in Frameworks */,
+				1C2C3DF5154FFEF7002BF68D /* GLKit.framework in Frameworks */,
+				1C2C3DF6154FFEF7002BF68D /* UIKit.framework in Frameworks */,
+				1C2C3DF7154FFEF7002BF68D /* Foundation.framework in Frameworks */,
+				1C2C3DF8154FFEF7002BF68D /* CoreGraphics.framework in Frameworks */,
+				1C2C44E0155012A6002BF68D /* libBullet_iOS_device.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E976F2E1547D53D003B5AB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E976F9A1547F589003B5AB9 /* OpenGLES.framework in Frameworks */,
+				8E976F971547F583003B5AB9 /* GLKit.framework in Frameworks */,
+				8E976F361547D53D003B5AB9 /* UIKit.framework in Frameworks */,
+				8E976F381547D53D003B5AB9 /* Foundation.framework in Frameworks */,
+				8E976F3A1547D53D003B5AB9 /* CoreGraphics.framework in Frameworks */,
+				1C2C44DF15501299002BF68D /* libBullet_iOS_simulator.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C5A9126155849290095209F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A9127155849290095209F /* avatar.mdl */,
+				1C5A9128155849290095209F /* avatar.pvr */,
+				1C5A9129155849290095209F /* crate.pvr */,
+				1C5A912A155849290095209F /* cube.mdl */,
+				1C5A912B155849290095209F /* cubes.mdl */,
+				1C5A912C155849290095209F /* lightmap_brighter.pvr */,
+				1C5A912D155849290095209F /* model.mdl */,
+				1C5A912E155849290095209F /* PlayerShip.mdl */,
+				1C5A912F155849290095209F /* scene.mdl */,
+				1C5A9130155849290095209F /* SimpleColor.fs */,
+				1C5A9131155849290095209F /* SimpleColor.vs */,
+				1C5A9132155849290095209F /* SimpleShader.fs */,
+				1C5A9133155849290095209F /* SimpleShader.vs */,
+				1C5A9134155849290095209F /* sphere.mdl */,
+				1C5A9135155849290095209F /* texture-inspiration16.jpg */,
+				1C5A9136155849290095209F /* texture.pvr */,
+				1C5A9137155849290095209F /* trooper.pvr */,
+			);
+			name = Resources;
+			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		1C5A93CA155854660095209F /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A93CB155854660095209F /* component */,
+				1C5A93D9155854660095209F /* core */,
+				1C5A93E9155854660095209F /* game */,
+				1C5A93F5155854660095209F /* Game.cpp */,
+				1C5A93F6155854660095209F /* Game.h */,
+				1C5A93F7155854660095209F /* render */,
+				1C5A9405155854660095209F /* utils */,
+			);
+			name = engine;
+			path = ../engine;
+			sourceTree = "<group>";
+		};
+		1C5A93CB155854660095209F /* component */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A93CC155854660095209F /* Camera.cpp */,
+				1C5A93CD155854660095209F /* Camera.h */,
+				1C5A93CE155854660095209F /* Component.cpp */,
+				1C5A93CF155854660095209F /* Component.h */,
+				1C5A93D0155854660095209F /* ComponentDeclaration.h */,
+				1C5A93D1155854660095209F /* MeshRenderer.cpp */,
+				1C5A93D2155854660095209F /* MeshRenderer.h */,
+				1C5A93D3155854660095209F /* Renderer.cpp */,
+				1C5A93D4155854660095209F /* Renderer.h */,
+				1C5A93D5155854660095209F /* Rigidbody.cpp */,
+				1C5A93D6155854660095209F /* Rigidbody.h */,
+				1C5A93D7155854660095209F /* Transform.cpp */,
+				1C5A93D8155854660095209F /* Transform.h */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
+		1C5A93D9155854660095209F /* core */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A93DA155854660095209F /* GameObject.cpp */,
+				1C5A93DB155854660095209F /* GameObject.h */,
+				1C5A93DC155854660095209F /* Input.cpp */,
+				1C5A93DD155854660095209F /* Input.h */,
+				1C5A93DE155854660095209F /* Physics.cpp */,
+				1C5A93DF155854660095209F /* Physics.h */,
+				1C5A93E0155854660095209F /* Platform.h */,
+				1C5A93E1155854660095209F /* Prefab.cpp */,
+				1C5A93E2155854660095209F /* Prefab.h */,
+				1C5A93E3155854660095209F /* Resource.cpp */,
+				1C5A93E4155854660095209F /* Resource.h */,
+				1C5A93E5155854660095209F /* Scene.cpp */,
+				1C5A93E6155854660095209F /* Scene.h */,
+				1C5A93E7155854660095209F /* SceneGraph.cpp */,
+				1C5A93E8155854660095209F /* SceneGraph.h */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		1C5A93E9155854660095209F /* game */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A93EA155854660095209F /* CameraMover.cpp */,
+				1C5A93EB155854660095209F /* CameraMover.h */,
+				1C5A93EC155854660095209F /* CreationUtility.cpp */,
+				1C5A93ED155854660095209F /* CreationUtility.h */,
+				1C5A93EE155854660095209F /* PlayerController.cpp */,
+				1C5A93EF155854660095209F /* PlayerController.h */,
+				1C5A93F0155854660095209F /* PlayerShip.cpp */,
+				1C5A93F1155854660095209F /* PlayerShip.h */,
+				1C5A93F2155854660095209F /* Sphere */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		1C5A93F2155854660095209F /* Sphere */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A93F3155854660095209F /* Sphere.cpp */,
+				1C5A93F4155854660095209F /* Sphere.h */,
+			);
+			path = Sphere;
+			sourceTree = "<group>";
+		};
+		1C5A93F7155854660095209F /* render */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A93F8155854660095209F /* Material.cpp */,
+				1C5A93F9155854660095209F /* Material.h */,
+				1C5A93FA155854660095209F /* Mesh.cpp */,
+				1C5A93FB155854660095209F /* Mesh.h */,
+				1C5A93FC155854660095209F /* Render.h */,
+				1C5A93FD155854660095209F /* RenderPipeline.cpp */,
+				1C5A93FE155854660095209F /* RenderPipeline.h */,
+				1C5A93FF155854660095209F /* RenderState.cpp */,
+				1C5A9400155854660095209F /* RenderState.h */,
+				1C5A9401155854660095209F /* Shader.cpp */,
+				1C5A9402155854660095209F /* Shader.h */,
+				1C5A9403155854660095209F /* Texture.cpp */,
+				1C5A9404155854660095209F /* Texture.h */,
+			);
+			path = render;
+			sourceTree = "<group>";
+		};
+		1C5A9405155854660095209F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1C5A9406155854660095209F /* MyMath.cpp */,
+				1C5A9407155854660095209F /* MyMath.h */,
+				1C5A9408155854660095209F /* Utils.cpp */,
+				1C5A9409155854660095209F /* Utils.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		1CE215941558565A00BD2D2D /* SurviveInSpace */ = {
+			isa = PBXGroup;
+			children = (
+				1CE215951558565A00BD2D2D /* AppDelegate.h */,
+				1CE215961558565A00BD2D2D /* AppDelegate.m */,
+				1CE215971558565A00BD2D2D /* InfoPlist.strings */,
+				1CE215991558565A00BD2D2D /* GameView.h */,
+				1CE2159A1558565A00BD2D2D /* GameView.m */,
+				1CE2159B1558565A00BD2D2D /* Info.plist */,
+				1CE2159C1558565A00BD2D2D /* main.m */,
+				1CE2159D1558565A00BD2D2D /* Platform_iOS.h */,
+				1CE2159E1558565A00BD2D2D /* Platform_iOS.mm */,
+				1CE2159F1558565A00BD2D2D /* SurviveInSpace-Prefix.pch */,
+				1CE215A01558565A00BD2D2D /* ViewController.h */,
+				1CE215A11558565A00BD2D2D /* ViewController.mm */,
+			);
+			path = SurviveInSpace;
+			sourceTree = "<group>";
+		};
+		8E976F261547D53C003B5AB9 = {
+			isa = PBXGroup;
+			children = (
+				1C5A9126155849290095209F /* Resources */,
+				1C5A93CA155854660095209F /* engine */,
+				1CE215941558565A00BD2D2D /* SurviveInSpace */,
+				8E976F321547D53D003B5AB9 /* Products */,
+				8E976F341547D53D003B5AB9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8E976F321547D53D003B5AB9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E976F311547D53D003B5AB9 /* SurviveInSpace.app */,
+				1C2C3E0F154FFEF7002BF68D /* SurviveInSpace.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E976F341547D53D003B5AB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */,
+				1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */,
+				8E976F991547F589003B5AB9 /* OpenGLES.framework */,
+				8E976F961547F583003B5AB9 /* GLKit.framework */,
+				8E976F351547D53D003B5AB9 /* UIKit.framework */,
+				8E976F371547D53D003B5AB9 /* Foundation.framework */,
+				8E976F391547D53D003B5AB9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C2C3DDA154FFEF7002BF68D /* Device */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C2C3E0C154FFEF7002BF68D /* Build configuration list for PBXNativeTarget "Device" */;
+			buildPhases = (
+				1C2C3DDB154FFEF7002BF68D /* Sources */,
+				1C2C3DF3154FFEF7002BF68D /* Frameworks */,
+				1C2C3E00154FFEF7002BF68D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Device;
+			productName = Cpptest;
+			productReference = 1C2C3E0F154FFEF7002BF68D /* SurviveInSpace.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8E976F301547D53D003B5AB9 /* Simulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E976F4F1547D53E003B5AB9 /* Build configuration list for PBXNativeTarget "Simulator" */;
+			buildPhases = (
+				8E976F2D1547D53D003B5AB9 /* Sources */,
+				8E976F2E1547D53D003B5AB9 /* Frameworks */,
+				8E976F2F1547D53D003B5AB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Simulator;
+			productName = Cpptest;
+			productReference = 8E976F311547D53D003B5AB9 /* SurviveInSpace.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E976F281547D53C003B5AB9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 8E976F2B1547D53C003B5AB9 /* Build configuration list for PBXProject "SurviveInSpace" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8E976F261547D53C003B5AB9;
+			productRefGroup = 8E976F321547D53D003B5AB9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E976F301547D53D003B5AB9 /* Simulator */,
+				1C2C3DDA154FFEF7002BF68D /* Device */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C2C3E00154FFEF7002BF68D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5A916B155849560095209F /* avatar.mdl in Resources */,
+				1C5A916C155849560095209F /* avatar.pvr in Resources */,
+				1C5A916D155849560095209F /* crate.pvr in Resources */,
+				1C5A916E155849560095209F /* cube.mdl in Resources */,
+				1C5A916F155849560095209F /* cubes.mdl in Resources */,
+				1C5A9170155849560095209F /* lightmap_brighter.pvr in Resources */,
+				1C5A9171155849560095209F /* model.mdl in Resources */,
+				1C5A9172155849560095209F /* PlayerShip.mdl in Resources */,
+				1C5A9173155849560095209F /* scene.mdl in Resources */,
+				1C5A9174155849560095209F /* SimpleColor.fs in Resources */,
+				1C5A9175155849560095209F /* SimpleColor.vs in Resources */,
+				1C5A9176155849560095209F /* SimpleShader.fs in Resources */,
+				1C5A9177155849560095209F /* SimpleShader.vs in Resources */,
+				1C5A9178155849560095209F /* sphere.mdl in Resources */,
+				1C5A9179155849560095209F /* texture-inspiration16.jpg in Resources */,
+				1C5A917A155849560095209F /* texture.pvr in Resources */,
+				1C5A917B155849560095209F /* trooper.pvr in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E976F2F1547D53D003B5AB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5A915A155849480095209F /* avatar.mdl in Resources */,
+				1C5A915B155849480095209F /* avatar.pvr in Resources */,
+				1C5A915C155849480095209F /* crate.pvr in Resources */,
+				1C5A915D155849480095209F /* cube.mdl in Resources */,
+				1C5A915E155849480095209F /* cubes.mdl in Resources */,
+				1C5A915F155849480095209F /* lightmap_brighter.pvr in Resources */,
+				1C5A9160155849480095209F /* model.mdl in Resources */,
+				1C5A9161155849480095209F /* PlayerShip.mdl in Resources */,
+				1C5A9162155849480095209F /* scene.mdl in Resources */,
+				1C5A9163155849480095209F /* SimpleColor.fs in Resources */,
+				1C5A9164155849480095209F /* SimpleColor.vs in Resources */,
+				1C5A9165155849480095209F /* SimpleShader.fs in Resources */,
+				1C5A9166155849480095209F /* SimpleShader.vs in Resources */,
+				1C5A9167155849480095209F /* sphere.mdl in Resources */,
+				1C5A9168155849480095209F /* texture-inspiration16.jpg in Resources */,
+				1C5A9169155849480095209F /* texture.pvr in Resources */,
+				1C5A916A155849480095209F /* trooper.pvr in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C2C3DDB154FFEF7002BF68D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5A940B155854660095209F /* Camera.cpp in Sources */,
+				1C5A940D155854660095209F /* Component.cpp in Sources */,
+				1C5A940F155854660095209F /* MeshRenderer.cpp in Sources */,
+				1C5A9411155854660095209F /* Renderer.cpp in Sources */,
+				1C5A9413155854660095209F /* Rigidbody.cpp in Sources */,
+				1C5A9415155854660095209F /* Transform.cpp in Sources */,
+				1C5A9417155854660095209F /* GameObject.cpp in Sources */,
+				1C5A9419155854660095209F /* Input.cpp in Sources */,
+				1C5A941B155854660095209F /* Physics.cpp in Sources */,
+				1C5A941D155854660095209F /* Prefab.cpp in Sources */,
+				1C5A941F155854660095209F /* Resource.cpp in Sources */,
+				1C5A9421155854660095209F /* Scene.cpp in Sources */,
+				1C5A9423155854660095209F /* SceneGraph.cpp in Sources */,
+				1C5A9425155854660095209F /* CameraMover.cpp in Sources */,
+				1C5A9427155854660095209F /* CreationUtility.cpp in Sources */,
+				1C5A9429155854660095209F /* PlayerController.cpp in Sources */,
+				1C5A942B155854660095209F /* PlayerShip.cpp in Sources */,
+				1C5A942D155854660095209F /* Sphere.cpp in Sources */,
+				1C5A942F155854660095209F /* Game.cpp in Sources */,
+				1C5A9431155854660095209F /* Material.cpp in Sources */,
+				1C5A9433155854660095209F /* Mesh.cpp in Sources */,
+				1C5A9435155854660095209F /* RenderPipeline.cpp in Sources */,
+				1C5A9437155854660095209F /* RenderState.cpp in Sources */,
+				1C5A9439155854660095209F /* Shader.cpp in Sources */,
+				1C5A943B155854660095209F /* Texture.cpp in Sources */,
+				1C5A943D155854660095209F /* MyMath.cpp in Sources */,
+				1C5A943F155854660095209F /* Utils.cpp in Sources */,
+				1CE215A31558565A00BD2D2D /* AppDelegate.m in Sources */,
+				1CE215A71558565A00BD2D2D /* GameView.m in Sources */,
+				1CE215AB1558565A00BD2D2D /* main.m in Sources */,
+				1CE215AD1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
+				1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E976F2D1547D53D003B5AB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5A940A155854660095209F /* Camera.cpp in Sources */,
+				1C5A940C155854660095209F /* Component.cpp in Sources */,
+				1C5A940E155854660095209F /* MeshRenderer.cpp in Sources */,
+				1C5A9410155854660095209F /* Renderer.cpp in Sources */,
+				1C5A9412155854660095209F /* Rigidbody.cpp in Sources */,
+				1C5A9414155854660095209F /* Transform.cpp in Sources */,
+				1C5A9416155854660095209F /* GameObject.cpp in Sources */,
+				1C5A9418155854660095209F /* Input.cpp in Sources */,
+				1C5A941A155854660095209F /* Physics.cpp in Sources */,
+				1C5A941C155854660095209F /* Prefab.cpp in Sources */,
+				1C5A941E155854660095209F /* Resource.cpp in Sources */,
+				1C5A9420155854660095209F /* Scene.cpp in Sources */,
+				1C5A9422155854660095209F /* SceneGraph.cpp in Sources */,
+				1C5A9424155854660095209F /* CameraMover.cpp in Sources */,
+				1C5A9426155854660095209F /* CreationUtility.cpp in Sources */,
+				1C5A9428155854660095209F /* PlayerController.cpp in Sources */,
+				1C5A942A155854660095209F /* PlayerShip.cpp in Sources */,
+				1C5A942C155854660095209F /* Sphere.cpp in Sources */,
+				1C5A942E155854660095209F /* Game.cpp in Sources */,
+				1C5A9430155854660095209F /* Material.cpp in Sources */,
+				1C5A9432155854660095209F /* Mesh.cpp in Sources */,
+				1C5A9434155854660095209F /* RenderPipeline.cpp in Sources */,
+				1C5A9436155854660095209F /* RenderState.cpp in Sources */,
+				1C5A9438155854660095209F /* Shader.cpp in Sources */,
+				1C5A943A155854660095209F /* Texture.cpp in Sources */,
+				1C5A943C155854660095209F /* MyMath.cpp in Sources */,
+				1C5A943E155854660095209F /* Utils.cpp in Sources */,
+				1CE215A21558565A00BD2D2D /* AppDelegate.m in Sources */,
+				1CE215A61558565A00BD2D2D /* GameView.m in Sources */,
+				1CE215AA1558565A00BD2D2D /* main.m in Sources */,
+				1CE215AC1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
+				1CE215AE1558565A00BD2D2D /* ViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1CE215971558565A00BD2D2D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1CE215981558565A00BD2D2D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C2C3E0D154FFEF7002BF68D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SurviveInSpace/SurviveInSpace-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				HEADER_SEARCH_PATHS = (
+					../external/Bullet,
+					../external,
+				);
+				INFOPLIST_FILE = SurviveInSpace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = SurviveInSpace;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1C2C3E0E154FFEF7002BF68D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SurviveInSpace/SurviveInSpace-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				HEADER_SEARCH_PATHS = (
+					../external/Bullet,
+					../external,
+				);
+				INFOPLIST_FILE = SurviveInSpace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = SurviveInSpace;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8E976F4D1547D53D003B5AB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/Users/nsidorenko/Documents/projects/test/AutorotateTest/Cpptest/Cpptest/cml-1_0_2/";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8E976F4E1547D53D003B5AB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/Users/nsidorenko/Documents/projects/test/AutorotateTest/Cpptest/Cpptest/cml-1_0_2/";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E976F501547D53E003B5AB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SurviveInSpace/SurviveInSpace-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				HEADER_SEARCH_PATHS = (
+					../external/Bullet,
+					../external,
+				);
+				INFOPLIST_FILE = SurviveInSpace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = SurviveInSpace;
+				SUPPORTED_PLATFORMS = iphonesimulator;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8E976F511547D53E003B5AB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SurviveInSpace/SurviveInSpace-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				HEADER_SEARCH_PATHS = (
+					../external/Bullet,
+					../external,
+				);
+				INFOPLIST_FILE = SurviveInSpace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = SurviveInSpace;
+				SUPPORTED_PLATFORMS = iphonesimulator;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C2C3E0C154FFEF7002BF68D /* Build configuration list for PBXNativeTarget "Device" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C2C3E0D154FFEF7002BF68D /* Debug */,
+				1C2C3E0E154FFEF7002BF68D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E976F2B1547D53C003B5AB9 /* Build configuration list for PBXProject "SurviveInSpace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E976F4D1547D53D003B5AB9 /* Debug */,
+				8E976F4E1547D53D003B5AB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E976F4F1547D53E003B5AB9 /* Build configuration list for PBXNativeTarget "Simulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E976F501547D53E003B5AB9 /* Debug */,
+				8E976F511547D53E003B5AB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E976F281547D53C003B5AB9 /* Project object */;
+}

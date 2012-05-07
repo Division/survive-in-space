@@ -1,0 +1,40 @@
+FILE(REMOVE_RECURSE
+  "LinearMath.framework/Versions/2.80/Headers/btAabbUtil2.h"
+  "LinearMath.framework/Versions/2.80/Headers/btAlignedAllocator.h"
+  "LinearMath.framework/Versions/2.80/Headers/btAlignedObjectArray.h"
+  "LinearMath.framework/Versions/2.80/Headers/btConvexHull.h"
+  "LinearMath.framework/Versions/2.80/Headers/btConvexHullComputer.h"
+  "LinearMath.framework/Versions/2.80/Headers/btDefaultMotionState.h"
+  "LinearMath.framework/Versions/2.80/Headers/btGeometryUtil.h"
+  "LinearMath.framework/Versions/2.80/Headers/btGrahamScan2dConvexHull.h"
+  "LinearMath.framework/Versions/2.80/Headers/btHashMap.h"
+  "LinearMath.framework/Versions/2.80/Headers/btIDebugDraw.h"
+  "LinearMath.framework/Versions/2.80/Headers/btList.h"
+  "LinearMath.framework/Versions/2.80/Headers/btMatrix3x3.h"
+  "LinearMath.framework/Versions/2.80/Headers/btMinMax.h"
+  "LinearMath.framework/Versions/2.80/Headers/btMotionState.h"
+  "LinearMath.framework/Versions/2.80/Headers/btPoolAllocator.h"
+  "LinearMath.framework/Versions/2.80/Headers/btQuadWord.h"
+  "LinearMath.framework/Versions/2.80/Headers/btQuaternion.h"
+  "LinearMath.framework/Versions/2.80/Headers/btQuickprof.h"
+  "LinearMath.framework/Versions/2.80/Headers/btRandom.h"
+  "LinearMath.framework/Versions/2.80/Headers/btScalar.h"
+  "LinearMath.framework/Versions/2.80/Headers/btSerializer.h"
+  "LinearMath.framework/Versions/2.80/Headers/btStackAlloc.h"
+  "LinearMath.framework/Versions/2.80/Headers/btTransform.h"
+  "LinearMath.framework/Versions/2.80/Headers/btTransformUtil.h"
+  "LinearMath.framework/Versions/2.80/Headers/btVector3.h"
+  "CMakeFiles/LinearMath.dir/btAlignedAllocator.o"
+  "CMakeFiles/LinearMath.dir/btConvexHull.o"
+  "CMakeFiles/LinearMath.dir/btConvexHullComputer.o"
+  "CMakeFiles/LinearMath.dir/btGeometryUtil.o"
+  "CMakeFiles/LinearMath.dir/btQuickprof.o"
+  "CMakeFiles/LinearMath.dir/btSerializer.o"
+  "LinearMath.framework/Versions/2.80/LinearMath.pdb"
+  "LinearMath.framework/Versions/2.80/LinearMath"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/LinearMath.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)
