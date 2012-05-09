@@ -16,14 +16,6 @@
 #include "MyMath.h"
 #include "Resource.h"
 
-
-#define SHADER_ATTRIB_POSITION "Position"
-#define SHADER_ATTRIB_TEXCOORD0 "Texcoord"
-#define SHADER_ATTRIB_TEXCOORD1 "Texcoord1"
-#define SHADER_ATTRIB_COLOR "Color"
-#define SHADER_UNIFORM_PROJ_MATRIX "Projection"
-#define SHADER_UNIFORM_MODELVIEW_MATRIX "Modelview"
-
 // Attributes used by engine
 enum {
 	EngineShaderParamPositionAttribute = 0,

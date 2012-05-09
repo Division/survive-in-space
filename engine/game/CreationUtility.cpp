@@ -20,6 +20,7 @@
 #include "Camera.h"
 #include "CameraMover.h"
 #include "Sphere.h"
+#include "Font.h"
 
 namespace creation {
 
@@ -34,8 +35,9 @@ namespace creation {
 		
 		CreatePlayer(Vector3(0,0,0));
 		CreateCamera(Vector3(0,0,50));
-//		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
+		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
+		
 		
 		CreateWorldContainer();
 	}
@@ -45,9 +47,9 @@ namespace creation {
 		
 		GameObject *field = scene->CreateGameObject("BoxField");
 		
-		const int COUNT_X = 6;
-		const int COUNT_Y = 5;
-		const int COUNT_Z = 5;
+		const int COUNT_X = 3;
+		const int COUNT_Y = 3;
+		const int COUNT_Z = 3;
 		const Vector3 SHIFT_TO_CENTER = Vector3((COUNT_X-1) * distance / 2.0, (COUNT_Y-1) * distance / 2.0, (COUNT_Z-1) * distance / 2.0);
 		
 		for (int i = 0; i < COUNT_X; i++) {
@@ -71,7 +73,11 @@ namespace creation {
 		box->Transform()->Position(position);
 		
 		Material material;
-		material.Texture(resource::GetTexture("crate.pvr"));
+		
+		Font *font = resource::GetFont("Arial.ttf");
+		
+		material.Texture(font->FontTexture());
+//		material.Texture(resource::GetTexture("crate.pvr"));
 		material.Shader(resource::GetShader("SimpleShader"));
 		box->SetMaterial(material, true);
 		

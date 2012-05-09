@@ -11,8 +11,8 @@
 #include "Prefab.h"
 #include "Scene.h"
 #include "Render.h"
-#include <string>
-#include <map>
+#include "Font.h"
+
 
 namespace resource {
 	
@@ -20,6 +20,7 @@ namespace resource {
 	static manager::TextureManager textureManager;
 	static manager::ShaderManager shaderManager;
 	static manager::PrefabManager prefabManager;
+	static manager::FontManager fontManager;
 	
 	Texture *GetTexture(const std::string& name) {
 		
@@ -41,6 +42,12 @@ namespace resource {
 		return prefab;
 	}
 
+	
+	Font *GetFont(const std::string& name) {
+		
+		Font *font = fontManager.GetResource(name);
+		return font;
+	}
 	
 	
 	

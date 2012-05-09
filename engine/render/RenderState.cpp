@@ -20,6 +20,10 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *cam
 	}
 	
 	// Texture 0
+	
+
+	renderOp.material->Texture()->Bind();
+	
 	if (_currentTexture0 != renderOp.material->Texture()) {
 		_currentTexture0 = renderOp.material->Texture();
 		if (_currentTexture0) {

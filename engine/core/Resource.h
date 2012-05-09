@@ -9,6 +9,8 @@
 #ifndef RESOURCES_H
 #define RESOURCES_H
 
+#include <string>
+#include <map>
 #include "Utils.h"
 
 class IResource {
@@ -21,6 +23,7 @@ class Texture;
 class Shader;
 class Prefab;
 class Scene;
+class Font;
 
 namespace resource {
 	
@@ -32,6 +35,7 @@ namespace resource {
 	
 	Prefab *GetPrefab(const std::string& name);
 	
+	Font *GetFont(const std::string& name);
 
 	
 	namespace manager {
@@ -69,6 +73,7 @@ namespace resource {
 		typedef ResourceManager<Texture> TextureManager;
 		typedef ResourceManager<Shader> ShaderManager;
 		typedef ResourceManager<Prefab> PrefabManager;
+		typedef ResourceManager<Font> FontManager;
 	}
 	
 }

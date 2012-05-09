@@ -14,6 +14,7 @@
 #include "Utils.h"
 #include "RenderPipeline.h"
 #include "RenderState.h"
+#include "Font.h"
 
 //******************************************************************************
 // Constructor/destructor
@@ -25,6 +26,7 @@ Scene::Scene(class Platform *platform) {
 	input::Init(platform);
 	utils::Init(platform);
 	resource::Init(this);
+	freetype::Init();
 	
 	#ifdef ENABLE_PHYSICS
 	physics::Init(this);

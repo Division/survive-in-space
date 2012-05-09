@@ -102,6 +102,10 @@
 		1C5A943D155854660095209F /* MyMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9406155854660095209F /* MyMath.cpp */; };
 		1C5A943E155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
 		1C5A943F155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
+		1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */; };
+		1CB63AEF155983EC008D79D4 /* libFreetype2_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */; };
+		1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB63AF0155988DB008D79D4 /* Arial.ttf */; };
+		1CB63AF2155988DB008D79D4 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB63AF0155988DB008D79D4 /* Arial.ttf */; };
 		1CE215A21558565A00BD2D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215961558565A00BD2D2D /* AppDelegate.m */; };
 		1CE215A31558565A00BD2D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215961558565A00BD2D2D /* AppDelegate.m */; };
 		1CE215A61558565A00BD2D2D /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159A1558565A00BD2D2D /* GameView.m */; };
@@ -112,6 +116,8 @@
 		1CE215AD1558565A00BD2D2D /* Platform_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2159E1558565A00BD2D2D /* Platform_iOS.mm */; };
 		1CE215AE1558565A00BD2D2D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215A11558565A00BD2D2D /* ViewController.mm */; };
 		1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215A11558565A00BD2D2D /* ViewController.mm */; };
+		1CE215BD15597D2200BD2D2D /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215BC15597D2200BD2D2D /* Font.cpp */; };
+		1CE215BE15597D2200BD2D2D /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215BC15597D2200BD2D2D /* Font.cpp */; };
 		8E976F361547D53D003B5AB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F351547D53D003B5AB9 /* UIKit.framework */; };
 		8E976F381547D53D003B5AB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F371547D53D003B5AB9 /* Foundation.framework */; };
 		8E976F3A1547D53D003B5AB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
@@ -197,6 +203,9 @@
 		1C5A9407155854660095209F /* MyMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMath.h; sourceTree = "<group>"; };
 		1C5A9408155854660095209F /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		1C5A9409155854660095209F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_simulator.a; sourceTree = "<group>"; };
+		1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_device.a; sourceTree = "<group>"; };
+		1CB63AF0155988DB008D79D4 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
 		1CE215951558565A00BD2D2D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CE215961558565A00BD2D2D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1CE215981558565A00BD2D2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -209,6 +218,8 @@
 		1CE2159F1558565A00BD2D2D /* SurviveInSpace-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SurviveInSpace-Prefix.pch"; sourceTree = "<group>"; };
 		1CE215A01558565A00BD2D2D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1CE215A11558565A00BD2D2D /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		1CE215BB15597D1B00BD2D2D /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
+		1CE215BC15597D2200BD2D2D /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
 		8E976F311547D53D003B5AB9 /* SurviveInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurviveInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E976F351547D53D003B5AB9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8E976F371547D53D003B5AB9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -222,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CB63AEF155983EC008D79D4 /* libFreetype2_iOS_device.a in Frameworks */,
 				1C2C3DF4154FFEF7002BF68D /* OpenGLES.framework in Frameworks */,
 				1C2C3DF5154FFEF7002BF68D /* GLKit.framework in Frameworks */,
 				1C2C3DF6154FFEF7002BF68D /* UIKit.framework in Frameworks */,
@@ -235,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */,
 				8E976F9A1547F589003B5AB9 /* OpenGLES.framework in Frameworks */,
 				8E976F971547F583003B5AB9 /* GLKit.framework in Frameworks */,
 				8E976F361547D53D003B5AB9 /* UIKit.framework in Frameworks */,
@@ -250,6 +263,7 @@
 		1C5A9126155849290095209F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1CB63AF0155988DB008D79D4 /* Arial.ttf */,
 				1C5A9127155849290095209F /* avatar.mdl */,
 				1C5A9128155849290095209F /* avatar.pvr */,
 				1C5A9129155849290095209F /* crate.pvr */,
@@ -278,8 +292,8 @@
 				1C5A93CB155854660095209F /* component */,
 				1C5A93D9155854660095209F /* core */,
 				1C5A93E9155854660095209F /* game */,
-				1C5A93F5155854660095209F /* Game.cpp */,
 				1C5A93F6155854660095209F /* Game.h */,
+				1C5A93F5155854660095209F /* Game.cpp */,
 				1C5A93F7155854660095209F /* render */,
 				1C5A9405155854660095209F /* utils */,
 			);
@@ -290,19 +304,19 @@
 		1C5A93CB155854660095209F /* component */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A93CC155854660095209F /* Camera.cpp */,
 				1C5A93CD155854660095209F /* Camera.h */,
-				1C5A93CE155854660095209F /* Component.cpp */,
+				1C5A93CC155854660095209F /* Camera.cpp */,
 				1C5A93CF155854660095209F /* Component.h */,
+				1C5A93CE155854660095209F /* Component.cpp */,
 				1C5A93D0155854660095209F /* ComponentDeclaration.h */,
-				1C5A93D1155854660095209F /* MeshRenderer.cpp */,
 				1C5A93D2155854660095209F /* MeshRenderer.h */,
-				1C5A93D3155854660095209F /* Renderer.cpp */,
+				1C5A93D1155854660095209F /* MeshRenderer.cpp */,
 				1C5A93D4155854660095209F /* Renderer.h */,
-				1C5A93D5155854660095209F /* Rigidbody.cpp */,
+				1C5A93D3155854660095209F /* Renderer.cpp */,
 				1C5A93D6155854660095209F /* Rigidbody.h */,
-				1C5A93D7155854660095209F /* Transform.cpp */,
+				1C5A93D5155854660095209F /* Rigidbody.cpp */,
 				1C5A93D8155854660095209F /* Transform.h */,
+				1C5A93D7155854660095209F /* Transform.cpp */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -310,21 +324,23 @@
 		1C5A93D9155854660095209F /* core */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A93DA155854660095209F /* GameObject.cpp */,
 				1C5A93DB155854660095209F /* GameObject.h */,
-				1C5A93DC155854660095209F /* Input.cpp */,
+				1C5A93DA155854660095209F /* GameObject.cpp */,
 				1C5A93DD155854660095209F /* Input.h */,
-				1C5A93DE155854660095209F /* Physics.cpp */,
-				1C5A93DF155854660095209F /* Physics.h */,
+				1C5A93DC155854660095209F /* Input.cpp */,
 				1C5A93E0155854660095209F /* Platform.h */,
-				1C5A93E1155854660095209F /* Prefab.cpp */,
+				1C5A93DF155854660095209F /* Physics.h */,
+				1C5A93DE155854660095209F /* Physics.cpp */,
 				1C5A93E2155854660095209F /* Prefab.h */,
-				1C5A93E3155854660095209F /* Resource.cpp */,
+				1C5A93E1155854660095209F /* Prefab.cpp */,
 				1C5A93E4155854660095209F /* Resource.h */,
-				1C5A93E5155854660095209F /* Scene.cpp */,
+				1C5A93E3155854660095209F /* Resource.cpp */,
 				1C5A93E6155854660095209F /* Scene.h */,
-				1C5A93E7155854660095209F /* SceneGraph.cpp */,
+				1C5A93E5155854660095209F /* Scene.cpp */,
 				1C5A93E8155854660095209F /* SceneGraph.h */,
+				1C5A93E7155854660095209F /* SceneGraph.cpp */,
+				1CE215BB15597D1B00BD2D2D /* Font.h */,
+				1CE215BC15597D2200BD2D2D /* Font.cpp */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -332,14 +348,14 @@
 		1C5A93E9155854660095209F /* game */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A93EA155854660095209F /* CameraMover.cpp */,
 				1C5A93EB155854660095209F /* CameraMover.h */,
-				1C5A93EC155854660095209F /* CreationUtility.cpp */,
+				1C5A93EA155854660095209F /* CameraMover.cpp */,
 				1C5A93ED155854660095209F /* CreationUtility.h */,
-				1C5A93EE155854660095209F /* PlayerController.cpp */,
+				1C5A93EC155854660095209F /* CreationUtility.cpp */,
 				1C5A93EF155854660095209F /* PlayerController.h */,
-				1C5A93F0155854660095209F /* PlayerShip.cpp */,
+				1C5A93EE155854660095209F /* PlayerController.cpp */,
 				1C5A93F1155854660095209F /* PlayerShip.h */,
+				1C5A93F0155854660095209F /* PlayerShip.cpp */,
 				1C5A93F2155854660095209F /* Sphere */,
 			);
 			path = game;
@@ -348,8 +364,8 @@
 		1C5A93F2155854660095209F /* Sphere */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A93F3155854660095209F /* Sphere.cpp */,
 				1C5A93F4155854660095209F /* Sphere.h */,
+				1C5A93F3155854660095209F /* Sphere.cpp */,
 			);
 			path = Sphere;
 			sourceTree = "<group>";
@@ -357,19 +373,19 @@
 		1C5A93F7155854660095209F /* render */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A93F8155854660095209F /* Material.cpp */,
 				1C5A93F9155854660095209F /* Material.h */,
-				1C5A93FA155854660095209F /* Mesh.cpp */,
+				1C5A93F8155854660095209F /* Material.cpp */,
 				1C5A93FB155854660095209F /* Mesh.h */,
+				1C5A93FA155854660095209F /* Mesh.cpp */,
 				1C5A93FC155854660095209F /* Render.h */,
-				1C5A93FD155854660095209F /* RenderPipeline.cpp */,
 				1C5A93FE155854660095209F /* RenderPipeline.h */,
-				1C5A93FF155854660095209F /* RenderState.cpp */,
+				1C5A93FD155854660095209F /* RenderPipeline.cpp */,
 				1C5A9400155854660095209F /* RenderState.h */,
-				1C5A9401155854660095209F /* Shader.cpp */,
+				1C5A93FF155854660095209F /* RenderState.cpp */,
 				1C5A9402155854660095209F /* Shader.h */,
-				1C5A9403155854660095209F /* Texture.cpp */,
+				1C5A9401155854660095209F /* Shader.cpp */,
 				1C5A9404155854660095209F /* Texture.h */,
+				1C5A9403155854660095209F /* Texture.cpp */,
 			);
 			path = render;
 			sourceTree = "<group>";
@@ -427,6 +443,8 @@
 		8E976F341547D53D003B5AB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */,
+				1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */,
 				1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */,
 				1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */,
 				8E976F991547F589003B5AB9 /* OpenGLES.framework */,
@@ -523,6 +541,7 @@
 				1C5A9179155849560095209F /* texture-inspiration16.jpg in Resources */,
 				1C5A917A155849560095209F /* texture.pvr in Resources */,
 				1C5A917B155849560095209F /* trooper.pvr in Resources */,
+				1CB63AF2155988DB008D79D4 /* Arial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +566,7 @@
 				1C5A9168155849480095209F /* texture-inspiration16.jpg in Resources */,
 				1C5A9169155849480095209F /* texture.pvr in Resources */,
 				1C5A916A155849480095209F /* trooper.pvr in Resources */,
+				1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +609,7 @@
 				1CE215AB1558565A00BD2D2D /* main.m in Sources */,
 				1CE215AD1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
 				1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */,
+				1CE215BE15597D2200BD2D2D /* Font.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +649,7 @@
 				1CE215AA1558565A00BD2D2D /* main.m in Sources */,
 				1CE215AC1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
 				1CE215AE1558565A00BD2D2D /* ViewController.mm in Sources */,
+				1CE215BD15597D2200BD2D2D /* Font.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +678,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
@@ -683,6 +706,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
@@ -757,6 +781,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
@@ -785,6 +810,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/freetype,
 					../external/Bullet,
 					../external,
 				);

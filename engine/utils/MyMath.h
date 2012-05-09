@@ -35,9 +35,9 @@ typedef glm::quat Quaternion;
 
 namespace math {
 
-    Matrix4 Translation(Vector3 const & offset);    
+	Matrix4 Translation(Vector3 const & offset);    
 
-    Matrix4 RotationMatrix(float angle, Vector3 axis);
+	Matrix4 RotationMatrix(float angle, Vector3 axis);
     
 	Vector3 GetTranslation(const Matrix4& m);
 	
@@ -49,27 +49,27 @@ namespace math {
 	
     Matrix4 Scaling(Vector3 const factors);
     
-    Matrix4 Scale(Matrix4 const &m, Vector3 const factors);
+	Matrix4 Scale(Matrix4 const &m, Vector3 const factors);
     
-    Matrix4 Rotate(Matrix4 const &m, float angle, Vector3 const & axis);
+	Matrix4 Rotate(Matrix4 const &m, float angle, Vector3 const & axis);
     
-    Matrix4 Translate(Matrix4 const &m, Vector3 const & direction);
+	Matrix4 Translate(Matrix4 const &m, Vector3 const & direction);
     
-    Matrix4 Transpose(Matrix4 const &m);
+	Matrix4 Transpose(Matrix4 const &m);
     
-    Matrix4 Frustom(float left, float right, float bottom, float top, float zNear, float zFar);
+	Matrix4 Frustom(float left, float right, float bottom, float top, float zNear, float zFar);
     
-    Matrix4 Ortho(float left, float right, float bottom, float top, float zNear, float zFar);
+	Matrix4 Ortho(float left, float right, float bottom, float top, float zNear, float zFar);
     
-    Matrix4 LookAt(glm::vec3 const & eye, glm::vec3 const & center, glm::vec3 const & up);
+	Matrix4 LookAt(glm::vec3 const & eye, glm::vec3 const & center, glm::vec3 const & up);
     
-    Matrix4 Ortho2D(float left, float right, float bottom, float top);
+	Matrix4 Ortho2D(float left, float right, float bottom, float top);
     
-    Matrix4 Perspective(float fovy, float aspect, float zNear, float zFar);
+	Matrix4 Perspective(float fovy, float aspect, float zNear, float zFar);
     
-    Vector3 Project(Vector3 const & obj, Matrix4 const & model, Matrix4 const & proj, Vector4 const & viewport);
+	Vector3 Project(Vector3 const & obj, Matrix4 const & model, Matrix4 const & proj, Vector4 const & viewport);
     
-    Vector3 UnProject(Vector3 const & win, Matrix4 const & model, Matrix4 const & proj, Vector4 const & viewport);
+	Vector3 UnProject(Vector3 const & win, Matrix4 const & model, Matrix4 const & proj, Vector4 const & viewport);
 
 	Vector3 Normalize(const Vector3 &v);
 }

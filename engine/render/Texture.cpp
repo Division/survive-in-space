@@ -143,3 +143,11 @@ bool Texture::Unbind(int samplerID) {
         return false;
     }
 }
+
+
+void Texture::SetAsNameAndID(const std::string &name, GLuint id) {
+
+	_name = name;
+	_handle = id;
+	_isValid = id > 0;
+}

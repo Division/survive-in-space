@@ -26,10 +26,6 @@ void Camera::Awake() {
 
 void Camera::Update() {
 	
-	Rigidbody *rigidbody =  GameObject()->Rigidbody();
-	if (rigidbody) {
-//		rigidbody->Body()->applyTorque(btVector3(0,1,0));
-	}
 }
 
 

@@ -53,9 +53,11 @@ public:
     
 	std::string Name() { return _name; }
     bool Load(const std::string& filename);
+	void SetAsNameAndID(const std::string &name, GLuint id);
     bool Bind(int samplerID = 0);
     bool Unbind(int samplerID = 0);
-    
+    GLuint Handle() { return _handle; }
+	
 private:
     GLuint _handle;
     bool _isValid;

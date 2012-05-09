@@ -62,10 +62,10 @@
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
+	[super viewDidUnload];
     
-    _game->Finalize();
-    delete _game;
+	_game->Finalize();
+	delete _game;
 	delete _platform;
 }
 
