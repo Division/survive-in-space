@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Cpptest.xcscheme</key>
+		<key>Device.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Simulator.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1C2C3DDA154FFEF7002BF68D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8E976F301547D53D003B5AB9</key>
 		<dict>
 			<key>primary</key>
