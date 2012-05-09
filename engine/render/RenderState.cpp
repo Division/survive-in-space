@@ -20,14 +20,11 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *cam
 	}
 	
 	// Texture 0
-	
-
-	renderOp.material->Texture()->Bind();
-	
 	if (_currentTexture0 != renderOp.material->Texture()) {
 		_currentTexture0 = renderOp.material->Texture();
 		if (_currentTexture0) {
-			_currentTexture0->Bind(_currentShader->GetShaderParameter(EngineShaderParamTexture0Uniform));
+			_currentTexture0->Bind(0);
+			_currentShader->SetUniform(EngineShaderParamTexture0Uniform, 0);
 		} else {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, 0);
@@ -39,6 +36,7 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *cam
 		_currentTexture1 = renderOp.material->Texture2();
 		if (_currentTexture1) {
 			_currentTexture1->Bind(_currentShader->GetShaderParameter(EngineShaderParamTexture1Uniform));
+			_currentShader->SetUniform(EngineShaderParamTexture1Uniform, 1);
 		} else {
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, 0);	
@@ -126,5 +124,8 @@ void RenderState::RecoverState() {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+	_currentTexture0 = NULL;
+	_currentTexture1 = NULL;
+	
 	glActiveTexture(GL_TEXTURE1);
 }
