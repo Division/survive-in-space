@@ -13,7 +13,7 @@
 #define ENABLE_PHYSICS
 #ifdef ENABLE_PHYSICS
 
-//#define ENABLE_DEBUG_DRAW
+#define ENABLE_DEBUG_DRAW
 
 #include "btBulletDynamicsCommon.h"
 #include "MyMath.h"

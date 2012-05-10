@@ -40,11 +40,11 @@ namespace creation {
 		
 		CreatePlayer(Vector3(0,0,0));
 		CreateCamera(Vector3(0,0,50));
-//		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
+		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
 		
 		
-//		CreateWorldContainer();
+		CreateWorldContainer();
 	}
 
 	//------------------------------------------------------------------------------

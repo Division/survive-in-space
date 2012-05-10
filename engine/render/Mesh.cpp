@@ -179,7 +179,7 @@ bool Mesh::GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVer
 	int dataIndex = GetVertexIndex(triangleIndex, vertexIndex);
 	
 	if (dataIndex >= 0 && dataIndex < _vertexCount) {
-		int stride = GetVertexDataStride();
+		int stride = VERTEX_STRIDE * sizeof(float);
 		int offset = dataIndex * stride;
 		outVertex =  *((Vector3 *)&_vertexData.get()[offset]);
 		result = true;
@@ -188,6 +188,7 @@ bool Mesh::GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVer
 	return result;
 }
 
+//------------------------------------------------------------------------------
 
 int Mesh::GetVertexIndex(int triangleIndex, int vertexIndex) const {
 
