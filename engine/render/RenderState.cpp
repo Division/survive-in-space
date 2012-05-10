@@ -10,6 +10,13 @@
 #include "RenderState.h"
 #include "Camera.h"
 
+//******************************************************************************
+//
+//  Public
+//
+//******************************************************************************
+
+
 const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *camera) {
 
 	// Shader
@@ -44,46 +51,21 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *cam
 	}
 	
 	const void *indexPointer = _currentIndexPointer;
-	const char *vertexPointer;
 	
 	if (_currentMesh != renderOp.mesh) {
 
 		_currentMesh = renderOp.mesh;
 		
-		// TODO: add check and disabling of vertex attribs
+		DisableAttributes();
+		EnableAttributes(_currentMesh, _currentShader);
 		
-		// Pos attrib
-		int attrib;
-		attrib = _currentShader->GetShaderParameter(EngineShaderParamPositionAttribute);
-		if (!_vertexAttribEnabled[attrib]) {
-			_vertexAttribEnabled[attrib] = 1;
-			glEnableVertexAttribArray(attrib);
-		}
-
-		// Texcoord attrib
-		attrib = _currentShader->GetShaderParameter(EngineShaderParamUV0Attribute);
-		if (!_vertexAttribEnabled[attrib]) {
-			_vertexAttribEnabled[attrib] = 1;
-			glEnableVertexAttribArray(attrib);
-		}
-		
-		if (_currentMesh->UsesVBO()) {
+		if (_currentMesh->UsesVBO()) { // Use VBO
 			indexPointer = 0;
-			vertexPointer = 0;
-			glBindBuffer(GL_ARRAY_BUFFER, _currentMesh->GetVertexBuffer());
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _currentMesh->GetIndexBuffer());
-		} else {
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-			indexPointer = _currentMesh->IndexDataPointer();
-			vertexPointer = _currentMesh->VertexDataPointer();
+			SetupAttributesVBO(_currentMesh, _currentShader);
+		} else { // No VBO
+			indexPointer = _currentMesh->GetIndexDataPointer();
+			SetupAttributesNoVBO(_currentMesh, _currentShader);
 		}
-		
-		int stride = Mesh::VERTEX_STRIDE*sizeof(float) + Mesh::UV_STRIDE*sizeof(float);
-		
-		glVertexAttribPointer(_currentShader->GetShaderParameter(EngineShaderParamPositionAttribute), Mesh::VERTEX_STRIDE, GL_FLOAT, GL_FALSE, stride, vertexPointer);
-		glVertexAttribPointer(_currentShader->GetShaderParameter(EngineShaderParamUV0Attribute), Mesh::UV_STRIDE, GL_FLOAT, GL_FALSE, stride, vertexPointer + Mesh::VERTEX_STRIDE*sizeof(float));
 		
 		_currentIndexPointer = indexPointer;
 	}
@@ -91,6 +73,7 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *cam
 	return indexPointer;
 }
 
+//------------------------------------------------------------------------------
 
 void RenderState::RecoverState() {
 
@@ -102,15 +85,10 @@ void RenderState::RecoverState() {
 	}
 	_currentMesh = NULL;
 	
-	for (int i = 0; i < 8; i++) {
-		if (_vertexAttribEnabled[i]) {
-			_vertexAttribEnabled[i] = 0;
-			glDisableVertexAttribArray(i);
-		}
-	}
+	DisableAttributes();
 	
 	if (_currentShader) {
-		_currentShader = 0;
+		_currentShader = NULL;
 		glUseProgram(0);
 	}
 	
@@ -127,5 +105,112 @@ void RenderState::RecoverState() {
 	_currentTexture0 = NULL;
 	_currentTexture1 = NULL;
 	
-	glActiveTexture(GL_TEXTURE1);
+	glActiveTexture(GL_TEXTURE0);
 }
+
+//******************************************************************************
+//
+//  Private
+//
+//******************************************************************************
+
+
+void RenderState::SetupAttributesVBO(Mesh *mesh, Shader *shader) {
+	
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _currentMesh->GetIndexBuffer());
+	
+	// Vertices
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->GetVertexBuffer());
+	int vertexAttribIndex = shader->GetShaderParameter(EngineShaderParamPositionAttribute);
+	glVertexAttribPointer(vertexAttribIndex, Mesh::VERTEX_STRIDE, GL_FLOAT, GL_FALSE, 0, 0);
+	
+	// Normals
+	bool needNormals = mesh->HasNormals() && shader->ShaderUsesParameter(EngineShaderParamNormalAttribute);
+	if (needNormals) {
+		glBindBuffer(GL_ARRAY_BUFFER, mesh->GetVertexBuffer());
+		int normalAttribIndex = shader->GetShaderParameter(EngineShaderParamNormalAttribute);
+		glVertexAttribPointer(normalAttribIndex, Mesh::NORMAL_STRIDE, GL_FLOAT, GL_FALSE, 0, 0);
+	}
+	
+	// UV0
+	bool needUV0 = mesh->HasUV0() && shader->ShaderUsesParameter(EngineShaderParamUV0Attribute);
+	if (needUV0) {
+		glBindBuffer(GL_ARRAY_BUFFER, mesh->GetUV0Buffer());
+		int uv0AttribIndex = shader->GetShaderParameter(EngineShaderParamUV0Attribute);
+		glVertexAttribPointer(uv0AttribIndex, Mesh::UV_STRIDE, GL_FLOAT, GL_FALSE, 0, 0);				
+	}
+	
+	// UV1
+	bool needUV1 = mesh->HasUV1() && shader->ShaderUsesParameter(EngineShaderParamUV1Attribute);
+	if (needUV1) {
+		glBindBuffer(GL_ARRAY_BUFFER, mesh->GetUV1Buffer());
+		int uv1AttribIndex = shader->GetShaderParameter(EngineShaderParamUV1Attribute);
+		glVertexAttribPointer(uv1AttribIndex, Mesh::UV_STRIDE, GL_FLOAT, GL_FALSE, 0, 0);				
+	}
+
+}
+
+//------------------------------------------------------------------------------
+
+void RenderState::SetupAttributesNoVBO(Mesh *mesh, Shader *shader) {
+	
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	
+	// Vertices
+	const char *vertexData = mesh->GetVertexDataPointer();
+	int vertexAttribIndex = shader->GetShaderParameter(EngineShaderParamPositionAttribute);
+	glVertexAttribPointer(vertexAttribIndex, Mesh::VERTEX_STRIDE, GL_FLOAT, GL_FALSE, 0, vertexData);
+	
+	// Normals
+	bool needNormals = mesh->HasNormals() && shader->ShaderUsesParameter(EngineShaderParamNormalAttribute);
+	if (needNormals) {
+		const char *normalData = mesh->GetNormalDataPointer();
+		int normalAttribIndex = shader->GetShaderParameter(EngineShaderParamNormalAttribute);
+		glVertexAttribPointer(normalAttribIndex, Mesh::NORMAL_STRIDE, GL_FLOAT, GL_FALSE, 0, normalData);
+	}
+	
+	// UV0
+	bool needUV0 = mesh->HasUV0() && shader->ShaderUsesParameter(EngineShaderParamUV0Attribute);
+	if (needUV0) {
+		const char *uv0Data = mesh->GetUV0DataPointer();
+		int uv0AttribIndex = shader->GetShaderParameter(EngineShaderParamUV0Attribute);
+		glVertexAttribPointer(uv0AttribIndex, Mesh::UV_STRIDE, GL_FLOAT, GL_FALSE, 0, uv0Data);
+	}
+	
+	// UV1
+	bool needUV1 = mesh->HasUV1() && shader->ShaderUsesParameter(EngineShaderParamUV1Attribute);
+	if (needUV1) {
+		const char *uv1Data = mesh->GetUV1DataPointer();
+		int uv1AttribIndex = shader->GetShaderParameter(EngineShaderParamUV1Attribute);
+		glVertexAttribPointer(uv1AttribIndex, Mesh::UV_STRIDE, GL_FLOAT, GL_FALSE, 0, uv1Data);
+	}
+}
+
+//------------------------------------------------------------------------------
+
+void RenderState::EnableAttributes(Mesh *mesh, Shader *shader){
+
+	for (int i = 0; i < EngineShaderAttributesCount; i++) {
+		bool enabled = shader->ShaderUsesParameter(i);
+		if (!enabled) continue;
+		
+		int attribIndex = shader->GetShaderParameter(i);
+		glEnableVertexAttribArray(attribIndex);
+		_vertexAttribEnabled[attribIndex] = 1;
+	}
+	
+}
+
+//------------------------------------------------------------------------------
+
+void RenderState::DisableAttributes() {
+
+	for (int i = 0; i < EngineShaderAttributesCount; i++) {
+		if (_vertexAttribEnabled[i]) {
+			glDisableVertexAttribArray(i);
+			_vertexAttribEnabled[i] = 0;
+		}
+	}
+}
+

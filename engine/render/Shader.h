@@ -19,6 +19,7 @@
 // Attributes used by engine
 enum {
 	EngineShaderParamPositionAttribute = 0,
+	EngineShaderParamNormalAttribute,
 	EngineShaderParamUV0Attribute,
 	EngineShaderParamUV1Attribute,
 	EngineShaderAttributesCount

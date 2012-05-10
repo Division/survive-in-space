@@ -31,6 +31,7 @@ typedef std::vector<RenderOperation> RenderOperationList;
 
 class RenderPipeline {
 public:	
+
 	RenderPipeline(RenderState* renderState);
 	
 	void PreparePipeline(int estimatedObjCount, Camera *camera);

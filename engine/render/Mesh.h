@@ -20,7 +20,7 @@ class Mesh;
 typedef std::unique_ptr<Mesh> MeshPtr;
 typedef std::vector<MeshPtr> MeshList;
 
-typedef std::unique_ptr<char[]> VertexData;
+typedef std::unique_ptr<char[]> VertexAttribData;
 typedef std::unique_ptr<unsigned short> IndexData;
 
 class Mesh {
@@ -42,6 +42,9 @@ public:
 	int TriangleCount() const { return _triangleCount; }
 	int VertexCount() const { return _vertexCount; }
 	bool UsesVBO() const { return _useVBO; }
+	bool HasNormals() const { return _hasNormals; }
+	bool HasUV0() const { return _hasUV0; }
+	bool HasUV1() const { return _hasUV1; }
 	
 	// Render data accessors
 	bool GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVertex) const;
@@ -49,12 +52,19 @@ public:
 	int GetVertexDataStride() const;
 	
 	// no VBO
-	const char* VertexDataPointer() const;
-	const unsigned short* IndexDataPointer() const;
+	const char* GetVertexDataPointer() const;
+	const char* GetNormalDataPointer() const;
+	const char* GetUV0DataPointer() const;
+	const char* GetUV1DataPointer() const;
+	const unsigned short* GetIndexDataPointer() const;
 	
 	// VBO
 	GLuint GetVertexBuffer() const { return _vertexBuffer; }
+	GLuint GetNormalBuffer() const { return _normalBuffer; }
 	GLuint GetIndexBuffer() const { return _indexBuffer; }
+	GLuint GetUV0Buffer() const { return _uv0Buffer; }
+	GLuint GetUV1Buffer() const { return _uv1Buffer; }
+	
 
 private:
 	// Mesh properties
@@ -65,11 +75,17 @@ private:
 	
 	// VBO
 	GLuint _vertexBuffer;
+	GLuint _normalBuffer;
+	GLuint _uv0Buffer;
+	GLuint _uv1Buffer;
 	GLuint _indexBuffer;
 	bool _useVBO;
 
 	// Mesh data [null if VBO used]
-	VertexData _vertexData;
+	VertexAttribData _vertexData;
+	VertexAttribData _normalData;
+	VertexAttribData _uv0Data;
+	VertexAttribData _uv1Data;
 	IndexData _indexData;
 	
 	// Vertex attributes available

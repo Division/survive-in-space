@@ -13,6 +13,7 @@
 static std::string EngineShaderParamNames [EngineShaderParamCount] = {
 // Attributes first
 	"Position",
+	"Normal",
 	"TexCoord0",
 	"TexCoord1",
 // Uniforms last

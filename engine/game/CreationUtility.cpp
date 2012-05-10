@@ -24,6 +24,9 @@
 
 namespace creation {
 
+	//******************************************************************************
+	// Scene and level
+	
 	static Scene *scene;
 	
 	void Init(Scene *theScene) {
@@ -31,17 +34,52 @@ namespace creation {
 		scene = theScene;
 	}
 	
+	//------------------------------------------------------------------------------
+	
 	void InitLevel() {
 		
 		CreatePlayer(Vector3(0,0,0));
 		CreateCamera(Vector3(0,0,50));
-		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
+//		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
 		
 		
-		CreateWorldContainer();
+//		CreateWorldContainer();
 	}
 
+	//------------------------------------------------------------------------------
+	
+	GameObject *CreateWorldContainer() {
+		
+		Prefab *worldContainerPrefab = resource::GetPrefab("sphere.mdl");
+		GameObject *worldContainer = worldContainerPrefab->Instantiate();
+		worldContainer->AddComponent<Sphere>();
+		return worldContainer;
+	}
+	
+	//******************************************************************************
+	// Geometry
+	
+	GameObject *CreateBox(const Vector3 &position) {
+	
+		Prefab *boxPrefab = resource::GetPrefab("cube.mdl");
+		GameObject *box = boxPrefab->Instantiate();
+		box->Name("Box");
+		box->Transform()->Position(position);
+		
+		Material material;
+		
+		Font *font = resource::GetFont("Arial.ttf");
+		
+		material.Texture(font->FontTexture());
+//		material.Texture(resource::GetTexture("crate.pvr"));
+		material.Shader(resource::GetShader("SimpleShader"));
+		box->SetMaterial(material, true);
+		
+		return box;
+	}
+	
+	//------------------------------------------------------------------------------
 	
 	GameObject *CreateBoxField(const Vector3& offset, float distance) {
 		
@@ -63,27 +101,9 @@ namespace creation {
 		
 		return field;
 	}
-	
-	
-	GameObject *CreateBox(const Vector3 &position) {
-	
-		Prefab *boxPrefab = resource::GetPrefab("cube.mdl");
-		GameObject *box = boxPrefab->Instantiate();
-		box->Name("Box");
-		box->Transform()->Position(position);
-		
-		Material material;
-		
-		Font *font = resource::GetFont("Arial.ttf");
-		
-		material.Texture(font->FontTexture());
-//		material.Texture(resource::GetTexture("crate.pvr"));
-		material.Shader(resource::GetShader("SimpleShader"));
-		box->SetMaterial(material, true);
-		
-		return box;
-	}
-	
+
+	//******************************************************************************
+	// Player
 
 	GameObject *CreatePlayer(const Vector3 &position) {
 
@@ -109,6 +129,8 @@ namespace creation {
 		return playerGO;
 	}
 
+	//******************************************************************************
+	// Camera
 
 	GameObject *CreateCamera(const Vector3 &position) {
 		
@@ -119,15 +141,6 @@ namespace creation {
 //		cameraGO->AddComponent<CameraMover>();
 		
 		return cameraGO;
-	}
-
-	
-	GameObject *CreateWorldContainer() {
-
-		Prefab *worldContainerPrefab = resource::GetPrefab("sphere.mdl");
-		GameObject *worldContainer = worldContainerPrefab->Instantiate();
-		worldContainer->AddComponent<Sphere>();
-		return worldContainer;
 	}
 
 

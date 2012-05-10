@@ -11,14 +11,17 @@
 #include "Mesh.h"
 #include "Utils.h"
 
-static const int NORMAL_SHIFT = 0;
-static const int UV0_SHIFT = 1;
-static const int UV1_SHIFT = 2;
-
 const int Mesh::VERTEX_STRIDE = 3;
 const int Mesh::NORMAL_STRIDE = 3;
 const int Mesh::UV_STRIDE = 2;
 const int Mesh::NUM_VERTEXES_IN_POLYGON = 3;
+
+//******************************************************************************
+//
+//  Public
+//
+//******************************************************************************
+
 
 Mesh::Mesh() {
 	
@@ -33,6 +36,7 @@ Mesh::Mesh() {
 	_hasUV1 = false;
 }
 
+//------------------------------------------------------------------------------
 
 Mesh::~Mesh() {
 	
@@ -41,7 +45,7 @@ Mesh::~Mesh() {
 	}
 }
 
-
+//------------------------------------------------------------------------------
 
 bool Mesh::Load(std::istream& readStream, bool useVBO) {
 	
@@ -51,30 +55,81 @@ bool Mesh::Load(std::istream& readStream, bool useVBO) {
 		readStream.exceptions(std::ios::badbit | std::ios::failbit);
 		
 		// Read header
-		int vertexDataKey;
 		readStream.read((char *)&_tag, sizeof(int));
-		readStream.read((char *)&vertexDataKey, sizeof(int));
 		readStream.read((char *)&_vertexCount, sizeof(int));
 		readStream.read((char *)&_triangleCount, sizeof(int));
 		
 		// Calculating size values
-		int positionDataSize = _vertexCount * VERTEX_STRIDE * sizeof(float);
+		int vertexDataSize = _vertexCount * VERTEX_STRIDE * sizeof(float);
+		int normalDataSize = vertexDataSize;
 		int texCoordSize = _vertexCount * UV_STRIDE * sizeof(float);
-		int vertexDataSize = positionDataSize + texCoordSize;
 		
 		// Vertex data
-		VertexData tempVertexData = VertexData(new char[vertexDataSize]);
+		VertexAttribData tempVertexData = VertexAttribData(new char[vertexDataSize]);
 		readStream.read(tempVertexData.get(), vertexDataSize);
 
+		// Normal data
+		char hasNormals;
+		readStream.read(&hasNormals, sizeof(char));
+		_hasNormals = hasNormals;
+		
+		VertexAttribData tempNormalData;
+		if (_hasNormals) {
+			tempNormalData = VertexAttribData(new char[normalDataSize]);
+			readStream.read(tempNormalData.get(), normalDataSize);
+		}
+		
+		// UV0 data
+		char hasUV0;
+		readStream.read(&hasUV0, sizeof(char));
+		_hasUV0 = hasUV0;
+
+		VertexAttribData tempUV0Data;
+		if (_hasNormals) {
+			tempUV0Data = VertexAttribData(new char[texCoordSize]);
+			readStream.read(tempUV0Data.get(), texCoordSize);
+		}
+		
+		// UV1 data
+		char hasUV1;
+		readStream.read(&hasUV1, sizeof(char));
+		_hasUV1 = hasUV1;
+		
+		VertexAttribData tempUV1Data;
+		if (_hasUV1) {
+			tempUV1Data = VertexAttribData(new char[texCoordSize]);
+			readStream.read(tempUV1Data.get(), texCoordSize);
+		}
+
+		
 		// Index data
 		int indexDataSize = _triangleCount * NUM_VERTEXES_IN_POLYGON * sizeof(unsigned short);
 		IndexData tempIndexData = IndexData(new unsigned short[_triangleCount * NUM_VERTEXES_IN_POLYGON]);
 		readStream.read((char *)tempIndexData.get(), indexDataSize);
 
+		// VBO
 		if (useVBO) {
 			glGenBuffers(1, &_vertexBuffer);
 			glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
 			glBufferData(GL_ARRAY_BUFFER, vertexDataSize, tempVertexData.get(), GL_STATIC_DRAW);
+			
+			if (_hasNormals) {
+				glGenBuffers(1, &_normalBuffer);
+				glBindBuffer(GL_ARRAY_BUFFER, _normalBuffer);
+				glBufferData(GL_ARRAY_BUFFER, normalDataSize, tempNormalData.get(), GL_STATIC_DRAW);				
+			}
+			
+			if (_hasUV0) {
+				glGenBuffers(1, &_uv0Buffer);
+				glBindBuffer(GL_ARRAY_BUFFER, _uv0Buffer);
+				glBufferData(GL_ARRAY_BUFFER, texCoordSize, tempUV0Data.get(), GL_STATIC_DRAW);								
+			}
+			
+			if (_hasUV1) {
+				glGenBuffers(1, &_uv1Buffer);
+				glBindBuffer(GL_ARRAY_BUFFER, _uv1Buffer);
+				glBufferData(GL_ARRAY_BUFFER, texCoordSize, tempUV1Data.get(), GL_STATIC_DRAW);								
+			}
 			
 			glGenBuffers(1, &_indexBuffer);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
@@ -84,12 +139,19 @@ bool Mesh::Load(std::istream& readStream, bool useVBO) {
 		_indexData = std::move(tempIndexData);
 		_vertexData = std::move(tempVertexData);
 		
-		_useVBO = useVBO;
+		if (_hasNormals) {
+			_normalData = std::move(tempNormalData);
+		}
 		
-		// Vertex attribute usage
-		_hasNormals = vertexDataKey & (1 << NORMAL_SHIFT);
-		_hasUV0 = vertexDataKey & (1 << UV0_SHIFT);
-		_hasUV1 = vertexDataKey & (1 << UV1_SHIFT);
+		if (_hasUV0) {
+			_uv0Data = std::move(tempUV0Data);
+		}
+		
+		if (_hasUV1) {
+			_uv1Data = std::move(tempUV1Data);
+		}
+		
+		_useVBO = useVBO;
 		
 		std::cout << "Mesh loaded, " << _triangleCount << " triangles";
 		
@@ -101,12 +163,14 @@ bool Mesh::Load(std::istream& readStream, bool useVBO) {
 	return _isValid;
 }
 
+//------------------------------------------------------------------------------
 
 int Mesh::GetVertexDataStride() const {
 
 	return (VERTEX_STRIDE + UV_STRIDE) * sizeof(float);
 }
 
+//------------------------------------------------------------------------------
 
 bool Mesh::GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVertex) const {
 	
@@ -131,7 +195,10 @@ int Mesh::GetVertexIndex(int triangleIndex, int vertexIndex) const {
 	return _indexData.get()[triangleIndex * NUM_VERTEXES_IN_POLYGON + vertexIndex];
 }
 
-const char* Mesh::VertexDataPointer() const {
+//******************************************************************************
+// Data pointers
+
+const char* Mesh::GetVertexDataPointer() const {
 	
 	char *result = 0;
 	
@@ -142,8 +209,43 @@ const char* Mesh::VertexDataPointer() const {
 	return result;
 }
 
+const char* Mesh::GetNormalDataPointer() const {
 
-const unsigned short* Mesh::IndexDataPointer() const {
+	char *result = 0;
+	
+	if (_isValid && !_useVBO) {
+		result = _normalData.get();
+	}
+	
+	return result;
+}
+
+
+const char* Mesh::GetUV0DataPointer() const {
+	
+	char *result = 0;
+	
+	if (_isValid && !_useVBO) {
+		result = _uv0Data.get();
+	}
+	
+	return result;	
+}
+
+
+const char* Mesh::GetUV1DataPointer() const {
+	
+	char *result = 0;
+	
+	if (_isValid && !_useVBO) {
+		result = _uv1Data.get();
+	}
+	
+	return result;
+}
+
+
+const unsigned short* Mesh::GetIndexDataPointer() const {
 	
 	unsigned short *result = 0;
 	

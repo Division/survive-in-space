@@ -14,12 +14,19 @@
 #include "Shader.h"
 
 class Camera;
+class Mesh;
 
 class RenderState {
 public:
 	
 	const void* ApplyStateForROP(RenderOperation &renderOp, Camera *camera);
 	void RecoverState();
+	
+private:
+	void EnableAttributes(Mesh *mesh, Shader *shader);
+	void DisableAttributes();
+	void SetupAttributesVBO(Mesh *mesh, Shader *shader);
+	void SetupAttributesNoVBO(Mesh *mesh, Shader *shader);
 	
 private:
 	bool _currentBlendEnabled;
