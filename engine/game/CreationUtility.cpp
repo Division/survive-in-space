@@ -21,6 +21,7 @@
 #include "CameraMover.h"
 #include "Sphere.h"
 #include "Font.h"
+#include "SpriteRenderer.h"
 
 namespace creation {
 
@@ -44,7 +45,7 @@ namespace creation {
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
 		
 		
-		CreateWorldContainer();
+//		CreateWorldContainer();
 	}
 
 	//------------------------------------------------------------------------------
@@ -126,6 +127,18 @@ namespace creation {
 		body->SetAsSphere(PLAYER_SHIP_RADIUS);
 		body->Mass(1);
 		
+		Font *font = resource::GetFont("Arial.ttf");
+		material.Texture(font->FontTexture());
+		material.Shader(resource::GetShader("SimpleShader"));
+		material.RenderQueue(RenderQueueOverlay);
+		material.DepthWrite(false);
+		material.DepthTest(false);
+		SpriteRenderer *sprite = playerGO->AddComponent<SpriteRenderer>();
+		sprite->Material(material);
+		sprite->Size(Vector2(200,200));
+		sprite->Position(Vector2(200,200));
+		sprite->UseTransform(false);
+		
 		return playerGO;
 	}
 
@@ -138,7 +151,6 @@ namespace creation {
 		cameraGO->Transform()->Position(position);
 		
 		cameraGO->AddComponent<Camera>();
-//		cameraGO->AddComponent<CameraMover>();
 		
 		return cameraGO;
 	}

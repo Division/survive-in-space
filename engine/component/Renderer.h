@@ -10,9 +10,18 @@
 #define RENDERER_H
 
 #include "Component.h"
+#include "Render.h"
 
 class Renderer : public Component {
 public:
+	
+	void Material(class Material material) { _material = material; }
+	class Material& Material() { return _material; }
+	
+protected:
+	class Material _material;
+	Matrix4 _worldMatrix;
+
 	
 };
 

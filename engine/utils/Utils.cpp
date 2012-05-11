@@ -108,4 +108,11 @@ namespace utils {
 		
         return hash;
     }
+	
+	//------------------------------------------------------------------------------
+	
+	Vector2 GetScreenResolution() {
+		
+		return _platform->GetScreenResolution();
+	}
 }

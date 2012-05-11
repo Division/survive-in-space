@@ -102,6 +102,8 @@
 		1C5A943D155854660095209F /* MyMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9406155854660095209F /* MyMath.cpp */; };
 		1C5A943E155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
 		1C5A943F155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
+		1C899834155CD0AB0033B8F9 /* SpriteRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C899833155CD0AB0033B8F9 /* SpriteRenderer.cpp */; };
+		1C899835155CD0AB0033B8F9 /* SpriteRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C899833155CD0AB0033B8F9 /* SpriteRenderer.cpp */; };
 		1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */; };
 		1CB63AEF155983EC008D79D4 /* libFreetype2_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */; };
 		1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB63AF0155988DB008D79D4 /* Arial.ttf */; };
@@ -203,6 +205,8 @@
 		1C5A9407155854660095209F /* MyMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMath.h; sourceTree = "<group>"; };
 		1C5A9408155854660095209F /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		1C5A9409155854660095209F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1C899832155CD0A00033B8F9 /* SpriteRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteRenderer.h; sourceTree = "<group>"; };
+		1C899833155CD0AB0033B8F9 /* SpriteRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteRenderer.cpp; sourceTree = "<group>"; };
 		1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_simulator.a; sourceTree = "<group>"; };
 		1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_device.a; sourceTree = "<group>"; };
 		1CB63AF0155988DB008D79D4 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
@@ -289,11 +293,11 @@
 		1C5A93CA155854660095209F /* engine */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A93CB155854660095209F /* component */,
-				1C5A93D9155854660095209F /* core */,
-				1C5A93E9155854660095209F /* game */,
 				1C5A93F6155854660095209F /* Game.h */,
 				1C5A93F5155854660095209F /* Game.cpp */,
+				1C5A93E9155854660095209F /* game */,
+				1C5A93CB155854660095209F /* component */,
+				1C5A93D9155854660095209F /* core */,
 				1C5A93F7155854660095209F /* render */,
 				1C5A9405155854660095209F /* utils */,
 			);
@@ -348,6 +352,7 @@
 		1C5A93E9155854660095209F /* game */ = {
 			isa = PBXGroup;
 			children = (
+				1C5A93F2155854660095209F /* Sphere */,
 				1C5A93EB155854660095209F /* CameraMover.h */,
 				1C5A93EA155854660095209F /* CameraMover.cpp */,
 				1C5A93ED155854660095209F /* CreationUtility.h */,
@@ -356,7 +361,8 @@
 				1C5A93EE155854660095209F /* PlayerController.cpp */,
 				1C5A93F1155854660095209F /* PlayerShip.h */,
 				1C5A93F0155854660095209F /* PlayerShip.cpp */,
-				1C5A93F2155854660095209F /* Sphere */,
+				1C899832155CD0A00033B8F9 /* SpriteRenderer.h */,
+				1C899833155CD0AB0033B8F9 /* SpriteRenderer.cpp */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -610,6 +616,7 @@
 				1CE215AD1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
 				1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */,
 				1CE215BE15597D2200BD2D2D /* Font.cpp in Sources */,
+				1C899835155CD0AB0033B8F9 /* SpriteRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +657,7 @@
 				1CE215AC1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
 				1CE215AE1558565A00BD2D2D /* ViewController.mm in Sources */,
 				1CE215BD15597D2200BD2D2D /* Font.cpp in Sources */,
+				1C899834155CD0AB0033B8F9 /* SpriteRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

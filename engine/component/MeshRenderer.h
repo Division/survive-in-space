@@ -10,7 +10,6 @@
 #define MESH_RENDERER_H
 
 #include "Renderer.h"
-#include "Render.h"
 #include "MyMath.h"
 
 class MeshRenderer : public Renderer {
@@ -20,15 +19,10 @@ public:
 	void Mesh(class Mesh *mesh) { _mesh = mesh; }
 	class Mesh *Mesh(void) const { return _mesh; }
 	
-	void Render(); // TODO: make protected
-	
-	void Material(class Material material) { _material = material; }
-	class Material& Material() { return _material; }
-	
+	virtual void Render();
+		
 private:
 	class Mesh *_mesh;
-	class Material _material;
-	Matrix4 _worldMatrix;
 	
 };
 

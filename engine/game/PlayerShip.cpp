@@ -13,6 +13,7 @@
 #include "MyMath.h"
 #include "Rigidbody.h"
 #include "GameObject.h"
+#include "SpriteRenderer.h"
 
 void PlayerShip::Start() {
 

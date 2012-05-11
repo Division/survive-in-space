@@ -48,6 +48,7 @@ private:
 	RenderState *_renderState;
 	int _transparentFirstIndex;
 	int _transparentLastIndex;
+	Matrix4 _projection2D;
 };
 
 #endif

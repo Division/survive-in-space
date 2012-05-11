@@ -22,6 +22,8 @@ const int Mesh::NUM_VERTEXES_IN_POLYGON = 3;
 //
 //******************************************************************************
 
+//******************************************************************************
+// Construct/destruct
 
 Mesh::Mesh() {
 	
@@ -40,12 +42,11 @@ Mesh::Mesh() {
 
 Mesh::~Mesh() {
 	
-	if (_useVBO) {
-		
-	}
+	FreeBuffers();
 }
 
-//------------------------------------------------------------------------------
+//******************************************************************************
+// Loading
 
 bool Mesh::Load(std::istream& readStream, bool useVBO) {
 	
@@ -163,14 +164,62 @@ bool Mesh::Load(std::istream& readStream, bool useVBO) {
 	return _isValid;
 }
 
-//------------------------------------------------------------------------------
+//******************************************************************************
+// Generation
 
-int Mesh::GetVertexDataStride() const {
+void Mesh::SetRenderData(void *vertexes, int vertexCount, unsigned short *triangles, int triangleCount) {
+	
+	if (vertexCount < Mesh::NUM_VERTEXES_IN_POLYGON || triangleCount < 1) {
+		_isValid = false;
+		return;
+	}
+	
+	FreeBuffers();
+	_vertexCount = vertexCount;
+	_triangleCount = triangleCount;
+	
+	
+	_vertexData = VertexAttribData(new char[VertexDataSize(vertexCount)]);
+	_indexData = IndexData(new unsigned short[triangleCount * NUM_VERTEXES_IN_POLYGON]);
+	
+	memcpy(_vertexData.get(), vertexes, VertexDataSize(vertexCount));
+	memcpy(_indexData.get(), triangles, IndexDataSize(triangleCount));
 
-	return (VERTEX_STRIDE + UV_STRIDE) * sizeof(float);
+	_isValid = true;
+	_hasNormals = false;
+	_hasUV0 = false;
+	_hasUV1 = false;
 }
 
 //------------------------------------------------------------------------------
+
+void Mesh::SetNormals(void *normals) {
+	
+	_normalData = VertexAttribData(new char[VertexDataSize(_vertexCount)]);
+	memcpy(_normalData.get(), normals, VertexDataSize(_vertexCount));
+	_hasNormals = true;
+}
+
+//------------------------------------------------------------------------------
+
+void Mesh::SetUV0(void *uv0) {
+	
+	_uv0Data = VertexAttribData(new char[UVDataSize(_vertexCount)]);
+	memcpy(_uv0Data.get(), uv0, UVDataSize(_vertexCount));	
+	_hasUV0 = true;
+}
+
+//------------------------------------------------------------------------------
+
+void Mesh::SetUV1(void *uv1) {
+	
+	_uv1Data = VertexAttribData(new char[UVDataSize(_vertexCount)]);
+	memcpy(_uv1Data.get(), uv1, UVDataSize(_vertexCount));		
+	_hasUV1 = true;
+}
+
+//******************************************************************************
+// Geometry access
 
 bool Mesh::GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVertex) const {
 	
@@ -197,7 +246,7 @@ int Mesh::GetVertexIndex(int triangleIndex, int vertexIndex) const {
 }
 
 //******************************************************************************
-// Data pointers
+// Render Data pointers
 
 const char* Mesh::GetVertexDataPointer() const {
 	
@@ -210,6 +259,8 @@ const char* Mesh::GetVertexDataPointer() const {
 	return result;
 }
 
+//------------------------------------------------------------------------------
+
 const char* Mesh::GetNormalDataPointer() const {
 
 	char *result = 0;
@@ -221,6 +272,7 @@ const char* Mesh::GetNormalDataPointer() const {
 	return result;
 }
 
+//------------------------------------------------------------------------------
 
 const char* Mesh::GetUV0DataPointer() const {
 	
@@ -233,6 +285,7 @@ const char* Mesh::GetUV0DataPointer() const {
 	return result;	
 }
 
+//------------------------------------------------------------------------------
 
 const char* Mesh::GetUV1DataPointer() const {
 	
@@ -245,6 +298,7 @@ const char* Mesh::GetUV1DataPointer() const {
 	return result;
 }
 
+//------------------------------------------------------------------------------
 
 const unsigned short* Mesh::GetIndexDataPointer() const {
 	
@@ -256,3 +310,58 @@ const unsigned short* Mesh::GetIndexDataPointer() const {
 	
 	return result;
 }
+
+
+//******************************************************************************
+//
+//  Private
+//
+//******************************************************************************
+
+//******************************************************************************
+// Buffers
+
+void Mesh::FreeBuffers() {
+	
+	if (_isValid && _useVBO) {
+		glDeleteBuffers(1, &_vertexBuffer);
+		glDeleteBuffers(1, &_indexBuffer);
+		
+		if (_hasNormals) {
+			glDeleteBuffers(1, &_normalBuffer);
+		}
+		
+		if (_hasUV0) {
+			glDeleteBuffers(1, &_uv0Buffer);
+		}
+		
+		if (_hasUV1) {
+			glDeleteBuffers(1, &_uv1Buffer);
+		}
+	}	
+	
+	_useVBO = false;
+}
+
+//******************************************************************************
+// Utils
+
+int Mesh::VertexDataSize(int vertexCount) {
+	return vertexCount * VERTEX_STRIDE * sizeof(float);
+	
+}
+
+//------------------------------------------------------------------------------
+
+int Mesh::UVDataSize(int vertexCount) {
+	
+	return vertexCount * UV_STRIDE * sizeof(float);
+}
+
+//------------------------------------------------------------------------------
+
+int Mesh::IndexDataSize(int triangleCount) {
+	
+	return triangleCount * NUM_VERTEXES_IN_POLYGON * sizeof(unsigned short);	
+}
+

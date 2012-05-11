@@ -17,37 +17,54 @@
 //******************************************************************************
 
 
-const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *camera) {
+const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *projection) {
 
-	// Shader
-	if (renderOp.material->Shader() != _currentShader) {
-		_currentShader = renderOp.material->Shader();
-		_currentShader->Use();
-		_currentShader->SetUniform(EngineShaderParamProjectionMatrixUniform, camera->ProjectionMatrix());
+	// TODO: Check if shader params correct change
+	
+	if (renderOp.material->DepthTest() ^ _currentDepthTest) {
+		_currentDepthTest = renderOp.material->DepthTest();
+		if (_currentDepthTest) glEnable(GL_DEPTH_TEST);
+		else glDisable(GL_DEPTH_TEST);
 	}
 	
+	if (renderOp.material->DepthWrite() ^ _currentDepthWrite) {
+		_currentDepthWrite = renderOp.material->DepthWrite();
+		glDepthMask(_currentDepthWrite);
+	}
+	
+	// Shader and projection
+	bool shaderChanged = false;
+	if (renderOp.material->Shader() != _currentShader) {
+		shaderChanged = true;
+		_currentShader = renderOp.material->Shader();
+		_currentShader->Use();
+		_currentProjection = projection;
+	}
+	
+	_currentShader->SetUniform(EngineShaderParamProjectionMatrixUniform, *projection);
+	
 	// Texture 0
-	if (_currentTexture0 != renderOp.material->Texture()) {
+	if (shaderChanged || _currentTexture0 != renderOp.material->Texture()) {
 		_currentTexture0 = renderOp.material->Texture();
 		if (_currentTexture0) {
 			_currentTexture0->Bind(0);
-			_currentShader->SetUniform(EngineShaderParamTexture0Uniform, 0);
 		} else {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
+		_currentShader->SetUniform(EngineShaderParamTexture0Uniform, 0);
 	}
 	
 	// Texture 1
-	if (_currentTexture1 != renderOp.material->Texture2()) {
+	if (shaderChanged || _currentTexture1 != renderOp.material->Texture2()) {
 		_currentTexture1 = renderOp.material->Texture2();
 		if (_currentTexture1) {
 			_currentTexture1->Bind(_currentShader->GetShaderParameter(EngineShaderParamTexture1Uniform));
-			_currentShader->SetUniform(EngineShaderParamTexture1Uniform, 1);
 		} else {
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, 0);	
 		}
+		_currentShader->SetUniform(EngineShaderParamTexture1Uniform, 1);
 	}
 	
 	const void *indexPointer = _currentIndexPointer;
@@ -77,6 +94,8 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Camera *cam
 
 void RenderState::RecoverState() {
 
+	_currentProjection = NULL;
+	
 	if (_currentMesh) {
 		if (_currentMesh->UsesVBO()) {
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -106,6 +125,15 @@ void RenderState::RecoverState() {
 	_currentTexture1 = NULL;
 	
 	glActiveTexture(GL_TEXTURE0);
+	if (!_currentDepthTest) {
+		_currentDepthTest = true;
+		glEnable(GL_DEPTH_TEST);
+	}
+	
+	if (!_currentDepthWrite) {
+		_currentDepthWrite = true;
+		glDepthMask(true);
+	}
 }
 
 //******************************************************************************

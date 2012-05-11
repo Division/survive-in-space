@@ -47,7 +47,7 @@ namespace math {
 	
 	Quaternion Rotation(float angle, Vector3 axis);
 	
-    Matrix4 Scaling(Vector3 const factors);
+    Matrix4 Scaling(Vector3 const &factors);
     
 	Matrix4 Scale(Matrix4 const &m, Vector3 const factors);
     

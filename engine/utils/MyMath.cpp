@@ -36,7 +36,7 @@ namespace math {
     }
 
     
-    Matrix4 Scaling(Vector3 const factors) {
+    Matrix4 Scaling(Vector3 const &factors) {
         
         return Scale(Matrix4(), factors);
     }

@@ -82,7 +82,7 @@ void Font::GenerateFontTexture(const FT_Face &face) {
 	
 	bool error;
 	
-	float currentBottomPoint = 0;
+	float currentBottomPoint = 2;
 	float currentRightPoint = 0;
 	
 	float characterOffset = 5;
@@ -138,8 +138,6 @@ void Font::GenerateFontTexture(const FT_Face &face) {
 	
 	_texture = TexturePtr(new Texture());
 	_texture->SetAsNameAndID("font texture", texture);
-	
-
 }
 
 

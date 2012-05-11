@@ -43,6 +43,7 @@ public:
 	virtual void Update();
 	virtual void PreRender(); // Called after update and before render
 	virtual void PhysicsTick();
+	virtual void Render();
 	
 protected:
 	class GameObject *_gameObject;

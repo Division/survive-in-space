@@ -12,6 +12,7 @@
 #include "RenderPipeline.h"
 #include "Render.h"
 #include "Shader.h"
+#include "MyMath.h"
 
 class Camera;
 class Mesh;
@@ -19,7 +20,7 @@ class Mesh;
 class RenderState {
 public:
 	
-	const void* ApplyStateForROP(RenderOperation &renderOp, Camera *camera);
+	const void* ApplyStateForROP(RenderOperation &renderOp, Matrix4 *projection);
 	void RecoverState();
 	
 private:
@@ -36,6 +37,9 @@ private:
 	Texture *_currentTexture1;
 	char _vertexAttribEnabled[EngineShaderAttributesCount];
 	const void *_currentIndexPointer;
+	Matrix4 *_currentProjection;
+	bool _currentDepthWrite;
+	bool _currentDepthTest;
 	
 };
 

@@ -30,6 +30,8 @@ namespace utils {
 	double DeltaTime();
 	
 	unsigned long Hash(const std::string& string);
+	
+	Vector2 GetScreenResolution();
 }
 
 #endif

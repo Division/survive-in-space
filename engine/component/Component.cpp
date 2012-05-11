@@ -49,9 +49,14 @@ void Component::Start() {
 }
 
 void Component::PreRender() {
+	
+}
 
+void Component::Render() {
+	
 }
 
 void Component::PhysicsTick() {
 	
 }
+

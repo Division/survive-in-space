@@ -37,12 +37,20 @@ public:
 	void RenderQueue(int queue) { _renderQueue = queue; if (_hash) CalculateHash(); }
 	int RenderQueue() { return _renderQueue; }
 	
+	void DepthTest(bool enable) { _depthTest = enable; if (_hash) CalculateHash(); }
+	bool DepthTest() { return _depthTest; }
+
+	void DepthWrite(bool enable) { _depthWrite = enable; if (_hash) CalculateHash(); }
+	bool DepthWrite() { return _depthWrite; }
+	
 	void CalculateHash();
 	
 private:
 	class Shader *_shader;
 	class Texture *_texture0;
 	class Texture *_texture1;
+	bool _depthTest;
+	bool _depthWrite;
 	int _renderQueue;
 	int _hash;
 };

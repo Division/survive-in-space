@@ -46,10 +46,15 @@ public:
 	bool HasUV0() const { return _hasUV0; }
 	bool HasUV1() const { return _hasUV1; }
 	
-	// Render data accessors
+	// Generation
+	void SetRenderData(void *vertexes, int vertexCount, unsigned short *triangles, int triangleCount);
+	void SetNormals(void *normals);
+	void SetUV0(void *uv0);
+	void SetUV1(void *uv1);
+	
+	// Geometry access
 	bool GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVertex) const;
 	int GetVertexIndex(int triangleIndex, int vertexIndex) const;
-	int GetVertexDataStride() const;
 	
 	// no VBO
 	const char* GetVertexDataPointer() const;
@@ -65,7 +70,12 @@ public:
 	GLuint GetUV0Buffer() const { return _uv0Buffer; }
 	GLuint GetUV1Buffer() const { return _uv1Buffer; }
 	
-
+private:
+	void FreeBuffers();
+	int VertexDataSize(int vertexCount);
+	int UVDataSize(int vertexCount);
+	int IndexDataSize(int triangleCount);
+	
 private:
 	// Mesh properties
     bool _isValid;

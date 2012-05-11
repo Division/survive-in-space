@@ -71,9 +71,9 @@ void GameObject::Update() {
 
 void GameObject::Render() {
 	
-	if (Renderer()) {
-		if (Renderer()->Active()) {
-			Renderer()->Render();
+	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++) {
+		if (it->get()->Active()) {
+			it->get()->Render();
 		}
 	}
 }

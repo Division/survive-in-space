@@ -35,6 +35,8 @@ void RenderPipeline::PreparePipeline(int estimatedObjCount, Camera *camera) {
 	}
 	
 	_currentCamera = camera;
+	Vector2 resolution = utils::GetScreenResolution();
+	_projection2D = math::Ortho2D(0, resolution.y, resolution.x, 0);
 }
 
 //------------------------------------------------------------------------------
@@ -88,10 +90,23 @@ bool RenderPipeline::SortOnRenderQueue(RenderOperation &operationA, RenderOperat
 void RenderPipeline::ProcessRender(RenderOperation &renderOp) {
 
 	const void *indexPointer;
-	indexPointer = _renderState->ApplyStateForROP(renderOp, _currentCamera);
+	
+	Matrix4 projection;
+	if (renderOp.is2D) {
+		projection = _projection2D;
+	} else {
+		projection = _currentCamera->ProjectionMatrix();
+	}
+	
+	indexPointer = _renderState->ApplyStateForROP(renderOp, &projection);
 	
 	// Setting modelview matrix
-    Matrix4 model = _currentCamera->WorldMatrix() * (*renderOp.worldMatrix);
+	Matrix4 model;
+	if (renderOp.is2D) {
+		model = *renderOp.worldMatrix;
+	} else {
+		model = _currentCamera->WorldMatrix() * (*renderOp.worldMatrix);
+	}
     renderOp.material->Shader()->SetUniform(EngineShaderParamModelViewMatrixUniform, model);
 	
 	glDrawElements(GL_TRIANGLES, renderOp.mesh->TriangleCount() * Mesh::NUM_VERTEXES_IN_POLYGON, GL_UNSIGNED_SHORT, indexPointer);
