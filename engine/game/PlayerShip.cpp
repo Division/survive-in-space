@@ -42,8 +42,8 @@ void PlayerShip::ProcessPhysicsControls() {
 	body->setActivationState(DISABLE_DEACTIVATION);
 	body->setDamping(0.9, 0.95);
 	
-//	float moveKoef = 300;
-	float moveKoef = 10;
+	float moveKoef = 300;
+//	float moveKoef = 10;
 	btVector3 moveForce = btVector3(0,0,-moveKoef) * _accelerationControl;
 	btVector3 torqueForce = btVector3(-_stickerControl.y, -_stickerControl.x, 0.0);
 	torqueForce *= 8;

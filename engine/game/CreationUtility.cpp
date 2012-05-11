@@ -45,7 +45,7 @@ namespace creation {
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
 		
 		
-//		CreateWorldContainer();
+		CreateWorldContainer();
 	}
 
 	//------------------------------------------------------------------------------
@@ -70,10 +70,7 @@ namespace creation {
 		
 		Material material;
 		
-		Font *font = resource::GetFont("Arial.ttf");
-		
-		material.Texture(font->FontTexture());
-//		material.Texture(resource::GetTexture("crate.pvr"));
+		material.Texture(resource::GetTexture("crate.pvr"));
 		material.Shader(resource::GetShader("SimpleShader"));
 		box->SetMaterial(material, true);
 		
@@ -135,8 +132,8 @@ namespace creation {
 		material.DepthTest(false);
 		SpriteRenderer *sprite = playerGO->AddComponent<SpriteRenderer>();
 		sprite->Material(material);
-		sprite->Size(Vector2(200,200));
-		sprite->Position(Vector2(200,200));
+		sprite->Size(Vector2(100,100));
+		sprite->Position(Vector2(100,100));
 		sprite->UseTransform(false);
 		
 		return playerGO;
