@@ -31,6 +31,8 @@ namespace creation {
 	
 	GameObject *CreateBox(const Vector3 &position);
 	
+	GameObject *CreateDebugText();
+	
 	TextRenderer *CreateTextLabel(std::string text, const Vector3 &position);
 }
 

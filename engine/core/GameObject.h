@@ -84,8 +84,8 @@ template <class T>
 T* GameObject::AddComponent() {
 	
 	T* component = new T();
-	component->Active(true);	
 	component->GameObject(this);
+	component->Active(true);
 	component->Awake();
 	
 	ComponentPtr componentPtr(component);

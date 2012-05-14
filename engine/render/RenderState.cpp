@@ -136,10 +136,11 @@ void RenderState::RecoverState() {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+	glActiveTexture(GL_TEXTURE0);
+	
 	_currentTexture0 = NULL;
 	_currentTexture1 = NULL;
 	
-	glActiveTexture(GL_TEXTURE0);
 	if (!_currentDepthTest) {
 		_currentDepthTest = true;
 		glEnable(GL_DEPTH_TEST);

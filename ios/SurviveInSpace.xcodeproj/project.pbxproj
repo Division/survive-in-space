@@ -28,6 +28,10 @@
 		1C4AF18F155CF3FE005E471E /* CreationUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF182155CF3FE005E471E /* CreationUtility.cpp */; };
 		1C4AF192155CF4DF005E471E /* TextRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF191155CF4DF005E471E /* TextRenderer.cpp */; };
 		1C4AF193155CF4DF005E471E /* TextRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF191155CF4DF005E471E /* TextRenderer.cpp */; };
+		1C4AF19615616C78005E471E /* DebugText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF19515616C78005E471E /* DebugText.cpp */; };
+		1C4AF19715616C78005E471E /* DebugText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF19515616C78005E471E /* DebugText.cpp */; };
+		1C4AF19A156174F0005E471E /* GetData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF199156174EF005E471E /* GetData.cpp */; };
+		1C4AF19B156174F0005E471E /* GetData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF199156174EF005E471E /* GetData.cpp */; };
 		1C5A915A155849480095209F /* avatar.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9127155849290095209F /* avatar.mdl */; };
 		1C5A915B155849480095209F /* avatar.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9128155849290095209F /* avatar.pvr */; };
 		1C5A915C155849480095209F /* crate.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9129155849290095209F /* crate.pvr */; };
@@ -147,6 +151,10 @@
 		1C4AF183155CF3FE005E471E /* CreationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreationUtility.h; sourceTree = "<group>"; };
 		1C4AF190155CF4D4005E471E /* TextRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextRenderer.h; sourceTree = "<group>"; };
 		1C4AF191155CF4DF005E471E /* TextRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderer.cpp; sourceTree = "<group>"; };
+		1C4AF19415616C6F005E471E /* DebugText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugText.h; sourceTree = "<group>"; };
+		1C4AF19515616C78005E471E /* DebugText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugText.cpp; sourceTree = "<group>"; };
+		1C4AF198156174E7005E471E /* GetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetData.h; sourceTree = "<group>"; };
+		1C4AF199156174EF005E471E /* GetData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetData.cpp; sourceTree = "<group>"; };
 		1C5A9127155849290095209F /* avatar.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.mdl; sourceTree = "<group>"; };
 		1C5A9128155849290095209F /* avatar.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.pvr; sourceTree = "<group>"; };
 		1C5A9129155849290095209F /* crate.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = crate.pvr; sourceTree = "<group>"; };
@@ -317,6 +325,10 @@
 				1C4AF180155CF3FE005E471E /* CameraMover.cpp */,
 				1C4AF183155CF3FE005E471E /* CreationUtility.h */,
 				1C4AF182155CF3FE005E471E /* CreationUtility.cpp */,
+				1C4AF19415616C6F005E471E /* DebugText.h */,
+				1C4AF19515616C78005E471E /* DebugText.cpp */,
+				1C4AF198156174E7005E471E /* GetData.h */,
+				1C4AF199156174EF005E471E /* GetData.cpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -648,6 +660,8 @@
 				1C4AF18D155CF3FE005E471E /* CameraMover.cpp in Sources */,
 				1C4AF18F155CF3FE005E471E /* CreationUtility.cpp in Sources */,
 				1C4AF193155CF4DF005E471E /* TextRenderer.cpp in Sources */,
+				1C4AF19715616C78005E471E /* DebugText.cpp in Sources */,
+				1C4AF19B156174F0005E471E /* GetData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +704,8 @@
 				1C4AF18C155CF3FE005E471E /* CameraMover.cpp in Sources */,
 				1C4AF18E155CF3FE005E471E /* CreationUtility.cpp in Sources */,
 				1C4AF192155CF4DF005E471E /* TextRenderer.cpp in Sources */,
+				1C4AF19615616C78005E471E /* DebugText.cpp in Sources */,
+				1C4AF19A156174F0005E471E /* GetData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

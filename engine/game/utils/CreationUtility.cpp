@@ -23,6 +23,7 @@
 #include "Font.h"
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
+#include "DebugText.h"
 
 namespace creation {
 
@@ -40,12 +41,13 @@ namespace creation {
 	
 	void InitLevel() {
 		
+		CreateDebugText();
 		CreatePlayer(Vector3(0,0,0));
 		CreateCamera(Vector3(0,0,50));
 		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
 		
-		CreateTextLabel("Hello\nTexture\nFont\nRender.", Vector3(100,30,0));
+//		CreateTextLabel("Hello\nTexture\nFont\nRender.", Vector3(100,30,0));
 //		CreateTextLabel("Hello Texture Font Render.", Vector3(100,100,0));
 //		CreateTextLabel("hello texture foxnt render.", Vector3(100,100,0));
 //		CreateTextLabel("NUll", Vector3(100,100,0));
@@ -170,12 +172,22 @@ namespace creation {
 
 	GameObject *CreateCamera(const Vector3 &position) {
 		
-		GameObject *cameraGO = scene->CreateGameObject("Camera");
-		cameraGO->Transform()->Position(position);
+		GameObject *cameraObject = scene->CreateGameObject("Camera");
+		cameraObject->Transform()->Position(position);
 		
-		cameraGO->AddComponent<Camera>();
+		cameraObject->AddComponent<Camera>();
 		
-		return cameraGO;
+		return cameraObject;
+	}
+	
+	//******************************************************************************
+	// Utils
+	
+	GameObject *CreateDebugText() {
+
+		GameObject *debugTextObject = scene->CreateGameObject("DebugText");
+		DebugText *debugText = debugTextObject->AddComponent<DebugText>();
+		return debugTextObject;
 	}
 
 

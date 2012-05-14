@@ -49,6 +49,15 @@ private:
 	int _transparentFirstIndex;
 	int _transparentLastIndex;
 	Matrix4 _projection2D;
+	
+	//-------------------
+	// Statistics
+	
+	int _FPS;
+	int _DIPCount;
+	int _materialSwitchCount;
+	int _shaderSwitchCount;
+	
 };
 
 #endif
