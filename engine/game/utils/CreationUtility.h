@@ -13,6 +13,7 @@
 
 class GameObject;
 class Scene;
+class TextRenderer;
 
 namespace creation {
 
@@ -29,6 +30,8 @@ namespace creation {
 	GameObject *CreateCamera(const Vector3 &position);
 	
 	GameObject *CreateBox(const Vector3 &position);
+	
+	TextRenderer *CreateTextLabel(std::string text, const Vector3 &position);
 }
 
 #endif

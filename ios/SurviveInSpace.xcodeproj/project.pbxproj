@@ -293,8 +293,8 @@
 		1C4AF179155CF3FE005E471E /* render */ = {
 			isa = PBXGroup;
 			children = (
-				1C4AF17A155CF3FE005E471E /* SpriteRenderer.cpp */,
 				1C4AF17B155CF3FE005E471E /* SpriteRenderer.h */,
+				1C4AF17A155CF3FE005E471E /* SpriteRenderer.cpp */,
 				1C4AF190155CF4D4005E471E /* TextRenderer.h */,
 				1C4AF191155CF4DF005E471E /* TextRenderer.cpp */,
 			);
@@ -313,10 +313,10 @@
 		1C4AF17F155CF3FE005E471E /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				1C4AF180155CF3FE005E471E /* CameraMover.cpp */,
 				1C4AF181155CF3FE005E471E /* CameraMover.h */,
-				1C4AF182155CF3FE005E471E /* CreationUtility.cpp */,
+				1C4AF180155CF3FE005E471E /* CameraMover.cpp */,
 				1C4AF183155CF3FE005E471E /* CreationUtility.h */,
+				1C4AF182155CF3FE005E471E /* CreationUtility.cpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";

@@ -21,6 +21,19 @@ typedef enum {
 	RenderQueueOverlay = 4000
 } RenderQueue;
 
+typedef enum {
+	BlendFuncTransparent = 0,
+	BlendFuncAdditive,
+	BlendFuncMultiply,
+	BlendFuncCount
+} BlendFuncType;
+
+typedef struct {
+	int sourceFactor;
+	int destFactor;
+} BlendFunc;
+
+
 class Material {
 public:
 	Material();
@@ -43,6 +56,15 @@ public:
 	void DepthWrite(bool enable) { _depthWrite = enable; if (_hash) CalculateHash(); }
 	bool DepthWrite() { return _depthWrite; }
 	
+	void Blending(bool enabled) { _blending = enabled; }
+	bool Blending() const { return _blending; }
+	
+	void SetBlendFunc(BlendFuncType type);
+	void SetBlendFunc(BlendFunc blendFunc);
+	
+	int SourceFactor() { return _blendFunc.sourceFactor; }
+	int DestFactor() { return _blendFunc.destFactor; }
+	
 	void CalculateHash();
 	
 private:
@@ -53,6 +75,8 @@ private:
 	bool _depthWrite;
 	int _renderQueue;
 	int _hash;
+	bool _blending;
+	BlendFunc _blendFunc;
 };
 
 #endif

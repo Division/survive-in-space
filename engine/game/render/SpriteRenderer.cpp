@@ -34,6 +34,12 @@ void SpriteRenderer::Start() {
 
 void SpriteRenderer::Render() {
 	
+	if (!_mesh) return;
+	if (!_mesh->IsValid()) return;
+	Shader *shader = _material.Shader();
+	if (!shader) return;
+	if (!shader->Valid()) return;
+	
 	RenderPipeline *pipeline = GameObject()->RenderPipeline();
 	
 	RenderOperation rop;

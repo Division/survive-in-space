@@ -74,23 +74,29 @@ bool Font::Load(std::istream &stream) {
 
 void Font::GenerateFontTexture(const FT_Face &face) {
 	
-	FT_Set_Pixel_Sizes(face, 20, 20);
+	float textureSize = 256;
+	float pixelSize = 20;
+	
+	FT_Set_Pixel_Sizes(face, pixelSize, pixelSize);
 	
 	FT_GlyphSlot slot = face->glyph;
 	
-	float textureSize = 256;
+	_uvSize = pixelSize / (float)textureSize;
 	
 	bool error;
 	
 	float currentBottomPoint = 2;
 	float currentRightPoint = 0;
 	
-	float characterOffset = 5;
+	float characterOffset = 0.5 * pixelSize;
+//	float characterOffset = 0;
 	
-	std::unique_ptr<GLubyte[]> dataPtr = std::unique_ptr<GLubyte[]>( new GLubyte[(int)textureSize * (int)textureSize] );
+	std::unique_ptr<GLubyte[]> dataPtr = std::unique_ptr<GLubyte[]>( new GLubyte[(int)textureSize * (int)textureSize * 2] );
 	GLubyte *data = dataPtr.get();
 	
-	memset(data, 0, textureSize * textureSize);
+	unsigned char prev = 0;
+	
+	memset(data, 0, textureSize * textureSize * 2);
 	
 	for (int i = 32; i < 128; i++) {
 
@@ -98,6 +104,8 @@ void Font::GenerateFontTexture(const FT_Face &face) {
 		
 		error = FT_Load_Glyph(face, glyphIndex, FT_LOAD_RENDER);
 		if (error) continue;
+		
+//		face->glyph->top;
 		
 		float width = slot->bitmap.width;
 		float height = slot->bitmap.rows;
@@ -107,22 +115,25 @@ void Font::GenerateFontTexture(const FT_Face &face) {
 			currentBottomPoint += height + characterOffset;
 		}
 		
-		_characterData[i].x = currentRightPoint;
-		_characterData[i].y = currentBottomPoint;
-		_characterData[i].width = width;
-		_characterData[i].height = height;
+		_characterData[i].uvPos = Vector2(currentRightPoint / (float)textureSize, currentBottomPoint / (float)textureSize);
+		_characterData[i].uvSize = Vector2(width / (float)textureSize, height / (float)textureSize);
+		_characterData[i].pixelSize = Vector2(width, height);
+//		_characterData[i].uvOffset = Vector2(face->glyph->bitmap_left / (float)textureSize, face->glyph->bitmap_top / (float)textureSize);
+		_characterData[i].uvOffset = Vector2(0, face->glyph->bitmap_top / (float)textureSize);
+//		_characterData[i].uvAdvance = Vector2(face->glyph->advance.x / 64 / (float)textureSize, face->glyph->advance.y / 64 / (float)textureSize);
+//		_characterData[i].uvAdvance = Vector2((face->glyph->metrics.width / 64 - face->glyph->bitmap_left) / (float)textureSize, face->glyph->advance.y / 64 / (float)textureSize);
+		_characterData[i].uvAdvance = Vector2((width) / (float)textureSize, face->glyph->advance.y / 64 / (float)textureSize);
 		
 		for (int k = 0; k < width; k++) {
 			for (int j = 0; j < height; j++) {
 				int index = k + (int)currentRightPoint + (int)((j+currentBottomPoint)*textureSize);
 				GLubyte val = (GLubyte)slot->bitmap.buffer[k + j*(int)width];
-				data[index] = val;
-				std::cout << val << " ";
+				data[index * 2 + 0] = 255;
+				data[index * 2 + 1] = val;
 			}
 		}
 		
 		currentRightPoint += width + characterOffset;
-		
 	}
 	
 	GLuint texture;
@@ -133,13 +144,26 @@ void Font::GenerateFontTexture(const FT_Face &face) {
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 	
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, textureSize, textureSize, 0, GL_LUMINANCE , GL_UNSIGNED_BYTE, data);
-	glGenerateMipmap(texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA, textureSize, textureSize, 0, GL_LUMINANCE_ALPHA , GL_UNSIGNED_BYTE, data);
+	glGenerateMipmap(GL_TEXTURE_2D);
 	
 	_texture = TexturePtr(new Texture());
 	_texture->SetAsNameAndID("font texture", texture);
+	
 }
 
+
+bool Font::GetCharacterData(unsigned char index, FontCharacterData &outCharacterData) {
+	
+	bool result = false;
+	
+	if (index < 128) {
+		outCharacterData = _characterData[index];
+		result = true;
+	}
+	
+	return result;
+}
 
 namespace freetype {
 

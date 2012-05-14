@@ -21,6 +21,16 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 
 	// TODO: Check if shader params correct change
 	
+	if (renderOp.material->Blending() ^ _currentBlending) {
+		_currentBlending = renderOp.material->Blending();
+		if (_currentBlending) {
+			glEnable(GL_BLEND);
+			glBlendFunc(renderOp.material->SourceFactor(), renderOp.material->DestFactor());
+		} else {
+			glDisable(GL_BLEND);
+		}
+	}
+	
 	if (renderOp.material->DepthTest() ^ _currentDepthTest) {
 		_currentDepthTest = renderOp.material->DepthTest();
 		if (_currentDepthTest) glEnable(GL_DEPTH_TEST);
@@ -95,6 +105,11 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 void RenderState::RecoverState() {
 
 	_currentProjection = NULL;
+	
+	if (_currentBlending) {
+		glDisable(GL_BLEND);
+		_currentBlending = false;
+	}
 	
 	if (_currentMesh) {
 		if (_currentMesh->UsesVBO()) {

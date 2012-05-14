@@ -14,6 +14,15 @@
 #include <string>
 #include "Utils.h"
 
+static const BlendFunc blendFunctions[] = {{GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA}, {GL_DST_COLOR, GL_ONE}, {GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA}};
+
+//******************************************************************************
+//
+//  Public
+//
+//******************************************************************************
+
+
 Material::Material() {
 
 	_shader = NULL;
@@ -23,6 +32,19 @@ Material::Material() {
 	_depthTest = true;
 	_depthWrite = true;
 	_renderQueue = RenderQueueGeometry;
+	_blendFunc = blendFunctions[0];
+	_blending = false;
+}
+
+void Material::SetBlendFunc(BlendFuncType type) {
+
+	_blendFunc = blendFunctions[type];
+}
+
+
+void Material::SetBlendFunc(BlendFunc blendFunc) {
+	
+	_blendFunc = blendFunc;
 }
 
 

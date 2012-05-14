@@ -22,6 +22,7 @@
 #include "Sphere.h"
 #include "Font.h"
 #include "SpriteRenderer.h"
+#include "TextRenderer.h"
 
 namespace creation {
 
@@ -44,6 +45,10 @@ namespace creation {
 		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
 //		physics::ConfigureAsCollisionGeometry(boxField, true, false);
 		
+		CreateTextLabel("Hello\nTexture\nFont\nRender.", Vector3(100,30,0));
+//		CreateTextLabel("Hello Texture Font Render.", Vector3(100,100,0));
+//		CreateTextLabel("hello texture foxnt render.", Vector3(100,100,0));
+//		CreateTextLabel("NUll", Vector3(100,100,0));
 		
 		CreateWorldContainer();
 	}
@@ -75,6 +80,27 @@ namespace creation {
 		box->SetMaterial(material, true);
 		
 		return box;
+	}
+	
+	TextRenderer *CreateTextLabel(std::string text, const Vector3 &position) {
+		
+		GameObject *textObject = scene->CreateGameObject("Text");
+		TextRenderer *textRenderer = textObject->AddComponent<TextRenderer>();
+		
+		Material material;
+		material.Shader(resource::GetShader("SimpleShader"));
+		material.RenderQueue(RenderQueueOverlay);
+		textRenderer->Material(material);
+		
+		textRenderer->CharacterSize(20);
+		
+		textRenderer->Is3D(false);
+		Font *font = resource::GetFont("Arial.ttf");
+		textRenderer->Font(font);
+		textRenderer->Text(text);
+		textRenderer->Position(Vector2(position));
+		
+		return textRenderer;
 	}
 	
 	//------------------------------------------------------------------------------
@@ -124,7 +150,7 @@ namespace creation {
 		body->SetAsSphere(PLAYER_SHIP_RADIUS);
 		body->Mass(1);
 		
-		Font *font = resource::GetFont("Arial.ttf");
+/*		Font *font = resource::GetFont("Arial.ttf");
 		material.Texture(font->FontTexture());
 		material.Shader(resource::GetShader("SimpleShader"));
 		material.RenderQueue(RenderQueueOverlay);
@@ -132,9 +158,9 @@ namespace creation {
 		material.DepthTest(false);
 		SpriteRenderer *sprite = playerGO->AddComponent<SpriteRenderer>();
 		sprite->Material(material);
-		sprite->Size(Vector2(100,100));
-		sprite->Position(Vector2(100,100));
-		sprite->UseTransform(false);
+		sprite->Size(Vector2(200,200));
+		sprite->Position(Vector2(200,200));
+		sprite->UseTransform(false);*/
 		
 		return playerGO;
 	}

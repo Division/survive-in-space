@@ -40,7 +40,7 @@ private:
 	Matrix4 *_currentProjection;
 	bool _currentDepthWrite;
 	bool _currentDepthTest;
-	
+	bool _currentBlending;
 };
 
 #endif

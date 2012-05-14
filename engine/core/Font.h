@@ -20,11 +20,11 @@
 #include "Texture.h"
 
 typedef struct {
-	float x;
-	float y;
-	float width;
-	float height;
-	char *imageData;
+	Vector2 uvPos;
+	Vector2 uvSize;
+	Vector2 uvOffset;
+	Vector2 pixelSize;
+	Vector2 uvAdvance;
 } FontCharacterData;
 
 
@@ -35,6 +35,9 @@ public:
 	bool Load(std::istream &stream);
 
 	Texture *FontTexture() { return _texture.get(); }
+	bool GetCharacterData(unsigned char index, FontCharacterData &outCharacterData);
+	
+	float UVSize() const { return _uvSize; }
 	
 private:
 	void GenerateFontTexture(const FT_Face &face);
@@ -42,6 +45,7 @@ private:
 private:
 	TexturePtr _texture;
 	FontCharacterData _characterData[128];
+	float _uvSize;
 };
 
 namespace freetype {
