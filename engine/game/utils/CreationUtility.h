@@ -14,6 +14,7 @@
 class GameObject;
 class Scene;
 class TextRenderer;
+class GameUI;
 
 namespace creation {
 
@@ -34,6 +35,8 @@ namespace creation {
 	GameObject *CreateDebugText();
 	
 	TextRenderer *CreateTextLabel(std::string text, const Vector3 &position);
+	
+	GameUI *CreateGameUI();
 }
 
 #endif

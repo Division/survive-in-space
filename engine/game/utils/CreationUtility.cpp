@@ -24,6 +24,7 @@
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
 #include "DebugText.h"
+#include "GameUI.h"
 
 namespace creation {
 
@@ -42,6 +43,7 @@ namespace creation {
 	void InitLevel() {
 		
 		CreateDebugText();
+		CreateGameUI();
 		CreatePlayer(Vector3(0,0,0));
 		CreateCamera(Vector3(0,0,50));
 		GameObject *boxField = CreateBoxField(Vector3(0,0,0), 15);
@@ -190,5 +192,15 @@ namespace creation {
 		return debugTextObject;
 	}
 
+	//******************************************************************************
+	// UI
+	
+	GameUI *CreateGameUI() {
+
+		GameObject *gameUIObject = scene->CreateGameObject("GameUI");
+		GameUI *gameUI = gameUIObject->AddComponent<GameUI>();
+
+		return gameUI;
+	}
 
 }

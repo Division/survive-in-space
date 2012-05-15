@@ -94,8 +94,6 @@ void Font::GenerateFontTexture(const FT_Face &face) {
 	std::unique_ptr<GLubyte[]> dataPtr = std::unique_ptr<GLubyte[]>( new GLubyte[(int)textureSize * (int)textureSize * 2] );
 	GLubyte *data = dataPtr.get();
 	
-	unsigned char prev = 0;
-	
 	memset(data, 0, textureSize * textureSize * 2);
 	
 	for (int i = 32; i < 128; i++) {

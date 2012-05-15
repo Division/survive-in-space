@@ -32,6 +32,8 @@ namespace utils {
 	unsigned long Hash(const std::string& string);
 	
 	Vector2 GetScreenResolution();
+	
+	Vector2 GetInputResolution();
 }
 
 #endif

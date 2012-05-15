@@ -32,6 +32,12 @@
 		1C4AF19715616C78005E471E /* DebugText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF19515616C78005E471E /* DebugText.cpp */; };
 		1C4AF19A156174F0005E471E /* GetData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF199156174EF005E471E /* GetData.cpp */; };
 		1C4AF19B156174F0005E471E /* GetData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF199156174EF005E471E /* GetData.cpp */; };
+		1C4AF19F1562D8D5005E471E /* sticker.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19D1562D8D5005E471E /* sticker.pvr */; };
+		1C4AF1A01562D8D5005E471E /* sticker.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19D1562D8D5005E471E /* sticker.pvr */; };
+		1C4AF1A11562D8D5005E471E /* sticker_back.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19E1562D8D5005E471E /* sticker_back.pvr */; };
+		1C4AF1A21562D8D5005E471E /* sticker_back.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19E1562D8D5005E471E /* sticker_back.pvr */; };
+		1C4AF1A61562D9E4005E471E /* GameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF1A51562D9E4005E471E /* GameUI.cpp */; };
+		1C4AF1A71562D9E4005E471E /* GameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF1A51562D9E4005E471E /* GameUI.cpp */; };
 		1C5A915A155849480095209F /* avatar.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9127155849290095209F /* avatar.mdl */; };
 		1C5A915B155849480095209F /* avatar.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9128155849290095209F /* avatar.pvr */; };
 		1C5A915C155849480095209F /* crate.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9129155849290095209F /* crate.pvr */; };
@@ -155,6 +161,10 @@
 		1C4AF19515616C78005E471E /* DebugText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugText.cpp; sourceTree = "<group>"; };
 		1C4AF198156174E7005E471E /* GetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetData.h; sourceTree = "<group>"; };
 		1C4AF199156174EF005E471E /* GetData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetData.cpp; sourceTree = "<group>"; };
+		1C4AF19D1562D8D5005E471E /* sticker.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = sticker.pvr; sourceTree = "<group>"; };
+		1C4AF19E1562D8D5005E471E /* sticker_back.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = sticker_back.pvr; sourceTree = "<group>"; };
+		1C4AF1A31562D9CA005E471E /* GameUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUI.h; path = UI/GameUI.h; sourceTree = "<group>"; };
+		1C4AF1A51562D9E4005E471E /* GameUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameUI.cpp; path = UI/GameUI.cpp; sourceTree = "<group>"; };
 		1C5A9127155849290095209F /* avatar.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.mdl; sourceTree = "<group>"; };
 		1C5A9128155849290095209F /* avatar.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.pvr; sourceTree = "<group>"; };
 		1C5A9129155849290095209F /* crate.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = crate.pvr; sourceTree = "<group>"; };
@@ -279,6 +289,7 @@
 		1C4AF173155CF3FE005E471E /* game */ = {
 			isa = PBXGroup;
 			children = (
+				1C4AF1A41562D9D2005E471E /* UI */,
 				1C4AF174155CF3FE005E471E /* player */,
 				1C4AF179155CF3FE005E471E /* render */,
 				1C4AF17C155CF3FE005E471E /* Sphere */,
@@ -290,10 +301,10 @@
 		1C4AF174155CF3FE005E471E /* player */ = {
 			isa = PBXGroup;
 			children = (
-				1C4AF175155CF3FE005E471E /* PlayerController.cpp */,
 				1C4AF176155CF3FE005E471E /* PlayerController.h */,
-				1C4AF177155CF3FE005E471E /* PlayerShip.cpp */,
+				1C4AF175155CF3FE005E471E /* PlayerController.cpp */,
 				1C4AF178155CF3FE005E471E /* PlayerShip.h */,
+				1C4AF177155CF3FE005E471E /* PlayerShip.cpp */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -333,9 +344,28 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		1C4AF19C1562D8D4005E471E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1C4AF19D1562D8D5005E471E /* sticker.pvr */,
+				1C4AF19E1562D8D5005E471E /* sticker_back.pvr */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1C4AF1A41562D9D2005E471E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1C4AF1A31562D9CA005E471E /* GameUI.h */,
+				1C4AF1A51562D9E4005E471E /* GameUI.cpp */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		1C5A9126155849290095209F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1C4AF19C1562D8D4005E471E /* UI */,
 				1CB63AF0155988DB008D79D4 /* Arial.ttf */,
 				1C5A9127155849290095209F /* avatar.mdl */,
 				1C5A9128155849290095209F /* avatar.pvr */,
@@ -590,6 +620,8 @@
 				1C5A917A155849560095209F /* texture.pvr in Resources */,
 				1C5A917B155849560095209F /* trooper.pvr in Resources */,
 				1CB63AF2155988DB008D79D4 /* Arial.ttf in Resources */,
+				1C4AF1A01562D8D5005E471E /* sticker.pvr in Resources */,
+				1C4AF1A21562D8D5005E471E /* sticker_back.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +647,8 @@
 				1C5A9169155849480095209F /* texture.pvr in Resources */,
 				1C5A916A155849480095209F /* trooper.pvr in Resources */,
 				1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */,
+				1C4AF19F1562D8D5005E471E /* sticker.pvr in Resources */,
+				1C4AF1A11562D8D5005E471E /* sticker_back.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +696,7 @@
 				1C4AF193155CF4DF005E471E /* TextRenderer.cpp in Sources */,
 				1C4AF19715616C78005E471E /* DebugText.cpp in Sources */,
 				1C4AF19B156174F0005E471E /* GetData.cpp in Sources */,
+				1C4AF1A71562D9E4005E471E /* GameUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +741,7 @@
 				1C4AF192155CF4DF005E471E /* TextRenderer.cpp in Sources */,
 				1C4AF19615616C78005E471E /* DebugText.cpp in Sources */,
 				1C4AF19A156174F0005E471E /* GetData.cpp in Sources */,
+				1C4AF1A61562D9E4005E471E /* GameUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +867,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Sydorenko (AF83Z7D2TK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikita Sydorenko (AF83Z7D2TK)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SurviveInSpace/SurviveInSpace-Prefix.pch";
@@ -849,6 +887,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = SurviveInSpace;
+				PROVISIONING_PROFILE = "9DBE8D1B-1BBD-4F42-B3B0-4805C60FE7B8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9DBE8D1B-1BBD-4F42-B3B0-4805C60FE7B8";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphonesimulator;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -861,6 +901,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Sydorenko (AF83Z7D2TK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikita Sydorenko (AF83Z7D2TK)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SurviveInSpace/SurviveInSpace-Prefix.pch";
@@ -879,6 +921,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = SurviveInSpace;
+				PROVISIONING_PROFILE = "9DBE8D1B-1BBD-4F42-B3B0-4805C60FE7B8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9DBE8D1B-1BBD-4F42-B3B0-4805C60FE7B8";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphonesimulator;
 				TARGETED_DEVICE_FAMILY = "1,2";

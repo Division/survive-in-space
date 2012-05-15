@@ -115,4 +115,11 @@ namespace utils {
 		
 		return _platform->GetScreenResolution();
 	}
+
+	//------------------------------------------------------------------------------
+	
+	Vector2 GetInputResolution() {
+		
+		return _platform->GetInputResolution();
+	}
 }

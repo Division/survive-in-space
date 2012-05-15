@@ -63,7 +63,7 @@
 - (void)viewDidUnload
 {
 	[super viewDidUnload];
-    
+
 	_game->Finalize();
 	delete _game;
 	delete _platform;
@@ -119,13 +119,14 @@
 
 
 - (void)update {
-    
+
     _game->Update(self.timeSinceLastUpdate);
-	_platform->TouchesChanged(false);
+	_platform->TouchesChanged(false);    
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    
+
+
     _game->Render(Vector4(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
 }
 
