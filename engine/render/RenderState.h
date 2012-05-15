@@ -20,9 +20,14 @@ class Mesh;
 class RenderState {
 public:
 	
+    void PrepareState();
 	const void* ApplyStateForROP(RenderOperation &renderOp, Matrix4 *projection);
 	void RecoverState();
-	
+
+    int GetTextureSwitchCount() const { return _textureSwitchCount; }
+    int GetShaderSwitchCount() const { return _shaderSwitchCount; } 
+    int GetMeshSwitchCount() const { return _meshSwitchCount; } 
+    
 private:
 	void EnableAttributes(Mesh *mesh, Shader *shader);
 	void DisableAttributes();
@@ -41,6 +46,11 @@ private:
 	bool _currentDepthWrite;
 	bool _currentDepthTest;
 	bool _currentBlending;
+
+    
+	int _textureSwitchCount;
+	int _shaderSwitchCount;
+    int _meshSwitchCount;
 };
 
 #endif

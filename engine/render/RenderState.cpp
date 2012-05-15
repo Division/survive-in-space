@@ -45,6 +45,7 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 	// Shader and projection
 	bool shaderChanged = false;
 	if (renderOp.material->Shader() != _currentShader) {
+        _shaderSwitchCount++;
 		shaderChanged = true;
 		_currentShader = renderOp.material->Shader();
 		_currentShader->Use();
@@ -55,6 +56,7 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 	
 	// Texture 0
 	if (shaderChanged || _currentTexture0 != renderOp.material->Texture()) {
+        _textureSwitchCount++;
 		_currentTexture0 = renderOp.material->Texture();
 		if (_currentTexture0) {
 			_currentTexture0->Bind(0);
@@ -67,6 +69,7 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 	
 	// Texture 1
 	if (shaderChanged || _currentTexture1 != renderOp.material->Texture2()) {
+        _textureSwitchCount++;
 		_currentTexture1 = renderOp.material->Texture2();
 		if (_currentTexture1) {
 			_currentTexture1->Bind(_currentShader->GetShaderParameter(EngineShaderParamTexture1Uniform));
@@ -80,7 +83,7 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 	const void *indexPointer = _currentIndexPointer;
 	
 	if (_currentMesh != renderOp.mesh) {
-
+        _meshSwitchCount++;
 		_currentMesh = renderOp.mesh;
 		
 		DisableAttributes();
@@ -98,6 +101,15 @@ const void* RenderState::ApplyStateForROP(RenderOperation &renderOp, Matrix4 *pr
 	}
 
 	return indexPointer;
+}
+
+//------------------------------------------------------------------------------
+
+void RenderState::PrepareState() {
+    
+    _shaderSwitchCount = 0;
+    _textureSwitchCount = 0;
+    _meshSwitchCount = 0;
 }
 
 //------------------------------------------------------------------------------
@@ -150,6 +162,7 @@ void RenderState::RecoverState() {
 		_currentDepthWrite = true;
 		glDepthMask(true);
 	}
+    
 }
 
 //******************************************************************************

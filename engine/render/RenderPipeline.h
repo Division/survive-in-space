@@ -13,8 +13,8 @@
 #include <vector>
 #include "MyMath.h"
 
-class Camera;
 class RenderState;
+class Camera;
 
 typedef struct {
 	
@@ -37,11 +37,18 @@ public:
 	void PreparePipeline(int estimatedObjCount, Camera *camera);
 	void AddRenderOperation(RenderOperation &operation);
 	void Render();
-	
+    
+	int GetDipCount() const { return _DIPCount; }
+    int GetFPS() const { return _FPS; }
+    int GetTextureSwitchCount() const;
+    int GetShaderSwitchCount() const; 
+    int GetMeshSwitchCount() const; 
+
 private:
 	static bool SortOnRenderQueue(RenderOperation &operationA, RenderOperation &operationB);
 	void ProcessRender(RenderOperation &renderOp);
-
+    void UpdateFPS();
+    
 private:
 	RenderOperationList _renderOperationList;
 	Camera *_currentCamera;
@@ -54,10 +61,9 @@ private:
 	// Statistics
 	
 	int _FPS;
+    int _FPSCounter;
+    double _lastFPSTime;
 	int _DIPCount;
-	int _materialSwitchCount;
-	int _shaderSwitchCount;
-	
 };
 
 #endif

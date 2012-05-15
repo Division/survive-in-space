@@ -8,9 +8,10 @@
 
 #include <iostream>
 #include "RenderPipeline.h"
+#include "RenderState.h"
 #include "Camera.h"
 #include "Transform.h"
-#include "RenderState.h"
+#include "Utils.h"
 
 //******************************************************************************
 //
@@ -22,7 +23,30 @@
 RenderPipeline::RenderPipeline(RenderState* renderState) {
 	
 	_renderState = renderState;
+    _lastFPSTime = utils::GetTime();
 }
+
+//******************************************************************************
+// Getters
+
+int RenderPipeline::GetTextureSwitchCount() const { 
+    
+    return _renderState->GetTextureSwitchCount(); 
+}
+
+//------------------------------------------------------------------------------
+
+int RenderPipeline::GetShaderSwitchCount() const { 
+
+    return _renderState->GetShaderSwitchCount(); 
+}
+
+//------------------------------------------------------------------------------
+
+int RenderPipeline::GetMeshSwitchCount() const { 
+    
+    return _renderState->GetMeshSwitchCount(); 
+} 
 
 //******************************************************************************
 // Render preparation
@@ -56,6 +80,9 @@ void RenderPipeline::AddRenderOperation(RenderOperation &operation) {
 
 void RenderPipeline::Render() {
 
+    _DIPCount = 0;
+    _renderState->PrepareState();
+    
 	// Sorting by render queue
 	std::sort(_renderOperationList.begin(), _renderOperationList.end(), SortOnRenderQueue);
 	// todo: add transparent objects handling [sort by distance for their part of array]
@@ -65,6 +92,8 @@ void RenderPipeline::Render() {
 	}
 	
 	_renderState->RecoverState();
+
+    UpdateFPS();
 }
 
 
@@ -110,5 +139,20 @@ void RenderPipeline::ProcessRender(RenderOperation &renderOp) {
     renderOp.material->Shader()->SetUniform(EngineShaderParamModelViewMatrixUniform, model);
 	
 	glDrawElements(GL_TRIANGLES, renderOp.mesh->TriangleCount() * Mesh::NUM_VERTEXES_IN_POLYGON, GL_UNSIGNED_SHORT, indexPointer);
+    
+    _DIPCount++;
+}
+
+//******************************************************************************
+// FPS calculation
+
+void RenderPipeline::UpdateFPS() {
+    
+    _FPSCounter++;
+    if (utils::GetTime() - _lastFPSTime > 1) {
+        _FPS = _FPSCounter;
+        _FPSCounter = 0;
+        _lastFPSTime = utils::GetTime();
+    }
 }
 

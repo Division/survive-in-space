@@ -18,7 +18,8 @@ public:
 	GENERATE_COMPONENT_ID(DebugText)
 	
 	virtual void Awake();
-	
+	virtual void Update();
+    
 private:
 	TextRenderer *_textRenderer;
 	
