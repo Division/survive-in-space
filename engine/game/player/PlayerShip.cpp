@@ -46,7 +46,7 @@ void PlayerShip::ProcessPhysicsControls() {
 //	float moveKoef = 10;
 	btVector3 moveForce = btVector3(0,0,-moveKoef) * _accelerationControl;
 	btVector3 torqueForce = btVector3(-_stickerControl.y, -_stickerControl.x, 0.0);
-	torqueForce *= 8;
+	torqueForce *= 15;
 
 	torqueForce = body->getWorldTransform().getBasis() * torqueForce;
 	

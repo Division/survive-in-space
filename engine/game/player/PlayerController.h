@@ -21,7 +21,13 @@ public:
 	
 	virtual void Start();
 	virtual void PreUpdate();
-	
+
+    Vector3 StickerValue() const { return _normalizedStickerValue; }
+    Vector3 InitialStickerPos() const { return _initialStickerPos; }
+    Vector3 CurrentStickerPos() const { return _initialStickerPos + _stickerValue; }
+    bool StickerEnabled() const { return _stickerEnabled; }
+	float StickerRadius() const;
+    
 private:
 	void ProcessDeviceInput();
 	void ProcessSimulatorInput();
@@ -32,13 +38,13 @@ private:
 	void ProcessButtonTouch(input::Touch *touch);
 	
 	void SetStickerValue(const Vector3 &value);
-	float StickerRadius();
 	
 private:
 	PlayerShip *_player;
 	Vector3 _initialStickerPos;
 	bool _stickerEnabled;
 	Vector3 _normalizedStickerValue;
+	Vector3 _stickerValue;
 	float _acceleration;
 };
 

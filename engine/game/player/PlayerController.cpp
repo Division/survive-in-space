@@ -12,7 +12,7 @@
 #include "GameObject.h"
 #include "PlayerShip.h"
 
-static const float STICKER_RADIUS = 20;
+static const float STICKER_RADIUS = 60;
 
 
 void PlayerController::Start() {
@@ -112,9 +112,12 @@ void PlayerController::ProcessButtonTouch(input::Touch *touch) {
 void PlayerController::SetStickerValue(const Vector3 &value) {
 	
 	_normalizedStickerValue = value / StickerRadius();
-	if (_normalizedStickerValue.length() > StickerRadius()) {
-		_normalizedStickerValue = math::Normalize(_normalizedStickerValue) * StickerRadius();
+    
+	if (math::Length(_normalizedStickerValue) > 1.0f) {
+		_normalizedStickerValue = math::Normalize(_normalizedStickerValue);
 	}
+    
+    _stickerValue = _normalizedStickerValue * StickerRadius();
 }
 
 
@@ -130,7 +133,7 @@ bool PlayerController::IsStickerPart(const Vector3 &pos) {
 }
 
 
-float PlayerController::StickerRadius() {
+float PlayerController::StickerRadius() const {
 
 	return STICKER_RADIUS;
 }

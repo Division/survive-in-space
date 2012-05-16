@@ -11,6 +11,7 @@
 
 #include "Component.h"
 
+class PlayerController;
 class SpriteRenderer;
 
 /**
@@ -28,11 +29,15 @@ public:
 	virtual void PreRender();
 	
 private:
-	
+	void SetStickerEnabled(bool enabled);
+    void ConfigureSticker(PlayerController *controller);
+    
 private:
 	SpriteRenderer *_stickerBackground;
 	SpriteRenderer *_stickerButton;
 	
+    PlayerController *_playerController;
+    
 };
 
 #endif

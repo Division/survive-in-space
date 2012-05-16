@@ -118,4 +118,14 @@ namespace math {
 		return glm::normalize(v);
 	}
     
+    float Length(const Vector3 &vector) {
+        
+        return glm::length(vector);
+    }
+
+    float Length(const Vector2 &vector) {
+        
+        return glm::length(vector);
+    }
+    
 }

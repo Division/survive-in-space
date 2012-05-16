@@ -26,6 +26,13 @@ GameObject::~GameObject() {
 	
 }
 
+
+GameObject *GameObject::SearchGameObject(const std::string &objectName) {
+    
+    return _objectSearch->SearchGameObject(objectName);
+}
+
+
 void GameObject::PreStart() {
 	
 	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++) {

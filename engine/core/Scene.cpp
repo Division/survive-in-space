@@ -45,13 +45,40 @@ Scene::~Scene(void) {
 }
 
 //******************************************************************************
+// ObjectSearch
+
+GameObject *Scene::SearchGameObject(const std::string &objectName) {
+    
+    GameObject *result = NULL;
+	for (GameObjectList::iterator it = _gameObjects.begin(); it != _gameObjects.end(); it++) {
+        if ((*it)->Name() == objectName) {
+            result = it->get();
+            break;
+        }
+    }
+
+    if (!result) {
+        for (GameObjectList::iterator it = _gameObjects.begin(); it != _gameObjects.end(); it++) {
+            Transform *transform = (*it)->Transform()->Find(objectName);
+            if (transform) {
+                result = transform->GameObject();
+                break;
+            }
+        }
+    }
+    
+    return result;
+}
+
+//******************************************************************************
 // GameObjects and hierarchy
 
 GameObject *Scene::CreateGameObject(std::string name) {
 	
 	GameObject *object = new GameObject(name);
 	object->RenderPipeline(_renderPipeline.get());
-	
+	object->ObjectSearch(this);
+    
 	_objectsToAdd.push_back(std::move(GameObjectPtr(object)));
 	
 	return object;

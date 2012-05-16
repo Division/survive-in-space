@@ -72,6 +72,11 @@ namespace math {
 	Vector3 UnProject(Vector3 const & win, Matrix4 const & model, Matrix4 const & proj, Vector4 const & viewport);
 
 	Vector3 Normalize(const Vector3 &v);
+    
+    float Length(const Vector3 &vector);
+    
+    float Length(const Vector2 &vector);
+    
 }
 
 #endif

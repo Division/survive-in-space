@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include "Physics.h"
+#include "ObjectSearch.h"
 
 #include "ComponentDeclaration.h"
 
@@ -20,7 +21,7 @@ typedef std::unique_ptr<Component> ComponentPtr;
 typedef std::vector<ComponentPtr> ComponentList;
 class RenderPipeline;
 
-class GameObject {
+class GameObject : public ObjectSearch {
 public:
 	GameObject(const std::string& name = "GameObject");
 	~GameObject();
@@ -28,6 +29,10 @@ public:
 	Transform *Transform() const { return _transform; }
 	MeshRenderer *Renderer() const;
 	
+    virtual GameObject *SearchGameObject(const std::string &objectName);
+    class ObjectSearch *ObjectSearch() const { return _objectSearch; };
+    void ObjectSearch(class ObjectSearch *search) { _objectSearch = search; }
+    
 	#ifdef ENABLE_PHYSICS
 	class Rigidbody *Rigidbody();
 	#endif
@@ -66,6 +71,8 @@ private:
 	
 private:
 	
+    class ObjectSearch *_objectSearch;
+    
 	#ifdef ENABLE_PHYSICS
 	class Rigidbody *_rigidbody;
 	#endif

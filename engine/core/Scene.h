@@ -14,6 +14,7 @@
 #include "GameObject.h"
 #include "ComponentDeclaration.h"
 #include "SceneGraph.h"
+#include "ObjectSearch.h"
 
 #ifdef ENABLE_PHYSICS
 #include "Physics.h"
@@ -31,15 +32,21 @@ typedef std::unique_ptr<RenderPipeline> RenderPipelinePtr;
 typedef std::unique_ptr<RenderState> RenderStatePtr;
 
 class Scene
+: public ObjectSearch
 #ifdef ENABLE_PHYSICS
-: public physics::IPhysicsCallbackReceiver 
+, public physics::IPhysicsCallbackReceiver 
 #endif
 {
 public:
 	
 	Scene(class Platform *platform);
 	~Scene(void);
-	
+
+	//******************************************************************************
+	// ObjectSearch
+    
+    virtual GameObject *SearchGameObject(const std::string &objectName);
+    
 	//******************************************************************************
 	// Platform
 	
