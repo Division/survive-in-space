@@ -137,6 +137,10 @@
 		8E976F3A1547D53D003B5AB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
 		8E976F971547F583003B5AB9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F961547F583003B5AB9 /* GLKit.framework */; };
 		8E976F9A1547F589003B5AB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F991547F589003B5AB9 /* OpenGLES.framework */; };
+		8EA88DF61563A2E200604051 /* SpeedButton.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 8EA88DF51563A2E200604051 /* SpeedButton.pvr */; };
+		8EA88DF71563A2E200604051 /* SpeedButton.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 8EA88DF51563A2E200604051 /* SpeedButton.pvr */; };
+		8EA88DFA1563A47700604051 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EA88DF91563A47700604051 /* Button.cpp */; };
+		8EA88DFB1563A47700604051 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EA88DF91563A47700604051 /* Button.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +257,9 @@
 		8E976F961547F583003B5AB9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8E976F991547F589003B5AB9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		8EA88DF4156384E100604051 /* ObjectSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSearch.h; sourceTree = "<group>"; };
+		8EA88DF51563A2E200604051 /* SpeedButton.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpeedButton.pvr; sourceTree = "<group>"; };
+		8EA88DF81563A46B00604051 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		8EA88DF91563A47700604051 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +355,7 @@
 		1C4AF19C1562D8D4005E471E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8EA88DF51563A2E200604051 /* SpeedButton.pvr */,
 				1C4AF19D1562D8D5005E471E /* sticker.pvr */,
 				1C4AF19E1562D8D5005E471E /* sticker_back.pvr */,
 			);
@@ -359,6 +367,8 @@
 			children = (
 				1C4AF1A31562D9CA005E471E /* GameUI.h */,
 				1C4AF1A51562D9E4005E471E /* GameUI.cpp */,
+				8EA88DF81563A46B00604051 /* Button.h */,
+				8EA88DF91563A47700604051 /* Button.cpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -624,6 +634,7 @@
 				1CB63AF2155988DB008D79D4 /* Arial.ttf in Resources */,
 				1C4AF1A01562D8D5005E471E /* sticker.pvr in Resources */,
 				1C4AF1A21562D8D5005E471E /* sticker_back.pvr in Resources */,
+				8EA88DF71563A2E200604051 /* SpeedButton.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +662,7 @@
 				1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */,
 				1C4AF19F1562D8D5005E471E /* sticker.pvr in Resources */,
 				1C4AF1A11562D8D5005E471E /* sticker_back.pvr in Resources */,
+				8EA88DF61563A2E200604051 /* SpeedButton.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +711,7 @@
 				1C4AF19715616C78005E471E /* DebugText.cpp in Sources */,
 				1C4AF19B156174F0005E471E /* GetData.cpp in Sources */,
 				1C4AF1A71562D9E4005E471E /* GameUI.cpp in Sources */,
+				8EA88DFB1563A47700604051 /* Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +757,7 @@
 				1C4AF19615616C78005E471E /* DebugText.cpp in Sources */,
 				1C4AF19A156174F0005E471E /* GetData.cpp in Sources */,
 				1C4AF1A61562D9E4005E471E /* GameUI.cpp in Sources */,
+				8EA88DFA1563A47700604051 /* Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

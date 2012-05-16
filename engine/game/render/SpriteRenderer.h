@@ -17,9 +17,12 @@ class SpriteRenderer : public Renderer {
 public:
 	GENERATE_COMPONENT_ID(SpriteRenderer)
 
+    SpriteRenderer();
+    
 	//-------------------
 	// Component
 	virtual void Start();
+    virtual void PreRender();
 	virtual void Render();
 	
 	//-------------------
@@ -35,16 +38,30 @@ public:
 	Vector2 Position() const { return _position; } 
 	void Rotation(float rotation) { _rotation = rotation; }
 	float Rotation() const { return _rotation; } 
-	
+
+	//-------------------
+	// UV
+    Vector2 UVOffset() const { return _uvOffset; }
+    void UVOffset(Vector2 offset) { _uvOffset = offset; _needGenerateUV = true; }
+
+    Vector2 UVScale() const { return _uvScale; }
+    void UVScale(Vector2 scale) { _uvScale = scale; _needGenerateUV = true; }
+
+    
 private:
 	void GenerateMesh(Mesh *mesh);
-	
+	void GenerateUV();
+    
 private:
 	MeshPtr _mesh;
 	bool _useTransform;
 	Vector2 _size;
 	Vector2 _position;
 	float _rotation;
+    Vector2 _uvScale;
+    Vector2 _uvOffset;
+    bool _needGenerateUV;
+    Vector2 _currentUV[4];
 };
 
 #endif

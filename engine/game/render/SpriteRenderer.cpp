@@ -20,6 +20,13 @@
 //
 //******************************************************************************
 
+SpriteRenderer::SpriteRenderer() {
+    
+    _needGenerateUV = true;
+    _uvScale = Vector2(1,1);
+    _uvOffset = Vector2(0,0);
+    _rotation = 0;
+}
 
 //******************************************************************************
 // Component
@@ -28,6 +35,13 @@ void SpriteRenderer::Start() {
 	
 	_mesh = MeshPtr(new Mesh());
 	GenerateMesh(_mesh.get());
+}
+
+void SpriteRenderer::PreRender() {
+    
+    if (_needGenerateUV) {
+        GenerateUV();
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -78,4 +92,17 @@ void SpriteRenderer::GenerateMesh(Mesh *mesh) {
 	
 	mesh->SetRenderData(vertices, 4, indexes, 2);
 	mesh->SetUV0(uv0);
+}
+
+//------------------------------------------------------------------------------
+
+void SpriteRenderer::GenerateUV() {
+    
+    _currentUV[0] = _uvOffset;
+    _currentUV[1] = Vector2(_uvOffset.x, _uvOffset.y + _uvScale.y);
+    _currentUV[2] = Vector2(_uvOffset.x + _uvScale.x, _uvOffset.y + _uvScale.y);
+    _currentUV[3] = Vector2(_uvOffset.x + _uvScale.x, _uvOffset.y);
+    
+    _mesh->SetUV0(_currentUV);
+    _needGenerateUV = false;
 }
