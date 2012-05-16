@@ -100,10 +100,10 @@ void SpriteRenderer::GenerateMesh(Mesh *mesh) {
 
 void SpriteRenderer::GenerateUV() {
     
-    _currentUV[0] = _uvOffset;
-    _currentUV[1] = Vector2(_uvOffset.x, _uvOffset.y + _uvScale.y);
-    _currentUV[2] = Vector2(_uvOffset.x + _uvScale.x, _uvOffset.y + _uvScale.y);
-    _currentUV[3] = Vector2(_uvOffset.x + _uvScale.x, _uvOffset.y);
+    _currentUV[0] = Vector2(_uvOffset.x, _uvOffset.y + _uvScale.y);
+    _currentUV[1] = _uvOffset;
+    _currentUV[2] = Vector2(_uvOffset.x + _uvScale.x, _uvOffset.y);
+    _currentUV[3] = Vector2(_uvOffset.x + _uvScale.x, _uvOffset.y + _uvScale.y);
     
     _mesh->SetUV0(_currentUV);
     _needGenerateUV = false;
