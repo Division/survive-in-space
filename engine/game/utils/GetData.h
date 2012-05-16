@@ -22,7 +22,8 @@ namespace getdata {
 
 	
 	Material MaterialUnlitTexture(const std::string &texture, int renderQueue = RenderQueueGeometry, int blending = -1);
-	
+
+	Material MaterialGUI(const std::string &texture, int renderQueue);
 }
 
 #endif

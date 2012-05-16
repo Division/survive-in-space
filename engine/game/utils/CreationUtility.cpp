@@ -25,6 +25,7 @@
 #include "TextRenderer.h"
 #include "DebugText.h"
 #include "GameUI.h"
+#include "Button.h"
 
 namespace creation {
 
@@ -202,5 +203,18 @@ namespace creation {
 
 		return gameUI;
 	}
+    
+    //------------------------------------------------------------------------------
+    
+    Button *CreateButton(Texture *texture, float width, float height, int renderQueue) {
+        
+        GameObject *buttonObject = scene->CreateGameObject("Button");
+        Button *button = buttonObject->AddComponent<Button>();
+        button->SetTexture(texture);
+        button->Material().RenderQueue(renderQueue);
+        button->Size(Vector2(width, height));
+        
+        return button;
+    }
 
 }

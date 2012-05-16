@@ -10,10 +10,11 @@
 #include <string>
 #include <sys/time.h>
 
-Platform_iOS::Platform_iOS() {
+Platform_iOS::Platform_iOS(GameView *view) {
 	
 	_startTime = 0;
 	_startTime = GetTime();
+    _view = view;
 }
 
 
@@ -40,15 +41,15 @@ bool Platform_iOS::GetResourcePath(const std::string& resourceName, std::string&
 
 Vector2 Platform_iOS::GetScreenResolution() {
 	
-	CGSize size = [[UIScreen mainScreen] bounds].size;
-	CGFloat screenScale = [[UIScreen mainScreen] scale];
-	return Vector2(size.width * screenScale, size.height * screenScale);
+	CGSize size = CGSizeMake([_view drawableWidth], [_view drawableHeight]);
+	return Vector2(size.width, size.height);
 }
 
 Vector2 Platform_iOS::GetInputResolution() {
 	
-	CGSize size = [[UIScreen mainScreen] bounds].size;
-	return Vector2(size.width, size.height);
+	CGSize size = CGSizeMake([_view drawableWidth], [_view drawableHeight]);
+	CGFloat screenScale = [[UIScreen mainScreen] scale];
+	return Vector2(size.width / screenScale, size.height / screenScale);
 }
 
 const input::TouchList& Platform_iOS::GetTouches() {

@@ -37,6 +37,8 @@ void SpriteRenderer::Start() {
 	GenerateMesh(_mesh.get());
 }
 
+//------------------------------------------------------------------------------
+
 void SpriteRenderer::PreRender() {
     
     if (_needGenerateUV) {

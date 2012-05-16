@@ -60,7 +60,7 @@ void RenderPipeline::PreparePipeline(int estimatedObjCount, Camera *camera) {
 	
 	_currentCamera = camera;
 	Vector2 resolution = utils::GetInputResolution();
-	_projection2D = math::Ortho2D(0, resolution.y, resolution.x, 0);
+	_projection2D = math::Ortho2D(0, resolution.x, resolution.y, 0);
 }
 
 //------------------------------------------------------------------------------

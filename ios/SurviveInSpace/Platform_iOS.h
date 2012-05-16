@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Platform.h"
 #include "Input.h"
+#import "GameView.h"
 
 class Platform_iOS : public Platform {
 public:
-	Platform_iOS();
+	Platform_iOS(GameView *view);
 	
 	//******************************************************************************
 	// Touch input
@@ -39,4 +40,5 @@ private:
 	double _startTime;
 	input::TouchList _touches;
 	bool _touchesChanged;
+    GameView *_view;
 };

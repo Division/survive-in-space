@@ -41,7 +41,7 @@ public:
 	void Shader(class Shader *shader) { _shader = shader; if (_hash) CalculateHash(); }
 	class Shader *Shader() const { return _shader; }
 	
-	void Texture(class Texture *texture) { _texture0 = texture; if (_hash) CalculateHash(); }
+	void Texture(Texture *texture) { _texture0 = texture; if (_hash) CalculateHash(); }
 	class Texture *Texture() const { return _texture0; }
 
 	void Texture2(class Texture *texture) { _texture1 = texture; if (_hash) CalculateHash(); }

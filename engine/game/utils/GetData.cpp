@@ -41,5 +41,17 @@ namespace getdata {
 		return m;
 	}
 
+    Material MaterialGUI(const std::string &texture, int renderQueue) {
+        
+        int blending = BlendFuncTransparent;
+		Material m = BasicMaterial(renderQueue, blending);
+        
+        m.DepthTest(false);
+        m.DepthWrite(false);
+		m.Texture(resource::GetTexture(texture));
+		m.Shader(resource::GetShader("SimpleShader"));
+		
+		return m;
+    }
 
 }

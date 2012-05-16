@@ -13,6 +13,7 @@
 
 class PlayerController;
 class SpriteRenderer;
+class Button;
 
 /**
  Rendering of in-game user interface
@@ -35,7 +36,9 @@ private:
 private:
 	SpriteRenderer *_stickerBackground;
 	SpriteRenderer *_stickerButton;
-	
+	Button *_speedUpButton;
+	Button *_speedDownButton;
+    
     PlayerController *_playerController;
     
 };
