@@ -17,6 +17,7 @@
 
 void PlayerShip::Start() {
 
+    _currentSpeed = 0;
 	Camera::Main()->Transform()->Parent(Transform());
 	Camera::Main()->Transform()->Position(Vector3(0,4,10));
 	Camera::Main()->Transform()->Rotation(math::Rotation(-15, Vector3(1,0,0)));
@@ -25,6 +26,17 @@ void PlayerShip::Start() {
 	math::Rotate(shipRotation, 180, Vector3(0,0,1));
 	
 	Transform()->Find("Ship")->Rotation(shipRotation);
+}
+
+
+void PlayerShip::Update() {
+
+    _currentSpeed += _accelerationControl * 500 * utils::DeltaTime();
+    
+    std::cout << "acc: " << _accelerationControl << "\n";
+    
+    if (_currentSpeed > 300) _currentSpeed = 300;
+    if (_currentSpeed < 0) _currentSpeed = 0;
 }
 
 
@@ -42,9 +54,8 @@ void PlayerShip::ProcessPhysicsControls() {
 	body->setActivationState(DISABLE_DEACTIVATION);
 	body->setDamping(0.9, 0.95);
 	
-	float moveKoef = 300;
-//	float moveKoef = 10;
-	btVector3 moveForce = btVector3(0,0,-moveKoef) * _accelerationControl;
+	float moveKoef = _currentSpeed;
+	btVector3 moveForce = btVector3(0,0,-moveKoef);
 	btVector3 torqueForce = btVector3(-_stickerControl.y, -_stickerControl.x, 0.0);
 	torqueForce *= 15;
 

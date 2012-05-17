@@ -48,6 +48,8 @@ private:
     
     PlayerController *_playerController;
     
+    bool _speedUpButtonDown;
+    bool _speedDownButtonDown;
 };
 
 #endif

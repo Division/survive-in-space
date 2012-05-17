@@ -19,6 +19,7 @@ public:
 	GENERATE_COMPONENT_ID(PlayerShip)
 	
 	virtual void Start();
+	virtual void Update();
 	virtual void PhysicsTick();
 	
 	void SetControlsValues(const Vector3 &sticker, float roll, float acceleration);
@@ -30,6 +31,7 @@ private:
 	Vector3 _stickerControl;
 	float _rollControl;
 	float _accelerationControl;
+    float _currentSpeed;
 };
 
 

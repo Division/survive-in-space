@@ -30,6 +30,8 @@ static const float SpeedButtonHeight = 64;
 void GameUI::Awake() {
 
     _playerController = NULL;
+    _speedUpButtonDown = false;
+    _speedDownButtonDown = false;
     
     // Sticker
     _stickerBackground = CreateSprite("sticker_back.pvr", StickerBackgroundRenderQueue, Vector2(100,100), Vector2(50,50));
@@ -57,6 +59,7 @@ void GameUI::Update() {
         
         if (_playerController->Active()) {
             ConfigureSticker(_playerController);
+            _playerController->SetSpeedButtonsState(_speedUpButtonDown, _speedDownButtonDown);
         }
         
     } else { // Search for player object
@@ -83,9 +86,9 @@ void GameUI::PreRender() {
 void GameUI::ButtonDown(Button *button) {
     
     if (button == _speedUpButton) {
-        utils::Log("Button Down");
+        _speedUpButtonDown = true;
     } else if (button == _speedDownButton) {
-        
+        _speedDownButtonDown = true;        
     }
 }
 
@@ -94,10 +97,10 @@ void GameUI::ButtonDown(Button *button) {
 void GameUI::ButtonUp(Button *button) {
     
     if (button == _speedUpButton) {
-        utils::Log("Button up");        
+        _speedUpButtonDown = false;
     } else if (button == _speedDownButton) {
-        
-    }    
+        _speedDownButtonDown = false;        
+    }
 }
 
 //******************************************************************************

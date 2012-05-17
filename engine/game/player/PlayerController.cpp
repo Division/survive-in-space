@@ -14,6 +14,19 @@
 
 static const float STICKER_RADIUS = 60;
 
+//******************************************************************************
+//
+//  Public
+//
+//******************************************************************************
+
+float PlayerController::StickerRadius() const {
+    
+	return STICKER_RADIUS;
+}
+
+//******************************************************************************
+// Component
 
 void PlayerController::Start() {
 
@@ -21,17 +34,36 @@ void PlayerController::Start() {
     _touchID = -1;
 }
 
+//------------------------------------------------------------------------------
 
 void PlayerController::PreUpdate() {
 
 	ProcessDeviceInput();
-
-	// Simulator makes additional input
-	if (!utils::IsRunningDevice()) {
-		ProcessSimulatorInput();
-	}
 }
 
+//******************************************************************************
+// Controls
+
+// Called from GameUI
+void PlayerController::SetSpeedButtonsState(bool speedUpEnabled, bool speedDownEnabled) {
+    
+    if (speedUpEnabled) {
+        _speedControlValue = 1;
+    } else if (speedDownEnabled) {
+        _speedControlValue = -1;
+    } else {
+        _speedControlValue = 0;
+    }
+}
+
+//******************************************************************************
+//
+//  Private
+//
+//******************************************************************************
+
+//******************************************************************************
+// Control values calculation
 
 void PlayerController::ProcessDeviceInput() {
 	
@@ -74,17 +106,23 @@ void PlayerController::ProcessDeviceInput() {
 		_stickerEnabled = false;
 	}
 	
-	_acceleration = 1;
+	_player->SetControlsValues(_normalizedStickerValue, 0, _speedControlValue);
+}
+
+//------------------------------------------------------------------------------
+
+void PlayerController::SetStickerValue(const Vector3 &value) {
 	
-	_player->SetControlsValues(_normalizedStickerValue, 0, _acceleration);
+	_normalizedStickerValue = value / StickerRadius();
+    
+	if (math::Length(_normalizedStickerValue) > 1.0f) {
+		_normalizedStickerValue = math::Normalize(_normalizedStickerValue);
+	}
+    
+    _stickerValue = _normalizedStickerValue * StickerRadius();
 }
 
-
-void PlayerController::ProcessSimulatorInput() {
-
-
-}
-
+//------------------------------------------------------------------------------
 
 void PlayerController::ProcessStickerTouch(input::Touch *touch) {
 
@@ -120,39 +158,18 @@ void PlayerController::ProcessStickerTouch(input::Touch *touch) {
 	}
 }
 
-
-void PlayerController::ProcessButtonTouch(input::Touch *touch) {
-	
-	
-}
-
-
-void PlayerController::SetStickerValue(const Vector3 &value) {
-	
-	_normalizedStickerValue = value / StickerRadius();
-    
-	if (math::Length(_normalizedStickerValue) > 1.0f) {
-		_normalizedStickerValue = math::Normalize(_normalizedStickerValue);
-	}
-    
-    _stickerValue = _normalizedStickerValue * StickerRadius();
-}
-
+//******************************************************************************
+// Utils
 
 bool PlayerController::IsButtonPart(const Vector3 &pos) {
 	
 	return pos.x > 300;
 }
 
+//------------------------------------------------------------------------------
 
 bool PlayerController::IsStickerPart(const Vector3 &pos) {
 
     Vector2 resolution = utils::GetInputResolution();
 	return pos.x < resolution.x / 2.0f;
-}
-
-
-float PlayerController::StickerRadius() const {
-
-	return STICKER_RADIUS;
 }
