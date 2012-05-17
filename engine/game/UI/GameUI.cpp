@@ -14,7 +14,6 @@
 #include "Resource.h"
 #include "PlayerController.h"
 #include "Transform.h"
-#include "Button.h"
 
 static const int StickerBackgroundRenderQueue = RenderQueueOverlay + 10;
 static const int StickerRenderQueue = StickerBackgroundRenderQueue + 1;
@@ -32,36 +31,21 @@ void GameUI::Awake() {
 
     _playerController = NULL;
     
-    // Sticker back
-    
-	_stickerBackground = GameObject()->AddComponent<SpriteRenderer>();
-	Material backgroundMaterial = getdata::MaterialUnlitTexture("sticker_back.pvr", StickerBackgroundRenderQueue, BlendFuncTransparent);
-	backgroundMaterial.DepthTest(false);
-	_stickerBackground->Material(backgroundMaterial);
-	_stickerBackground->UseTransform(false);
-	_stickerBackground->Size(Vector2(100,100));
-	_stickerBackground->Position(Vector2(100,100));
-	
-    // Stick button
-	_stickerButton = GameObject()->AddComponent<SpriteRenderer>();
-	Material stickerMaterial = getdata::MaterialUnlitTexture("sticker.pvr", StickerRenderQueue, BlendFuncTransparent);
-	stickerMaterial.DepthTest(false);
-	_stickerButton->Material(stickerMaterial);
-	_stickerButton->UseTransform(false);
-	_stickerButton->Size(Vector2(50,50));
-	_stickerButton->Position(Vector2(100,100));
+    // Sticker
+    _stickerBackground = CreateSprite("sticker_back.pvr", StickerBackgroundRenderQueue, Vector2(100,100), Vector2(50,50));
+    _stickerButton = CreateSprite("sticker.pvr", StickerRenderQueue, Vector2(50,50), Vector2(50,50));
     
     // Speed up button
     
-    Material speedButtonMaterial = getdata::MaterialGUI("SpeedButton.pvr", SpeedButtonRenderQueue);
     Vector2 speedButtonSize = Vector2(SpeedButtonWidth, SpeedButtonHeight);
+    Vector2 resolution = utils::GetInputResolution();
+    Vector2 pos;
     
-    _speedUpButton = GameObject()->AddComponent<Button>(); 
-    _speedUpButton->Material(speedButtonMaterial);
-    _speedUpButton->Size(speedButtonSize);
-    Vector2 pos = utils::GetInputResolution();
-    pos = pos  - speedButtonSize / 2.0f - Vector2(20, 20);
-    _speedUpButton->Position(pos);
+    pos = resolution - Vector2(speedButtonSize.x / 2 + 20, speedButtonSize.y * 2);
+    _speedUpButton = CreateButton("SpeedButton.pvr", SpeedButtonRenderQueue, speedButtonSize, pos, false);
+    
+    pos = resolution - Vector2(speedButtonSize.x / 2 + 20, speedButtonSize.y - 10);
+    _speedDownButton = CreateButton("SpeedButton.pvr", SpeedButtonRenderQueue, speedButtonSize, pos, true);
 }
 
 //------------------------------------------------------------------------------
@@ -94,6 +78,29 @@ void GameUI::PreRender() {
 }
 
 //******************************************************************************
+// ButtonDelegate
+
+void GameUI::ButtonDown(Button *button) {
+    
+    if (button == _speedUpButton) {
+        utils::Log("Button Down");
+    } else if (button == _speedDownButton) {
+        
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void GameUI::ButtonUp(Button *button) {
+    
+    if (button == _speedUpButton) {
+        utils::Log("Button up");        
+    } else if (button == _speedDownButton) {
+        
+    }    
+}
+
+//******************************************************************************
 //
 //  Private
 //
@@ -115,3 +122,33 @@ void GameUI::ConfigureSticker(PlayerController *controller) {
     
 }
 
+//------------------------------------------------------------------------------
+
+SpriteRenderer *GameUI::CreateSprite(const std::string &texture, int renderQueue, Vector2 size, Vector2 position) {
+    
+    SpriteRenderer *result = GameObject()->AddComponent<SpriteRenderer>();
+	Material stickerMaterial = getdata::MaterialGUI(texture, renderQueue);
+	result->Material(stickerMaterial);
+	result->UseTransform(false);
+	result->Size(size);
+	result->Position(position);
+    
+    return result;
+}
+
+//------------------------------------------------------------------------------
+
+Button *GameUI::CreateButton(const std::string &texture, int RenderQueue, const Vector2 &size, const Vector2 &position, bool invertY) {
+    
+    Button *result = GameObject()->AddComponent<Button>(); 
+    
+    Material speedButtonMaterial = getdata::MaterialGUI("SpeedButton.pvr", SpeedButtonRenderQueue);
+    result->Material(speedButtonMaterial);
+    
+    result->Size(size);
+    result->Position(position);
+    result->InvertY(invertY);
+    result->Delegate(this);
+    
+    return result;
+}

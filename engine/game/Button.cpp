@@ -26,6 +26,9 @@ Button::Button() {
     _isDown = false;
     _tapAreaScale = Vector2(1, 1);
     _touchID = -1;
+    _delegate = NULL;
+    _invertX = false;
+    _invertY = false;
 }
 
 //------------------------------------------------------------------------------
@@ -76,9 +79,12 @@ void Button::PreUpdate() {
                     stateToApply = _isDown;
                     needUpdateState = true;
                     _touchID = -1;
+
+                    ButtonUp();
                     if (touchInside) {
                         ButtonPressed();
                     }
+                    
                     break;
                 } else {
                     // Touch is moving
@@ -95,6 +101,7 @@ void Button::PreUpdate() {
                         stateToApply = _isDown;
                         needUpdateState = true;
                         _touchID = touch->id;
+                        ButtonDown();
                     }
                 }
             }
@@ -127,11 +134,17 @@ void Button::Awake() {
 
 void Button::ApplyState(bool down) {
     
-    _spriteRenderer->UVScale(Vector2(1,0.5));
+    Vector2 scale(1, 0.5);
+    if (_invertX) scale.x *= -1;
+    if (_invertY) scale.y *= -1;
+    
+    _spriteRenderer->UVScale(scale);
 
-    Vector2 offset = Vector2(0,0);
+    Vector2 offset = Vector2(0,0.5);
+    if (_invertY) down = !down;
+    
     if (down) {
-        offset.y = 0.5;
+        offset.y = 0.0;
     }
     
     _spriteRenderer->UVOffset(offset);
@@ -149,5 +162,26 @@ math::Rect Button::GetButtonRect() {
 
 void Button::ButtonPressed() {
     
-    utils::Log("DOWN!");
+    if (_delegate) {
+        _delegate->ButtonPress(this);
+    }
 }
+
+//------------------------------------------------------------------------------
+
+void Button::ButtonDown() {
+    
+    if (_delegate) {
+        _delegate->ButtonDown(this);
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void Button::ButtonUp() {
+    
+    if (_delegate) {
+        _delegate->ButtonUp(this);
+    }
+}
+
