@@ -15,11 +15,11 @@ static bool forward = false;
 
 void CameraMover::Update() {
 
-	if (input::TouchCount() == 1) {
+	if (input::TouchCount(0) == 1) {
 		RotateCamera();
-	} else if (input::TouchCount() > 1) {
+	} else if (input::TouchCount(0) > 1) {
 
-		if (input::GetTouch(0)->phase == input::TouchPhaseBegan) {
+		if (input::GetTouch(0, 0)->phase == input::TouchPhaseBegan) {
 			forward = !forward;
 		}
 
@@ -31,7 +31,7 @@ void CameraMover::Update() {
 
 void CameraMover::RotateCamera() {
 	
-	input::Touch *touch = input::GetTouch(0);
+	input::Touch *touch = input::GetTouch(0, 0);
 	if (!touch) return;
 	if (touch->phase != input::TouchPhaseMoved) return;
 	

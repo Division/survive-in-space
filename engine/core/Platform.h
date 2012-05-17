@@ -53,6 +53,10 @@ public:
 	
 	virtual bool TouchesChanged() = 0;
 	
+    virtual int InputMessageCount() = 0;
+    virtual int GetTouchCount(int messageID) = 0;
+    virtual platform::Touch * GetTouch(int messageID, int touchID) = 0;
+    
 	//******************************************************************************
 	// Time
 	

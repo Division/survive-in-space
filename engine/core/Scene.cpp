@@ -173,8 +173,6 @@ void ProcessUpdate(const GameObjectPtr& object) {
 
 void Scene::Update() {
 
-	input::Update();
-	
 	MoveAddedObjectsToScene();
 	_sceneGraph.Rebuild();
 	UpdateTransforms();
@@ -184,7 +182,6 @@ void Scene::Update() {
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), ProcessUpdate);
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), ProcessPreRender);
 
-	input::PostUpdate();
 	utils::Update();
 }
 

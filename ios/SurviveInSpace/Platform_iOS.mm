@@ -15,6 +15,7 @@ Platform_iOS::Platform_iOS(GameView *view) {
 	_startTime = 0;
 	_startTime = GetTime();
     _view = view;
+    _touchMessageCount = 0;
     
     int touchPointersSize = sizeof(_touchPointers);
     memset(_touchPointers, 0, touchPointersSize);
@@ -74,9 +75,62 @@ double Platform_iOS::GetTime() {
 //******************************************************************************
 // Touches
 
+bool IsTouchDead(const input::Touch& touch) {
+    
+    return touch.phase == platform::TouchPhaseEnd;
+}
+
+void Platform_iOS::ClearTouchMessages() {
+    
+    if (_touchMessageCount > 1) {
+        _touchMessages[0] = _touchMessages[_touchMessageCount - 1];
+        _touchMessageCount = 1;
+    }
+    
+    if (_touchMessageCount == 1) {
+        
+        _touchMessages[0].erase(std::remove_if(_touchMessages[0].begin(), _touchMessages[0].end(), IsTouchDead), _touchMessages[0].end());
+        
+        for (int i = GetTouchCount(0) - 1; i >= 0; i--) {
+            input::Touch *touch = GetTouch(0, i);
+            touch->phase = platform::TouchPhaseStationary;
+        }
+        
+        if (GetTouchCount(0) == 0) {
+            _touchMessageCount = 0;
+        }
+    }
+    
+}
+
+
+
 const input::TouchList& Platform_iOS::GetTouches() {
-	
+
 	return _touches;
+}
+
+
+int Platform_iOS::InputMessageCount() {
+    
+    return _touchMessageCount;
+}
+
+
+int Platform_iOS::GetTouchCount(int messageID) {
+    
+    if (messageID < 0 || messageID >= _touchMessageCount) return 0;
+    
+    return _touchMessages[messageID].size();
+}
+
+
+platform::Touch * Platform_iOS::GetTouch(int messageID, int touchID) {
+
+    if (messageID < 0 || messageID >= _touchMessageCount) return NULL;
+    if (touchID < 0 || touchID >= GetTouchCount(messageID)) return NULL;
+    
+    return &(_touchMessages[messageID][touchID]);
 }
 
 
@@ -122,9 +176,12 @@ void Platform_iOS::RemoveTouch(UITouch *touch) {
 
 void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
     
+    input::TouchList &touchList = _touchMessages[_touchMessageCount];
+    _touchMessageCount++;
+    touchList.resize(0);
+    
 	NSArray *allObjects = [touches allObjects];
-	input::TouchList touchList;
-	
+    
 	for (UITouch *touch in allObjects) {
 		CGPoint location = [touch locationInView:_view];
 		CGPoint prevLocation = [touch previousLocationInView:_view];
@@ -167,6 +224,6 @@ void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
 		touchList.push_back(gameTouch);
 	}
 	
-	SetTouches(touchList);
+//	SetTouches(touchList);
 	TouchesChanged(true);
 }

@@ -18,6 +18,7 @@ static const float STICKER_RADIUS = 60;
 void PlayerController::Start() {
 
 	_player = GameObject()->GetComponent<PlayerShip>();
+    _touchID = -1;
 }
 
 
@@ -37,19 +38,36 @@ void PlayerController::ProcessDeviceInput() {
 	input::Touch *touch;
 	bool stickerProcessed = false;
 	
-	for (int i = 0; i < input::TouchCount(); i++) {
-		
-		touch = input::GetTouch(i);
-		
-		if (!stickerProcessed && IsStickerPart(touch->position)) {
-			ProcessStickerTouch(touch);
-			stickerProcessed = true;
-		}
-		
-		if (IsButtonPart(touch->position)) {
-			ProcessButtonTouch(touch);
-		}
-	}
+    bool isTrackingTouch = _touchID != -1;
+    
+    for (int messageID = 0; messageID < input::TouchMessageCount(); messageID++) {
+
+        for (int i = 0; i < input::TouchCount(messageID); i++) {
+            
+            touch = input::GetTouch(messageID, i);
+            
+            if (isTrackingTouch) {
+                // Touch is currently down
+                if (touch->id != _touchID) continue;
+                
+                if (touch->phase != input::TouchPhaseEnd) {
+                    // Touch live
+                    ProcessStickerTouch(touch);
+                    stickerProcessed = true;
+                } else {
+                    // Touch dead
+                    _touchID = -1;
+                }
+            } else {
+                // No touches at the moment
+                if (touch->phase == input::TouchPhaseBegan && IsStickerPart(touch->position)) {
+                    _touchID = touch->id;
+                    stickerProcessed = true;
+                    ProcessStickerTouch(touch);
+                }
+            }
+        }
+    }
 	
 	if (!stickerProcessed) {
 		SetStickerValue(Vector3(0));
@@ -129,7 +147,8 @@ bool PlayerController::IsButtonPart(const Vector3 &pos) {
 
 bool PlayerController::IsStickerPart(const Vector3 &pos) {
 
-	return pos.x < 200;
+    Vector2 resolution = utils::GetInputResolution();
+	return pos.x < resolution.x / 2.0f;
 }
 
 

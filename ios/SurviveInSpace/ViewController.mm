@@ -101,7 +101,7 @@
     if (!_initialized) return;
     _game->Update(self.timeSinceLastUpdate);
 	_platform->TouchesChanged(false);
-  
+    _platform->ClearTouchMessages();
 //    CGRect rect = self.view.frame;
 //    CGRect rect = [[UIScreen mainScreen] bounds];
 //    CGRect rect = CGRectMake(0, 0, self.glview.drawableWidth, self.glview.drawableHeight);

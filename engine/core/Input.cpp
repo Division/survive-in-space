@@ -11,8 +11,6 @@
 
 namespace input {
 
-	static TouchList touchList;
-	static TouchList newTouches;
 	static Platform *platform;
 	
 	void Init(Platform *thePlatform) {
@@ -34,46 +32,28 @@ namespace input {
 		}
 	}
 	
-	int TouchCount() {
+	int TouchCount(int messageID) {
 		
-		return touchList.size();
-	}
-	
-	const TouchList *Touches() {
-		
-		return &touchList;
+		return platform->GetTouchCount(messageID);
 	}
 
-	Touch *GetTouch(int index) {
+	
+	int TouchMessageCount() {
+        
+        return platform->InputMessageCount();
+    }
+    
+    
+	Touch *GetTouch(int messageID, int touchIndex) {
 		
-		Touch *result = NULL;
-		if (index >= 0 && index < touchList.size()) {
-			result = &touchList[index];
-		}
+		Touch *result = platform->GetTouch(messageID, touchIndex);
 		
 		return result;
-	}
-	
-	void Update() {
-		
-		if (platform->TouchesChanged()) {
-			touchList = platform->GetTouches();
-		}
-        
-//        PrintTouches(touchList);
 	}
 	
 	bool IsTouchDead(const Touch& touch) {
 
 		return touch.phase == TouchPhaseEnd;
-	}
-	
-	void PostUpdate() {
-		
-		touchList.erase(std::remove_if(touchList.begin(), touchList.end(), IsTouchDead), touchList.end());
-		for (TouchList::iterator it = touchList.begin(); it != touchList.end(); it++) {
-			(*it).phase = (platform::TouchPhase)TouchPhaseStationary;
-		}
 	}
 
 }

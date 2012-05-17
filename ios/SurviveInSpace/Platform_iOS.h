@@ -12,6 +12,7 @@
 #import "GameView.h"
 
 #define IOS_MAX_TOUCHES 11
+#define IOS_MAX_TOUCH_MESSAGES 5
 
 class Platform_iOS : public Platform {
 public:
@@ -20,6 +21,7 @@ public:
 	//******************************************************************************
 	// Touch input
 	
+    void ClearTouchMessages();
 	void SetTouches(const input::TouchList& list);
 	void TouchesChanged(bool changed) { _touchesChanged = changed; };
 	void ProcessChangedTouches(NSSet *touches);
@@ -36,8 +38,12 @@ public:
 	const input::TouchList& GetTouches();
 	
 	bool TouchesChanged() { return _touchesChanged; };
-	
+    int InputMessageCount();
+    int GetTouchCount(int messageID);
+    platform::Touch * GetTouch(int messageID, int touchID);
+
 	double GetTime();
+    
 
 private:
     int GetTouchID(UITouch *touch);
@@ -49,6 +55,9 @@ private:
 	input::TouchList _touches;
 	bool _touchesChanged;
     GameView *_view;
+  
     
     void *_touchPointers[IOS_MAX_TOUCHES];
+    input::TouchList _touchMessages[IOS_MAX_TOUCH_MESSAGES];
+    int _touchMessageCount;
 };

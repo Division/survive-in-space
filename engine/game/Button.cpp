@@ -54,54 +54,60 @@ void Button::PreUpdate() {
     
     math::Rect buttonRect = GetButtonRect();
     
-    bool prevState = _isDown;
-    bool stateToApply = _isDown;
-    bool needUpdateState = false;
-    
-    for (int i = 0; i < input::TouchCount(); i++) {
-        input::Touch *touch = input::GetTouch(i);
+    for (int messageID = 0; messageID < input::TouchMessageCount(); messageID++) {
+
+        bool prevState = _isDown;
+        bool stateToApply = _isDown;
+        bool needUpdateState = false;
         
-        if (_isDown) { 
-            // Button is currently down
-            if (touch->id != _touchID) continue;
+        for (int i = 0; i < input::TouchCount(messageID); i++) {
             
-            bool touchInside = math::PointInRect(Vector2(touch->position), buttonRect);
+            input::Touch *touch = input::GetTouch(messageID, i);
             
-            if (touch->phase == input::TouchPhaseEnd) {
-                // Touch Ended, check if we need to perform callback
-                _isDown = false;
-                stateToApply = _isDown;
-                needUpdateState = true;
-                _touchID = -1;
-                if (touchInside) {
-                    ButtonPressed();
-                }
-                break;
-            } else {
-                // Touch is moving
-                stateToApply = touchInside;
-                needUpdateState = true;
-                prevState = false;
-                break;
-            }
-        } else {
-            // Button is currently up
-            if (math::PointInRect(Vector2(touch->position), buttonRect)) {
-                if (touch->phase == input::TouchPhaseBegan) {
-                    _isDown = true;
+            if (_isDown) { 
+                // Button is currently down
+                if (touch->id != _touchID) continue;
+                
+                bool touchInside = math::PointInRect(Vector2(touch->position), buttonRect);
+                
+                if (touch->phase == input::TouchPhaseEnd) {
+                    // Touch Ended, check if we need to perform callback
+                    _isDown = false;
                     stateToApply = _isDown;
                     needUpdateState = true;
-                    _touchID = touch->id;
+                    _touchID = -1;
+                    if (touchInside) {
+                        ButtonPressed();
+                    }
+                    break;
+                } else {
+                    // Touch is moving
+                    stateToApply = touchInside;
+                    needUpdateState = true;
+                    prevState = false;
+                    break;
+                }
+            } else {
+                // Button is currently up
+                if (math::PointInRect(Vector2(touch->position), buttonRect)) {
+                    if (touch->phase == input::TouchPhaseBegan) {
+                        _isDown = true;
+                        stateToApply = _isDown;
+                        needUpdateState = true;
+                        _touchID = touch->id;
+                    }
                 }
             }
         }
+        
+        // Applying state
+        needUpdateState = needUpdateState && (prevState ^ _isDown);
+        if (needUpdateState) {
+            ApplyState(stateToApply);
+        }
     }
     
-    // Applying state
-    needUpdateState = needUpdateState && (prevState ^ _isDown);
-    if (needUpdateState) {
-        ApplyState(stateToApply);
-    }
+
 }
 
 //------------------------------------------------------------------------------

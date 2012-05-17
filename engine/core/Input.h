@@ -23,16 +23,13 @@ namespace input {
 	} TouchPhase;
 	
 	typedef platform::Touch Touch;
-	
 	typedef platform::TouchList TouchList;
 	
-	int TouchCount();
-	const TouchList *Touches();
-	Touch *GetTouch(int index);
+	int TouchMessageCount();
+	int TouchCount(int messageID);
+	Touch *GetTouch(int messageID, int touchIndex);
 	
 	void Init(Platform *thePlatform);
-	void Update();
-	void PostUpdate();
 }
 
 #endif

@@ -46,6 +46,7 @@ private:
 	Vector3 _normalizedStickerValue;
 	Vector3 _stickerValue;
 	float _acceleration;
+    int _touchID;
 };
 
 #endif
