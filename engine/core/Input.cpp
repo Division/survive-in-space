@@ -29,7 +29,7 @@ namespace input {
 		}
 		
 		for (TouchList::const_iterator it = touches.begin(); it != touches.end(); it++) {
-			std::cout << i << ": (" << (*it).position.x << "," << (*it).position.y << " phase: " << (*it).phase << "\n";
+			std::cout << (*it).id << ": (" << (*it).position.x << "," << (*it).position.y << " phase: " << (*it).phase << "\n";
 			i++;
 		}
 	}
@@ -59,6 +59,8 @@ namespace input {
 		if (platform->TouchesChanged()) {
 			touchList = platform->GetTouches();
 		}
+        
+//        PrintTouches(touchList);
 	}
 	
 	bool IsTouchDead(const Touch& touch) {

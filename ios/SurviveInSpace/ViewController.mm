@@ -92,41 +92,7 @@
 
 -(void) touchesChanged:(NSSet *)touches {
 	
-	NSArray *allObjects = [touches allObjects];
-	input::TouchList touchList;
-	
-	for (UITouch *touch in allObjects) {
-		CGPoint location = [touch locationInView:self.view];
-		CGPoint prevLocation = [touch previousLocationInView:self.view];
-		
-		input::Touch gameTouch;
-		gameTouch.position = Vector3(location.x, location.y, 0);
-		gameTouch.prevPosition = Vector3(prevLocation.x, prevLocation.y, 0);
-		
-		switch (touch.phase) {
-			case UITouchPhaseBegan:
-				gameTouch.phase = platform::TouchPhaseBegan;
-				break;
-
-			case UITouchPhaseMoved:
-				gameTouch.phase = platform::TouchPhaseMoved;
-				break;
-				
-			case UITouchPhaseStationary:
-				gameTouch.phase = platform::TouchPhaseStationary;
-				break;
-
-			case UITouchPhaseCancelled:
-			case UITouchPhaseEnded:
-				gameTouch.phase = platform::TouchPhaseEnd;
-				break;
-		}
-		
-		touchList.push_back(gameTouch);
-	}
-	
-	_platform->SetTouches(touchList);
-	_platform->TouchesChanged(true);
+    _platform->ProcessChangedTouches(touches);
 }
 
 

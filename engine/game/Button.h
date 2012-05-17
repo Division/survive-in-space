@@ -11,6 +11,7 @@
 
 #include "Component.h"
 #include "SpriteRenderer.h"
+#include "MyMath.h"
 
 class Texture;
 
@@ -32,14 +33,19 @@ public:
     class Material &Material() const { return _spriteRenderer->Material(); }
     void Material(class Material &material) { _spriteRenderer->Material(material); }
     
+    virtual void PreUpdate();
     virtual void Awake();
     
 private:
     void ApplyState(bool down);
+    math::Rect GetButtonRect();
+    void ButtonPressed();
     
 private:
     SpriteRenderer *_spriteRenderer;
     bool _isDown;
+    Vector2 _tapAreaScale;
+    int _touchID;
     
 };
 

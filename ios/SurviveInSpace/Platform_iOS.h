@@ -11,6 +11,8 @@
 #include "Input.h"
 #import "GameView.h"
 
+#define IOS_MAX_TOUCHES 11
+
 class Platform_iOS : public Platform {
 public:
 	Platform_iOS(GameView *view);
@@ -20,7 +22,8 @@ public:
 	
 	void SetTouches(const input::TouchList& list);
 	void TouchesChanged(bool changed) { _touchesChanged = changed; };
-	
+	void ProcessChangedTouches(NSSet *touches);
+    
 	//******************************************************************************
 	// Platform abstract methods
 	
@@ -37,8 +40,15 @@ public:
 	double GetTime();
 
 private:
+    int GetTouchID(UITouch *touch);
+    int AddTouch(UITouch *touch);
+    void RemoveTouch(UITouch *touch);
+    
+private:
 	double _startTime;
 	input::TouchList _touches;
 	bool _touchesChanged;
     GameView *_view;
+    
+    void *_touchPointers[IOS_MAX_TOUCHES];
 };

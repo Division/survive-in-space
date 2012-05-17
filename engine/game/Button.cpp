@@ -12,6 +12,7 @@
 #include "GameObject.h"
 #include "GetData.h"
 #include "Material.h"
+#include "Input.h"
 
 //******************************************************************************
 //
@@ -23,6 +24,8 @@ Button::Button() {
     
     _spriteRenderer = NULL;
     _isDown = false;
+    _tapAreaScale = Vector2(1, 1);
+    _touchID = -1;
 }
 
 //------------------------------------------------------------------------------
@@ -47,6 +50,62 @@ void Button::SetTexture(Texture *texture) {
 
 //------------------------------------------------------------------------------
 
+void Button::PreUpdate() {
+    
+    math::Rect buttonRect = GetButtonRect();
+    
+    bool prevState = _isDown;
+    bool stateToApply = _isDown;
+    bool needUpdateState = false;
+    
+    for (int i = 0; i < input::TouchCount(); i++) {
+        input::Touch *touch = input::GetTouch(i);
+        
+        if (_isDown) { 
+            // Button is currently down
+            if (touch->id != _touchID) continue;
+            
+            bool touchInside = math::PointInRect(Vector2(touch->position), buttonRect);
+            
+            if (touch->phase == input::TouchPhaseEnd) {
+                // Touch Ended, check if we need to perform callback
+                _isDown = false;
+                stateToApply = _isDown;
+                needUpdateState = true;
+                _touchID = -1;
+                if (touchInside) {
+                    ButtonPressed();
+                }
+                break;
+            } else {
+                // Touch is moving
+                stateToApply = touchInside;
+                needUpdateState = true;
+                prevState = false;
+                break;
+            }
+        } else {
+            // Button is currently up
+            if (math::PointInRect(Vector2(touch->position), buttonRect)) {
+                if (touch->phase == input::TouchPhaseBegan) {
+                    _isDown = true;
+                    stateToApply = _isDown;
+                    needUpdateState = true;
+                    _touchID = touch->id;
+                }
+            }
+        }
+    }
+    
+    // Applying state
+    needUpdateState = needUpdateState && (prevState ^ _isDown);
+    if (needUpdateState) {
+        ApplyState(stateToApply);
+    }
+}
+
+//------------------------------------------------------------------------------
+
 void Button::Awake() {
     
     _spriteRenderer = GameObject()->AddComponent<SpriteRenderer>();
@@ -62,8 +121,6 @@ void Button::Awake() {
 
 void Button::ApplyState(bool down) {
     
-    _isDown = down;
-
     _spriteRenderer->UVScale(Vector2(1,0.5));
 
     Vector2 offset = Vector2(0,0);
@@ -72,4 +129,19 @@ void Button::ApplyState(bool down) {
     }
     
     _spriteRenderer->UVOffset(offset);
+}
+
+//------------------------------------------------------------------------------
+
+math::Rect Button::GetButtonRect() {
+    
+    Vector2 size = Size() * _tapAreaScale;
+    return math::Rect(Position(), size);
+}
+
+//------------------------------------------------------------------------------
+
+void Button::ButtonPressed() {
+    
+    utils::Log("DOWN!");
 }

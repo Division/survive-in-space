@@ -26,6 +26,7 @@ namespace platform {
 		Vector3 position;
 		Vector3 prevPosition;
 		TouchPhase phase;
+        int id;
 	};
 	
 	typedef std::vector<Touch> TouchList;

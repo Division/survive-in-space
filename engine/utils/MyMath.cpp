@@ -128,4 +128,37 @@ namespace math {
         return glm::length(vector);
     }
     
+    
+    
+    bool PointInRect(const Vector2 &point, const Rect &rect) {
+        
+        bool inRect = true;
+        
+        if (point.x < rect.origin.x) inRect = false;
+        else if (point.y < rect.origin.y) inRect = false;
+        else if (point.x > rect.origin.x + rect.size.x) inRect = false;
+        else if (point.y > rect.origin.y + rect.size.y) inRect = false;
+        
+        return inRect;
+    }
+    
+    Rect::Rect(const Vector2 &center, const Vector2 &rectSize) {
+        
+        origin = center - rectSize / 2.0f;
+        size = rectSize;
+    }
+    
+    
+    Rect::Rect(float x, float y, float width, float height) {
+        
+        origin = Vector2(x,y);
+        size = Vector2(width,height);    
+    }
+    
+    
+    Rect::Rect() {
+        
+        origin = Vector2(0,0);
+        size = Vector2(0,0);
+    }
 }
