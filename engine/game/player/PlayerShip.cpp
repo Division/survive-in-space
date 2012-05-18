@@ -33,8 +33,6 @@ void PlayerShip::Update() {
 
     _currentSpeed += _accelerationControl * 500 * utils::DeltaTime();
     
-    std::cout << "acc: " << _accelerationControl << "\n";
-    
     if (_currentSpeed > 300) _currentSpeed = 300;
     if (_currentSpeed < 0) _currentSpeed = 0;
 }

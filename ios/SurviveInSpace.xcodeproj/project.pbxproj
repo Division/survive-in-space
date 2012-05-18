@@ -116,6 +116,8 @@
 		1C5A943D155854660095209F /* MyMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9406155854660095209F /* MyMath.cpp */; };
 		1C5A943E155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
 		1C5A943F155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
+		1C70FDE215656C63000DFA9B /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C70FDE115656C63000DFA9B /* Event.cpp */; };
+		1C70FDE315656C63000DFA9B /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C70FDE115656C63000DFA9B /* Event.cpp */; };
 		1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */; };
 		1CB63AEF155983EC008D79D4 /* libFreetype2_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */; };
 		1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB63AF0155988DB008D79D4 /* Arial.ttf */; };
@@ -233,6 +235,8 @@
 		1C5A9407155854660095209F /* MyMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMath.h; sourceTree = "<group>"; };
 		1C5A9408155854660095209F /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		1C5A9409155854660095209F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1C70FDDF15656C5A000DFA9B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		1C70FDE115656C63000DFA9B /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
 		1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_simulator.a; sourceTree = "<group>"; };
 		1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_device.a; sourceTree = "<group>"; };
 		1CB63AF0155988DB008D79D4 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
@@ -456,6 +460,8 @@
 				1CE215BB15597D1B00BD2D2D /* Font.h */,
 				1CE215BC15597D2200BD2D2D /* Font.cpp */,
 				8EA88DF4156384E100604051 /* ObjectSearch.h */,
+				1C70FDDF15656C5A000DFA9B /* Event.h */,
+				1C70FDE115656C63000DFA9B /* Event.cpp */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				1C4AF19B156174F0005E471E /* GetData.cpp in Sources */,
 				1C4AF1A71562D9E4005E471E /* GameUI.cpp in Sources */,
 				8EA88DFB1563A47700604051 /* Button.cpp in Sources */,
+				1C70FDE315656C63000DFA9B /* Event.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +765,7 @@
 				1C4AF19A156174F0005E471E /* GetData.cpp in Sources */,
 				1C4AF1A61562D9E4005E471E /* GameUI.cpp in Sources */,
 				8EA88DFA1563A47700604051 /* Button.cpp in Sources */,
+				1C70FDE215656C63000DFA9B /* Event.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
