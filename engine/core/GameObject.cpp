@@ -11,6 +11,9 @@
 #include <algorithm>
 #include "RenderPipeline.h"
 
+//******************************************************************************
+// Construct/destruct
+
 GameObject::GameObject(const std::string& name) {
 	
 	_name = name;
@@ -21,17 +24,80 @@ GameObject::GameObject(const std::string& name) {
 	_active = true;
 }
 
+//------------------------------------------------------------------------------
 
 GameObject::~GameObject() {
 	
 }
 
+//******************************************************************************
+// General parameters
+
+void GameObject::SetMaterial(Material material, bool recursively) {
+    
+	if (Renderer()) {
+		Renderer()->Material(material);
+	}
+	
+	if (recursively) {
+		for (TransformList::const_iterator it = Transform()->Children().begin(); it != Transform()->Children().end(); it++) {
+			(*it)->GameObject()->SetMaterial(material, recursively);
+		}
+	}
+}
+
+//------------------------------------------------------------------------------
+
+void GameObject::SetActiveRecursively(bool active) {
+    
+	_active = active;
+    
+	for (TransformList::const_iterator it = Transform()->Children().begin(); it != Transform()->Children().end(); it++) {
+		(*it)->GameObject()->SetActiveRecursively(active);
+	}
+}
+
+//******************************************************************************
+// Component methods
+
+MeshRenderer *GameObject::Renderer() const {
+	
+	if (!_renderer) {
+		_renderer = this->GetComponent<MeshRenderer>();
+	}
+	
+	return _renderer;
+}
+
+//------------------------------------------------------------------------------
+
+#ifdef ENABLE_PHYSICS
+class Rigidbody *GameObject::Rigidbody() {
+	
+	if (!_rigidbody) {
+		_rigidbody = this->GetComponent<class Rigidbody>();
+	}
+	
+	return _rigidbody;
+}
+#endif
+
+//******************************************************************************
+// Event
+
+
+
+//******************************************************************************
+// Search
 
 GameObject *GameObject::SearchGameObject(const std::string &objectName) {
     
     return _objectSearch->SearchGameObject(objectName);
 }
 
+
+//******************************************************************************
+// Update methods
 
 void GameObject::PreStart() {
 	
@@ -54,7 +120,7 @@ void GameObject::Start() {
 
 
 void ProcessPreUpdate(const ComponentPtr& component) {
-
+    
 	if (component->Active()) {
 		component->PreUpdate();
 	}
@@ -67,7 +133,7 @@ void GameObject::PreUpdate() {
 
 
 void GameObject::Update() {
-
+    
 	for (ComponentList::iterator it = _components.begin(); it != _components.end(); it++) {
 		if (it->get()->Active()) {
 			it->get()->Update();
@@ -110,60 +176,8 @@ void GameObject::PhysicsTick() {
 
 
 void GameObject::SendStart(const ComponentPtr& component) {
-
+    
 	if (component->Active()) {
 		component->Start();
-	}
-}
-
-
-void GameObject::InHierarchy(bool inHierarchy) {
-
-	_inHierarchy = inHierarchy;
-}
-
-
-MeshRenderer *GameObject::Renderer() const {
-	
-	if (!_renderer) {
-		_renderer = this->GetComponent<MeshRenderer>();
-	}
-	
-	return _renderer;
-}
-
-
-#ifdef ENABLE_PHYSICS
-class Rigidbody *GameObject::Rigidbody() {
-	
-	if (!_rigidbody) {
-		_rigidbody = this->GetComponent<class Rigidbody>();
-	}
-	
-	return _rigidbody;
-}
-#endif
-
-
-void GameObject::SetMaterial(Material material, bool recursively) {
-
-	if (Renderer()) {
-		Renderer()->Material(material);
-	}
-	
-	if (recursively) {
-		for (TransformList::const_iterator it = Transform()->Children().begin(); it != Transform()->Children().end(); it++) {
-			(*it)->GameObject()->SetMaterial(material, recursively);
-		}
-	}
-}
-
-
-void GameObject::SetActiveRecursively(bool active) {
-
-	_active = active;
-
-	for (TransformList::const_iterator it = Transform()->Children().begin(); it != Transform()->Children().end(); it++) {
-		(*it)->GameObject()->SetActiveRecursively(active);
 	}
 }

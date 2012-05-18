@@ -14,6 +14,7 @@
 #include <string>
 #include "Physics.h"
 #include "ObjectSearch.h"
+#include "Event.h"
 
 #include "ComponentDeclaration.h"
 
@@ -23,38 +24,57 @@ class RenderPipeline;
 
 class GameObject : public ObjectSearch {
 public:
+
+    //--------------------------
+    // Construct/destruct
 	GameObject(const std::string& name = "GameObject");
 	~GameObject();
-	
+
+    //--------------------------
+    // General parameters
+	std::string Name(void) const { return _name; }
+	void Name(std::string name) { _name = name; }
+
+	void InHierarchy(bool inHierarchy) { _inHierarchy = inHierarchy; };
+	bool InHierarchy() const { return _inHierarchy; }
+
+	void SetMaterial(Material material, bool recursively = false);
+    
+	void Active(bool active) { _active = active; }
+	bool Active() { return _active; }
+	void SetActiveRecursively(bool active);
+    
+	class RenderPipeline *RenderPipeline() { return _renderPipeline; }
+	void RenderPipeline(class RenderPipeline *pipeline) { _renderPipeline = pipeline; }
+    
+    //--------------------------
+    // Component methods
+	template <class T>
+	T* GetComponent() const;
+    
+	template <class T>
+	T* AddComponent();
+    
 	Transform *Transform() const { return _transform; }
 	MeshRenderer *Renderer() const;
+    
+    #ifdef ENABLE_PHYSICS
+	class Rigidbody *Rigidbody();
+    #endif
 	
+    //--------------------------
+    // Event
+    void RegisterEvent(int eventID, Component *component);
+    void RemoveEvent(int eventID, Component *component);
+    
+    //--------------------------
+    // Search
     virtual GameObject *SearchGameObject(const std::string &objectName);
     class ObjectSearch *ObjectSearch() const { return _objectSearch; };
     void ObjectSearch(class ObjectSearch *search) { _objectSearch = search; }
     
-	#ifdef ENABLE_PHYSICS
-	class Rigidbody *Rigidbody();
-	#endif
-	
-	std::string Name(void) const { return _name; }
-	void Name(std::string name) { _name = name; }
-	
-	template <class T>
-	T* GetComponent() const;
-
-	template <class T>
-	T* AddComponent();
-	
-	void SetMaterial(Material material, bool recursively = false);
-		
-	void Active(bool active) { _active = active; }
-	bool Active() { return _active; }
-	
-	class RenderPipeline *RenderPipeline() { return _renderPipeline; }
-	void RenderPipeline(class RenderPipeline *pipeline) { _renderPipeline = pipeline; }
-	
-	// todo make it all protected
+	//--------------------------
+    // Update methods
 	void PreStart();
 	void Start(); 
 	void PreUpdate();
@@ -62,29 +82,40 @@ public:
 	void PreRender();
 	void Render(); 
 	void PhysicsTick();
-	void InHierarchy(bool inHierarchy);
-	bool InHierarchy() const { return _inHierarchy; }
-	void SetActiveRecursively(bool active);
 	
 private:
 	static void SendStart(const ComponentPtr& component);
 	
 private:
-	
-    class ObjectSearch *_objectSearch;
+
+    //--------------------------
+    // Properties
+	bool _inHierarchy;
+	bool _active;
+	std::string _name;
     
+    //--------------------------
+    // Components
 	#ifdef ENABLE_PHYSICS
 	class Rigidbody *_rigidbody;
 	#endif
-	
-	mutable ComponentList _components;
-	std::string _name;
 	class Transform *_transform;
 	mutable MeshRenderer *_renderer;
-	bool _inHierarchy;
-	bool _active;
+    
+	mutable ComponentList _components;
+
+    //--------------------------
+    // Helper objects
 	class RenderPipeline *_renderPipeline;
+    class ObjectSearch *_objectSearch;
+    class EventDispatcher _eventDispatcher;
 };
+
+//******************************************************************************
+//
+//  Template methods
+//
+//******************************************************************************
 
 
 template <class T>

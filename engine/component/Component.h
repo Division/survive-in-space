@@ -19,6 +19,7 @@ className::ID(); \
 
 class Transform;
 class GameObject;
+class Event;
 
 class Component {
 public:
@@ -44,6 +45,7 @@ public:
 	virtual void PreRender(); // Called after update and before render
 	virtual void PhysicsTick();
 	virtual void Render();
+    virtual void ProcessEvent(Event *event);
 	
 protected:
 	class GameObject *_gameObject;

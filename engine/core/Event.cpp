@@ -7,3 +7,80 @@
 //
 
 #include <iostream>
+#include "Event.h"
+#include "Component.h"
+
+//******************************************************************************
+//
+//  Event
+//
+//******************************************************************************
+
+
+Event::Event(int messageType) {
+    
+    _messageType = messageType;
+}
+
+
+//******************************************************************************
+//
+//  EventDispatcher
+//
+//******************************************************************************
+
+//******************************************************************************
+// Event register/remove
+
+void EventDispatcher::RegisterEvent(int eventID, Component *component) {
+
+    if (_eventHash.count(eventID)) {
+        ComponentSet &set = _eventHash[eventID];
+        set.insert(component);
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void EventDispatcher::RemoveEvent(int eventID, Component *component) {
+    
+    if (_eventHash.count(eventID)) {
+        ComponentSet &set = _eventHash[eventID];
+        set.erase(component);
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void EventDispatcher::RemoveAllEvents(Component *component) {
+    
+    for (EventHash::iterator it = _eventHash.begin(); it != _eventHash.end(); it++) {
+        ComponentSet &set = it->second;
+        set.erase(component);
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void EventDispatcher::RemoveEventForAllComponents(int eventID) {
+    
+    _eventHash.erase(eventID);
+}
+
+//******************************************************************************
+// Event dispatching
+
+void EventDispatcher::DispatchEvent(Event *event) {
+    
+    int eventID = event->GetID();
+    
+    if (_eventHash.count(eventID)) {
+        
+        ComponentSet &set = _eventHash[eventID];
+        
+        for (ComponentSet::iterator it = set.begin(); it != set.end(); it++) {
+            Component *component = *it;
+            component->ProcessEvent(event);
+        }
+    }
+}

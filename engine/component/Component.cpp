@@ -9,7 +9,8 @@
 #include <iostream>
 #include "Component.h"
 #include "GameObject.h"
-#import "Transform.h"
+#include "Transform.h"
+#include "Event.h"
 
 Component::Component() {
 
@@ -60,3 +61,6 @@ void Component::PhysicsTick() {
 	
 }
 
+void Component::ProcessEvent(Event *event) {
+	
+}
