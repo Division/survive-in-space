@@ -64,6 +64,8 @@
     
     [super viewDidAppear:animated];
     
+	if (_initialized) return;
+	
 	_platform = new Platform_iOS((GameView *)self.view);
     _game = new Game();
     _game->Init(_platform);
@@ -86,6 +88,7 @@
 	GameView *gameView = [[GameView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	gameView.gameViewDelegate = self;
     gameView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	gameView.multipleTouchEnabled = YES;
 	self.view = gameView;
 }
 
@@ -102,10 +105,6 @@
     _game->Update(self.timeSinceLastUpdate);
 	_platform->TouchesChanged(false);
     _platform->ClearTouchMessages();
-//    CGRect rect = self.view.frame;
-//    CGRect rect = [[UIScreen mainScreen] bounds];
-//    CGRect rect = CGRectMake(0, 0, self.glview.drawableWidth, self.glview.drawableHeight);
-//    NSLog(@"size: %f, %f", rect.size.width, rect.size.height);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {

@@ -7,6 +7,7 @@
 //
 
 #import "Platform_iOS.h"
+#include <iostream>
 #include <string>
 #include <sys/time.h>
 
@@ -81,7 +82,7 @@ bool IsTouchDead(const input::Touch& touch) {
 }
 
 void Platform_iOS::ClearTouchMessages() {
-    
+
     if (_touchMessageCount > 1) {
         _touchMessages[0] = _touchMessages[_touchMessageCount - 1];
         _touchMessageCount = 1;
@@ -176,6 +177,11 @@ void Platform_iOS::RemoveTouch(UITouch *touch) {
 
 void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
     
+	if (_touchMessageCount == IOS_MAX_TOUCH_MESSAGES) {
+		NSLog(@"Max touch messages reached");
+		return;
+	}
+	
     input::TouchList &touchList = _touchMessages[_touchMessageCount];
     _touchMessageCount++;
     touchList.resize(0);
@@ -200,7 +206,7 @@ void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
                     touchIndex = AddTouch(touch);
                 }
                 gameTouch.id = touchIndex;
-                
+
 				break;
                 
 			case UITouchPhaseMoved:
@@ -224,6 +230,5 @@ void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
 		touchList.push_back(gameTouch);
 	}
 	
-//	SetTouches(touchList);
 	TouchesChanged(true);
 }

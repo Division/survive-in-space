@@ -183,6 +183,7 @@ void Scene::Update() {
 	std::for_each(_gameObjects.begin(), _gameObjects.end(), ProcessPreRender);
 
 	utils::Update();
+//	input::PrintTouchesCount();
 }
 
 //******************************************************************************

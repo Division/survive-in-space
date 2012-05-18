@@ -69,11 +69,11 @@ void PlayerController::ProcessDeviceInput() {
 	
 	input::Touch *touch;
 	bool stickerProcessed = false;
-	
-    bool isTrackingTouch = _touchID != -1;
     
+	bool isTrackingTouch = _touchID != -1;
+	
     for (int messageID = 0; messageID < input::TouchMessageCount(); messageID++) {
-
+		
         for (int i = 0; i < input::TouchCount(messageID); i++) {
             
             touch = input::GetTouch(messageID, i);
@@ -89,6 +89,7 @@ void PlayerController::ProcessDeviceInput() {
                 } else {
                     // Touch dead
                     _touchID = -1;
+					isTrackingTouch = false;
                 }
             } else {
                 // No touches at the moment

@@ -24,7 +24,8 @@ namespace input {
 	
 	typedef platform::Touch Touch;
 	typedef platform::TouchList TouchList;
-	
+
+	void PrintTouchesCount();
 	int TouchMessageCount();
 	int TouchCount(int messageID);
 	Touch *GetTouch(int messageID, int touchIndex);

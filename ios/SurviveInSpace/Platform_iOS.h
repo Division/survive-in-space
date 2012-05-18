@@ -12,7 +12,7 @@
 #import "GameView.h"
 
 #define IOS_MAX_TOUCHES 11
-#define IOS_MAX_TOUCH_MESSAGES 5
+#define IOS_MAX_TOUCH_MESSAGES 20
 
 class Platform_iOS : public Platform {
 public:

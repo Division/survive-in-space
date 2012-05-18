@@ -32,6 +32,22 @@ namespace input {
 		}
 	}
 	
+	void PrintTouchesCount() {
+		
+		std::cout << "- - - - - - - - - - - - - - - - - \n";
+		
+		std::cout << "queue count: " << platform->InputMessageCount() << "\n";
+		for (int i = 0; i < platform->InputMessageCount(); i++) {
+			std::cout << " cnt [" << i << "] : " << platform->GetTouchCount(i) << "\n";
+			
+			for (int j = 0; j < platform->GetTouchCount(i); j++) {
+				std::cout << "      " <<  platform->GetTouch(i, j)->id << ": " << "(" << platform->GetTouch(i, j)->phase << ") \n";
+			}
+			
+			 
+		}
+	}
+	
 	int TouchCount(int messageID) {
 		
 		return platform->GetTouchCount(messageID);
