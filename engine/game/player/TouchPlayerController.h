@@ -1,5 +1,5 @@
 //
-//  PlayerController.h
+//  TouchPlayerController.h
 //  Cpptest
 //
 //  Created by Nikita on 5/2/12.
@@ -15,13 +15,14 @@
 
 class PlayerShip;
 
-class PlayerController : public Component {
+class TouchPlayerController : public Component {
 public:
-	GENERATE_COMPONENT_ID(PlayerController)
+	GENERATE_COMPONENT_ID(TouchPlayerController)
 	
 	virtual void Start();
 	virtual void PreUpdate();
-
+	virtual void ProcessEvent(Event *event);
+	
     Vector3 StickerValue() const { return _normalizedStickerValue; }
     Vector3 InitialStickerPos() const { return _initialStickerPos; }
     Vector3 CurrentStickerPos() const { return _initialStickerPos + _stickerValue; }
@@ -29,10 +30,9 @@ public:
 	float StickerRadius() const;
     float SpeedControlValue() const { return _speedControlValue; }
     
-    // Calles from outside
-    void SetSpeedButtonsState(bool speedUpEnabled, bool speedDownEnabled);
     
 private:
+    void SetSpeedButtonsState(bool speedUpEnabled, bool speedDownEnabled);
 	void ProcessDeviceInput();
 	bool IsStickerPart(const Vector3 &pos);
 	bool IsButtonPart(const Vector3 &pos);

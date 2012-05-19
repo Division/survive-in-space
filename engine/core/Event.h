@@ -55,12 +55,10 @@ public:
     void RegisterEvent(int eventID, Component *component);
     void RemoveEvent(int eventID, Component *component);
     void RemoveAllEvents(Component *component);
-    void RemoveEventForAllComponents(int eventID);
     
     //--------------------------
     // Event dispatching
-    void DispatchEvent(Event *event);
-
+    bool DispatchEvent(Event *event); // Returns true if receiver found
     
 private:
     typedef std::set<Component *> ComponentSet;

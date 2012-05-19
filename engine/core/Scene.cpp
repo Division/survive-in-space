@@ -78,7 +78,8 @@ GameObject *Scene::CreateGameObject(std::string name) {
 	GameObject *object = new GameObject(name);
 	object->RenderPipeline(_renderPipeline.get());
 	object->ObjectSearch(this);
-    
+    object->GlobalDispatcher(&_globalDispatcher);
+	
 	_objectsToAdd.push_back(std::move(GameObjectPtr(object)));
 	
 	return object;

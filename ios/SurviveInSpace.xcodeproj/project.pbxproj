@@ -14,8 +14,8 @@
 		1C2C3DF8154FFEF7002BF68D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
 		1C2C44DF15501299002BF68D /* libBullet_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */; };
 		1C2C44E0155012A6002BF68D /* libBullet_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */; };
-		1C4AF184155CF3FE005E471E /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF175155CF3FE005E471E /* PlayerController.cpp */; };
-		1C4AF185155CF3FE005E471E /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF175155CF3FE005E471E /* PlayerController.cpp */; };
+		1C4AF184155CF3FE005E471E /* TouchPlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF175155CF3FE005E471E /* TouchPlayerController.cpp */; };
+		1C4AF185155CF3FE005E471E /* TouchPlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF175155CF3FE005E471E /* TouchPlayerController.cpp */; };
 		1C4AF186155CF3FE005E471E /* PlayerShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF177155CF3FE005E471E /* PlayerShip.cpp */; };
 		1C4AF187155CF3FE005E471E /* PlayerShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF177155CF3FE005E471E /* PlayerShip.cpp */; };
 		1C4AF188155CF3FE005E471E /* SpriteRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF17A155CF3FE005E471E /* SpriteRenderer.cpp */; };
@@ -36,8 +36,8 @@
 		1C4AF1A01562D8D5005E471E /* sticker.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19D1562D8D5005E471E /* sticker.pvr */; };
 		1C4AF1A11562D8D5005E471E /* sticker_back.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19E1562D8D5005E471E /* sticker_back.pvr */; };
 		1C4AF1A21562D8D5005E471E /* sticker_back.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C4AF19E1562D8D5005E471E /* sticker_back.pvr */; };
-		1C4AF1A61562D9E4005E471E /* GameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF1A51562D9E4005E471E /* GameUI.cpp */; };
-		1C4AF1A71562D9E4005E471E /* GameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF1A51562D9E4005E471E /* GameUI.cpp */; };
+		1C4AF1A61562D9E4005E471E /* TouchGameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */; };
+		1C4AF1A71562D9E4005E471E /* TouchGameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */; };
 		1C5A915A155849480095209F /* avatar.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9127155849290095209F /* avatar.mdl */; };
 		1C5A915B155849480095209F /* avatar.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9128155849290095209F /* avatar.pvr */; };
 		1C5A915C155849480095209F /* crate.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1C5A9129155849290095209F /* crate.pvr */; };
@@ -116,10 +116,10 @@
 		1C5A943D155854660095209F /* MyMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9406155854660095209F /* MyMath.cpp */; };
 		1C5A943E155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
 		1C5A943F155854660095209F /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A9408155854660095209F /* Utils.cpp */; };
+		1C6217FC15679EE900F64745 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C6217FA15679EE800F64745 /* Button.cpp */; };
+		1C6217FD15679EE900F64745 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C6217FA15679EE800F64745 /* Button.cpp */; };
 		1C70FDE215656C63000DFA9B /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C70FDE115656C63000DFA9B /* Event.cpp */; };
 		1C70FDE315656C63000DFA9B /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C70FDE115656C63000DFA9B /* Event.cpp */; };
-		1CAEE4621567714B00990B79 /* PlayerControllerEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CAEE4611567714B00990B79 /* PlayerControllerEvent.cpp */; };
-		1CAEE4631567714B00990B79 /* PlayerControllerEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CAEE4611567714B00990B79 /* PlayerControllerEvent.cpp */; };
 		1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */; };
 		1CB63AEF155983EC008D79D4 /* libFreetype2_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */; };
 		1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB63AF0155988DB008D79D4 /* Arial.ttf */; };
@@ -143,16 +143,14 @@
 		8E976F9A1547F589003B5AB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F991547F589003B5AB9 /* OpenGLES.framework */; };
 		8EA88DF61563A2E200604051 /* SpeedButton.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 8EA88DF51563A2E200604051 /* SpeedButton.pvr */; };
 		8EA88DF71563A2E200604051 /* SpeedButton.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 8EA88DF51563A2E200604051 /* SpeedButton.pvr */; };
-		8EA88DFA1563A47700604051 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EA88DF91563A47700604051 /* Button.cpp */; };
-		8EA88DFB1563A47700604051 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EA88DF91563A47700604051 /* Button.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C2C3E0F154FFEF7002BF68D /* SurviveInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurviveInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBullet_iOS_device.a; sourceTree = "<group>"; };
 		1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBullet_iOS_simulator.a; sourceTree = "<group>"; };
-		1C4AF175155CF3FE005E471E /* PlayerController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerController.cpp; sourceTree = "<group>"; };
-		1C4AF176155CF3FE005E471E /* PlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerController.h; sourceTree = "<group>"; };
+		1C4AF175155CF3FE005E471E /* TouchPlayerController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = TouchPlayerController.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		1C4AF176155CF3FE005E471E /* TouchPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPlayerController.h; sourceTree = "<group>"; };
 		1C4AF177155CF3FE005E471E /* PlayerShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerShip.cpp; sourceTree = "<group>"; };
 		1C4AF178155CF3FE005E471E /* PlayerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerShip.h; sourceTree = "<group>"; };
 		1C4AF17A155CF3FE005E471E /* SpriteRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteRenderer.cpp; sourceTree = "<group>"; };
@@ -161,7 +159,7 @@
 		1C4AF17E155CF3FE005E471E /* Sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
 		1C4AF180155CF3FE005E471E /* CameraMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraMover.cpp; sourceTree = "<group>"; };
 		1C4AF181155CF3FE005E471E /* CameraMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraMover.h; sourceTree = "<group>"; };
-		1C4AF182155CF3FE005E471E /* CreationUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreationUtility.cpp; sourceTree = "<group>"; };
+		1C4AF182155CF3FE005E471E /* CreationUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CreationUtility.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		1C4AF183155CF3FE005E471E /* CreationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreationUtility.h; sourceTree = "<group>"; };
 		1C4AF190155CF4D4005E471E /* TextRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextRenderer.h; sourceTree = "<group>"; };
 		1C4AF191155CF4DF005E471E /* TextRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderer.cpp; sourceTree = "<group>"; };
@@ -171,8 +169,8 @@
 		1C4AF199156174EF005E471E /* GetData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetData.cpp; sourceTree = "<group>"; };
 		1C4AF19D1562D8D5005E471E /* sticker.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = sticker.pvr; sourceTree = "<group>"; };
 		1C4AF19E1562D8D5005E471E /* sticker_back.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = sticker_back.pvr; sourceTree = "<group>"; };
-		1C4AF1A31562D9CA005E471E /* GameUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUI.h; path = UI/GameUI.h; sourceTree = "<group>"; };
-		1C4AF1A51562D9E4005E471E /* GameUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameUI.cpp; path = UI/GameUI.cpp; sourceTree = "<group>"; };
+		1C4AF1A31562D9CA005E471E /* TouchGameUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchGameUI.h; path = UI/TouchGameUI.h; sourceTree = "<group>"; };
+		1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchGameUI.cpp; path = UI/TouchGameUI.cpp; sourceTree = "<group>"; };
 		1C5A9127155849290095209F /* avatar.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.mdl; sourceTree = "<group>"; };
 		1C5A9128155849290095209F /* avatar.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = avatar.pvr; sourceTree = "<group>"; };
 		1C5A9129155849290095209F /* crate.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = crate.pvr; sourceTree = "<group>"; };
@@ -237,10 +235,12 @@
 		1C5A9407155854660095209F /* MyMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMath.h; sourceTree = "<group>"; };
 		1C5A9408155854660095209F /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		1C5A9409155854660095209F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1C6217F815679E5C00F64745 /* TouchGameUIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchGameUIEvent.h; path = UI/TouchGameUIEvent.h; sourceTree = "<group>"; };
+		1C6217FA15679EE800F64745 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Button.cpp; path = UI/Button.cpp; sourceTree = "<group>"; };
+		1C6217FB15679EE800F64745 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Button.h; path = UI/Button.h; sourceTree = "<group>"; };
 		1C70FDDF15656C5A000DFA9B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1C70FDE115656C63000DFA9B /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
-		1CAEE45F1567714100990B79 /* PlayerControllerEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControllerEvent.h; sourceTree = "<group>"; };
-		1CAEE4611567714B00990B79 /* PlayerControllerEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerControllerEvent.cpp; sourceTree = "<group>"; };
+		1CAEE45F1567714100990B79 /* TouchPlayerControllerEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPlayerControllerEvent.h; sourceTree = "<group>"; };
 		1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_simulator.a; sourceTree = "<group>"; };
 		1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_device.a; sourceTree = "<group>"; };
 		1CB63AF0155988DB008D79D4 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
@@ -266,8 +266,6 @@
 		8E976F991547F589003B5AB9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		8EA88DF4156384E100604051 /* ObjectSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSearch.h; sourceTree = "<group>"; };
 		8EA88DF51563A2E200604051 /* SpeedButton.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpeedButton.pvr; sourceTree = "<group>"; };
-		8EA88DF81563A46B00604051 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
-		8EA88DF91563A47700604051 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,12 +315,11 @@
 		1C4AF174155CF3FE005E471E /* player */ = {
 			isa = PBXGroup;
 			children = (
-				1C4AF176155CF3FE005E471E /* PlayerController.h */,
-				1C4AF175155CF3FE005E471E /* PlayerController.cpp */,
+				1C4AF176155CF3FE005E471E /* TouchPlayerController.h */,
+				1C4AF175155CF3FE005E471E /* TouchPlayerController.cpp */,
 				1C4AF178155CF3FE005E471E /* PlayerShip.h */,
 				1C4AF177155CF3FE005E471E /* PlayerShip.cpp */,
-				1CAEE45F1567714100990B79 /* PlayerControllerEvent.h */,
-				1CAEE4611567714B00990B79 /* PlayerControllerEvent.cpp */,
+				1CAEE45F1567714100990B79 /* TouchPlayerControllerEvent.h */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -375,10 +372,11 @@
 		1C4AF1A41562D9D2005E471E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1C4AF1A31562D9CA005E471E /* GameUI.h */,
-				1C4AF1A51562D9E4005E471E /* GameUI.cpp */,
-				8EA88DF81563A46B00604051 /* Button.h */,
-				8EA88DF91563A47700604051 /* Button.cpp */,
+				1C6217FB15679EE800F64745 /* Button.h */,
+				1C6217FA15679EE800F64745 /* Button.cpp */,
+				1C4AF1A31562D9CA005E471E /* TouchGameUI.h */,
+				1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */,
+				1C6217F815679E5C00F64745 /* TouchGameUIEvent.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -713,7 +711,7 @@
 				1CE215AD1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
 				1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */,
 				1CE215BE15597D2200BD2D2D /* Font.cpp in Sources */,
-				1C4AF185155CF3FE005E471E /* PlayerController.cpp in Sources */,
+				1C4AF185155CF3FE005E471E /* TouchPlayerController.cpp in Sources */,
 				1C4AF187155CF3FE005E471E /* PlayerShip.cpp in Sources */,
 				1C4AF189155CF3FE005E471E /* SpriteRenderer.cpp in Sources */,
 				1C4AF18B155CF3FE005E471E /* Sphere.cpp in Sources */,
@@ -722,10 +720,9 @@
 				1C4AF193155CF4DF005E471E /* TextRenderer.cpp in Sources */,
 				1C4AF19715616C78005E471E /* DebugText.cpp in Sources */,
 				1C4AF19B156174F0005E471E /* GetData.cpp in Sources */,
-				1C4AF1A71562D9E4005E471E /* GameUI.cpp in Sources */,
-				8EA88DFB1563A47700604051 /* Button.cpp in Sources */,
+				1C4AF1A71562D9E4005E471E /* TouchGameUI.cpp in Sources */,
 				1C70FDE315656C63000DFA9B /* Event.cpp in Sources */,
-				1CAEE4631567714B00990B79 /* PlayerControllerEvent.cpp in Sources */,
+				1C6217FD15679EE900F64745 /* Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,7 +758,7 @@
 				1CE215AC1558565A00BD2D2D /* Platform_iOS.mm in Sources */,
 				1CE215AE1558565A00BD2D2D /* ViewController.mm in Sources */,
 				1CE215BD15597D2200BD2D2D /* Font.cpp in Sources */,
-				1C4AF184155CF3FE005E471E /* PlayerController.cpp in Sources */,
+				1C4AF184155CF3FE005E471E /* TouchPlayerController.cpp in Sources */,
 				1C4AF186155CF3FE005E471E /* PlayerShip.cpp in Sources */,
 				1C4AF188155CF3FE005E471E /* SpriteRenderer.cpp in Sources */,
 				1C4AF18A155CF3FE005E471E /* Sphere.cpp in Sources */,
@@ -770,10 +767,9 @@
 				1C4AF192155CF4DF005E471E /* TextRenderer.cpp in Sources */,
 				1C4AF19615616C78005E471E /* DebugText.cpp in Sources */,
 				1C4AF19A156174F0005E471E /* GetData.cpp in Sources */,
-				1C4AF1A61562D9E4005E471E /* GameUI.cpp in Sources */,
-				8EA88DFA1563A47700604051 /* Button.cpp in Sources */,
+				1C4AF1A61562D9E4005E471E /* TouchGameUI.cpp in Sources */,
 				1C70FDE215656C63000DFA9B /* Event.cpp in Sources */,
-				1CAEE4621567714B00990B79 /* PlayerControllerEvent.cpp in Sources */,
+				1C6217FC15679EE900F64745 /* Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  PlayerController.cpp
+//  TouchPlayerController.cpp
 //  Cpptest
 //
 //  Created by Nikita on 5/2/12.
@@ -7,10 +7,11 @@
 //
 
 #include <iostream>
-#include "PlayerController.h"
+#include "TouchPlayerController.h"
 #include "Utils.h"
 #include "GameObject.h"
-#include "PlayerControllerEvent.h"
+#include "TouchPlayerControllerEvent.h"
+#include "TouchGameUIEvent.h"
 
 static const float STICKER_RADIUS = 60;
 
@@ -20,7 +21,7 @@ static const float STICKER_RADIUS = 60;
 //
 //******************************************************************************
 
-float PlayerController::StickerRadius() const {
+float TouchPlayerController::StickerRadius() const {
     
 	return STICKER_RADIUS;
 }
@@ -28,23 +29,48 @@ float PlayerController::StickerRadius() const {
 //******************************************************************************
 // Component
 
-void PlayerController::Start() {
+void TouchPlayerController::Start() {
 
     _touchID = -1;
+	RegisterEvent<TouchPlayerControllerGetDataEvent>();
+	RegisterEvent<TouchGameUIButtonEvent>();
 }
 
 //------------------------------------------------------------------------------
 
-void PlayerController::PreUpdate() {
+void TouchPlayerController::PreUpdate() {
 
 	ProcessDeviceInput();
+}
+
+//******************************************************************************
+// Event
+
+void TouchPlayerController::ProcessEvent(Event *event) {
+	
+	// Put current control data into event
+	TouchPlayerControllerGetDataEvent *getDataEvent;
+	if (TouchPlayerControllerGetDataEvent::Match(event, &getDataEvent)) {
+		getDataEvent->stickerEnabled = _stickerEnabled;
+		getDataEvent->stickerRadius = StickerRadius();
+		getDataEvent->initialStickerPos = InitialStickerPos();
+		getDataEvent->currentStickerPos = CurrentStickerPos();
+		return;
+	}
+	
+	// Speed buttons state
+	TouchGameUIButtonEvent *buttonEvent;
+	if (TouchGameUIButtonEvent::Match(event, &buttonEvent)) {
+		SetSpeedButtonsState(buttonEvent->speedUp, buttonEvent->speedDown);
+		return;
+	}	
 }
 
 //******************************************************************************
 // Controls
 
 // Called from GameUI
-void PlayerController::SetSpeedButtonsState(bool speedUpEnabled, bool speedDownEnabled) {
+void TouchPlayerController::SetSpeedButtonsState(bool speedUpEnabled, bool speedDownEnabled) {
     
     if (speedUpEnabled) {
         _speedControlValue = 1;
@@ -64,7 +90,7 @@ void PlayerController::SetSpeedButtonsState(bool speedUpEnabled, bool speedDownE
 //******************************************************************************
 // Control values calculation
 
-void PlayerController::ProcessDeviceInput() {
+void TouchPlayerController::ProcessDeviceInput() {
 	
 	input::Touch *touch;
 	bool stickerProcessed = false;
@@ -106,15 +132,17 @@ void PlayerController::ProcessDeviceInput() {
 		_stickerEnabled = false;
 	}
 	
-	PlayerControllerEvent event;
+	TouchPlayerControllerEvent event;
 	event.sticker = _normalizedStickerValue;
 	event.acceleration = _speedControlValue;
+	
+	// Received in PlayerShip
 	DispatchEvent(&event);
 }
 
 //------------------------------------------------------------------------------
 
-void PlayerController::SetStickerValue(const Vector3 &value) {
+void TouchPlayerController::SetStickerValue(const Vector3 &value) {
 	
 	_normalizedStickerValue = value / StickerRadius();
     
@@ -127,7 +155,7 @@ void PlayerController::SetStickerValue(const Vector3 &value) {
 
 //------------------------------------------------------------------------------
 
-void PlayerController::ProcessStickerTouch(input::Touch *touch) {
+void TouchPlayerController::ProcessStickerTouch(input::Touch *touch) {
 
 	Vector3 stickerDelta;
 	
@@ -164,14 +192,14 @@ void PlayerController::ProcessStickerTouch(input::Touch *touch) {
 //******************************************************************************
 // Utils
 
-bool PlayerController::IsButtonPart(const Vector3 &pos) {
+bool TouchPlayerController::IsButtonPart(const Vector3 &pos) {
 	
 	return pos.x > 300;
 }
 
 //------------------------------------------------------------------------------
 
-bool PlayerController::IsStickerPart(const Vector3 &pos) {
+bool TouchPlayerController::IsStickerPart(const Vector3 &pos) {
 
     Vector2 resolution = utils::GetInputResolution();
 	return pos.x < resolution.x / 2.0f;

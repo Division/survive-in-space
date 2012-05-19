@@ -25,6 +25,7 @@ class RenderPipeline;
 typedef enum {
 	EventDispatchComponents,
 	EventDispatchBroadcast,
+	EventDispatchGlobalBroadcast,
 	EventDispatchUpwards
 } EventDispatchType;
 
@@ -73,7 +74,9 @@ public:
     // Event
     void RegisterEvent(int eventID, Component *component);
     void RemoveEvent(int eventID, Component *component);
-    void DispatchEvent(Event *event, EventDispatchType dispatchType = EventDispatchComponents);
+    bool DispatchEvent(Event *event, EventDispatchType dispatchType = EventDispatchComponents);
+	void GlobalDispatcher(EventDispatcher *dispatcher) { _globalDispatcher = dispatcher; }
+	EventDispatcher *GlobalDispatcher() const { return _globalDispatcher; }
 	
     //--------------------------
     // Search
@@ -116,7 +119,8 @@ private:
     // Helper objects
 	class RenderPipeline *_renderPipeline;
     class ObjectSearch *_objectSearch;
-    class EventDispatcher _eventDispatcher;
+    EventDispatcher _eventDispatcher;
+	EventDispatcher *_globalDispatcher;
 };
 
 //******************************************************************************

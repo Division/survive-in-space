@@ -14,7 +14,16 @@
 #include "Rigidbody.h"
 #include "GameObject.h"
 #include "SpriteRenderer.h"
-#include "PlayerControllerEvent.h"
+#include "TouchPlayerControllerEvent.h"
+
+//******************************************************************************
+//
+//  Public
+//
+//******************************************************************************
+
+//******************************************************************************
+// Component methods
 
 void PlayerShip::Start() {
 
@@ -28,9 +37,10 @@ void PlayerShip::Start() {
 	
 	Transform()->Find("Ship")->Rotation(shipRotation);
 	
-	RegisterEvent<PlayerControllerEvent>();
+	RegisterEvent<TouchPlayerControllerEvent>();
 }
 
+//------------------------------------------------------------------------------
 
 void PlayerShip::Update() {
 
@@ -40,21 +50,30 @@ void PlayerShip::Update() {
     if (_currentSpeed < 0) _currentSpeed = 0;
 }
 
+//------------------------------------------------------------------------------
 
 void PlayerShip::PhysicsTick() {
 	
 	ProcessPhysicsControls();
 }
 
+//******************************************************************************
+// Event
 
 void PlayerShip::ProcessEvent(Event *event) {
 
-	PlayerControllerEvent *playerControllerEvent;
-	if (PlayerControllerEvent::Match(event, &playerControllerEvent)) {
+	TouchPlayerControllerEvent *playerControllerEvent;
+	if (TouchPlayerControllerEvent::Match(event, &playerControllerEvent)) {
 		SetControlsValues(playerControllerEvent->sticker, 0, playerControllerEvent->acceleration);
+		return;
 	}
 }
 
+//******************************************************************************
+//
+//  Private
+//
+//******************************************************************************
 
 void PlayerShip::ProcessPhysicsControls() {
 	
@@ -75,6 +94,7 @@ void PlayerShip::ProcessPhysicsControls() {
 	body->applyTorque(torqueForce);
 }
 
+//------------------------------------------------------------------------------
 
 void PlayerShip::SetControlsValues(const Vector3 &sticker, float roll, float acceleration) {
 

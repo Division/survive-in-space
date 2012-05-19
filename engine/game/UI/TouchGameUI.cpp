@@ -7,13 +7,14 @@
 //
 
 #include <iostream>
-#include "GameUI.h"
+#include "TouchGameUI.h"
 #include "GameObject.h"
 #include "SpriteRenderer.h"
 #include "GetData.h"
 #include "Resource.h"
-#include "PlayerController.h"
+#include "TouchPlayerControllerEvent.h"
 #include "Transform.h"
+#include "TouchGameUIEvent.h"
 
 static const int StickerBackgroundRenderQueue = RenderQueueOverlay + 10;
 static const int StickerRenderQueue = StickerBackgroundRenderQueue + 1;
@@ -27,9 +28,8 @@ static const float SpeedButtonHeight = 64;
 //
 //******************************************************************************
 
-void GameUI::Awake() {
+void TouchGameUI::Awake() {
 
-    _playerController = NULL;
     _speedUpButtonDown = false;
     _speedDownButtonDown = false;
     
@@ -52,38 +52,44 @@ void GameUI::Awake() {
 
 //------------------------------------------------------------------------------
 
-void GameUI::Update() {
+void TouchGameUI::Update() {
+
+	TouchPlayerControllerGetDataEvent getDataEvent;
+	// Received in TouchPlayerController.
+	DispatchEvent(&getDataEvent, EventDispatchGlobalBroadcast);
+
+	SetStickerEnabled(getDataEvent.stickerEnabled);
+	ConfigureSticker(&getDataEvent);
 	
-    if (_playerController) { // Player object found. Use his controller to position buttons
-        SetStickerEnabled(_playerController->StickerEnabled());
-        
-        if (_playerController->Active()) {
-            ConfigureSticker(_playerController);
-            _playerController->SetSpeedButtonsState(_speedUpButtonDown, _speedDownButtonDown);
-        }
-        
-    } else { // Search for player object
-        
-        SetStickerEnabled(false);
-        
-        class GameObject *playerObject = GameObject()->SearchGameObject("Player");
-        if (playerObject) {
-            _playerController = playerObject->GetComponent<PlayerController>();
-        }
-        
-    }
+	//
+	
+	TouchGameUIButtonEvent buttonEvent;
+	buttonEvent.speedUp = _speedUpButtonDown;
+	buttonEvent.speedDown = _speedDownButtonDown;
+
+	// Received in TouchPlayerController
+	DispatchEvent(&buttonEvent, EventDispatchGlobalBroadcast);
 }
 
 //------------------------------------------------------------------------------
 
-void GameUI::PreRender() {
+void TouchGameUI::PreRender() {
+	
+	
+}
+
+//******************************************************************************
+// Events
+
+void TouchGameUI::ProcessEvent(Event *event) {
+	
 	
 }
 
 //******************************************************************************
 // ButtonDelegate
 
-void GameUI::ButtonDown(Button *button) {
+void TouchGameUI::ButtonDown(Button *button) {
     
     if (button == _speedUpButton) {
         _speedUpButtonDown = true;
@@ -94,7 +100,7 @@ void GameUI::ButtonDown(Button *button) {
 
 //------------------------------------------------------------------------------
 
-void GameUI::ButtonUp(Button *button) {
+void TouchGameUI::ButtonUp(Button *button) {
     
     if (button == _speedUpButton) {
         _speedUpButtonDown = false;
@@ -109,7 +115,7 @@ void GameUI::ButtonUp(Button *button) {
 //
 //******************************************************************************
 
-void GameUI::SetStickerEnabled(bool enabled) {
+void TouchGameUI::SetStickerEnabled(bool enabled) {
     
     _stickerBackground->Active(enabled);
     _stickerButton->Active(enabled);
@@ -117,17 +123,16 @@ void GameUI::SetStickerEnabled(bool enabled) {
 
 //------------------------------------------------------------------------------
 
-void GameUI::ConfigureSticker(PlayerController *controller) {
+void TouchGameUI::ConfigureSticker(TouchPlayerControllerGetDataEvent *event) {
     
-    _stickerBackground->Position(Vector2(controller->InitialStickerPos()));
-    _stickerButton->Position(Vector2(controller->CurrentStickerPos()));
-    _stickerBackground->Size(Vector2(controller->StickerRadius() * 2.0f));
-    
+    _stickerBackground->Position(Vector2(event->initialStickerPos));
+    _stickerButton->Position(Vector2(event->currentStickerPos));
+    _stickerBackground->Size(Vector2(event->stickerRadius * 2.0f));
 }
 
 //------------------------------------------------------------------------------
 
-SpriteRenderer *GameUI::CreateSprite(const std::string &texture, int renderQueue, Vector2 size, Vector2 position) {
+SpriteRenderer *TouchGameUI::CreateSprite(const std::string &texture, int renderQueue, Vector2 size, Vector2 position) {
     
     SpriteRenderer *result = GameObject()->AddComponent<SpriteRenderer>();
 	Material stickerMaterial = getdata::MaterialGUI(texture, renderQueue);
@@ -141,7 +146,7 @@ SpriteRenderer *GameUI::CreateSprite(const std::string &texture, int renderQueue
 
 //------------------------------------------------------------------------------
 
-Button *GameUI::CreateButton(const std::string &texture, int RenderQueue, const Vector2 &size, const Vector2 &position, bool invertY) {
+Button *TouchGameUI::CreateButton(const std::string &texture, int RenderQueue, const Vector2 &size, const Vector2 &position, bool invertY) {
     
     Button *result = GameObject()->AddComponent<Button>(); 
     

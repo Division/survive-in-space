@@ -52,7 +52,7 @@ public:
 	
 	void RemoveEvent(int eventID);
 
-	void DispatchEvent(Event *event, int dispatchType = 0);
+	bool DispatchEvent(Event *event, int dispatchType = 0);
 	
     virtual void ProcessEvent(Event *event);
 	

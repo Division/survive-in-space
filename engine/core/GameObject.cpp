@@ -88,6 +88,7 @@ class Rigidbody *GameObject::Rigidbody() {
 void GameObject::RegisterEvent(int eventID, Component *component) {
 
 	_eventDispatcher.RegisterEvent(eventID, component);
+	_globalDispatcher->RegisterEvent(eventID, component);
 }
 
 //------------------------------------------------------------------------------
@@ -95,13 +96,22 @@ void GameObject::RegisterEvent(int eventID, Component *component) {
 void GameObject::RemoveEvent(int eventID, Component *component) {
 	
 	_eventDispatcher.RemoveEvent(eventID, component);
+	_globalDispatcher->RemoveEvent(eventID, component);
 }
 
 //------------------------------------------------------------------------------
 
-void GameObject::DispatchEvent(Event *event, EventDispatchType dispatchType) {
+bool GameObject::DispatchEvent(Event *event, EventDispatchType dispatchType) {
 	
-	_eventDispatcher.DispatchEvent(event);
+	bool dispatched = false;
+	
+	if (dispatchType == EventDispatchGlobalBroadcast) {
+		// In this case use global dispatcher
+		dispatched = _globalDispatcher->DispatchEvent(event);
+	} else {
+		// Dispatch with local dispatcher among _components
+		dispatched = _eventDispatcher.DispatchEvent(event);
+	}
 	
 	class Transform *parentTransform;
 	
@@ -109,16 +119,21 @@ void GameObject::DispatchEvent(Event *event, EventDispatchType dispatchType) {
 		case EventDispatchUpwards:
 			parentTransform = Transform()->Parent();
 			if (parentTransform) {
-				parentTransform->DispatchEvent(event, dispatchType);
+				if(parentTransform->DispatchEvent(event, dispatchType)) {
+					dispatched = true;
+				}
 			}
 			break;
 		
 		case EventDispatchBroadcast:
 			for (TransformList::const_iterator it = Transform()->Children().begin(); it != Transform()->Children().end(); it++) {
-				(*it)->DispatchEvent(event, dispatchType);
+				if ((*it)->DispatchEvent(event, dispatchType)) {
+					dispatched = true;
+				}
 			}
 			break;
 			
+		case EventDispatchGlobalBroadcast:
 		case EventDispatchComponents:
 			// Do nothing
 			break;
@@ -127,6 +142,8 @@ void GameObject::DispatchEvent(Event *event, EventDispatchType dispatchType) {
 			utils::Log("Unsupported dispatch type!");
 			break;
 	}
+	
+	return dispatched;
 }
 
 //******************************************************************************

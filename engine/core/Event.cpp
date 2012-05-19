@@ -63,29 +63,28 @@ void EventDispatcher::RemoveAllEvents(Component *component) {
     }
 }
 
-//------------------------------------------------------------------------------
-
-void EventDispatcher::RemoveEventForAllComponents(int eventID) {
-    
-    _eventHash.erase(eventID);
-}
-
 //******************************************************************************
 // Event dispatching
 
-void EventDispatcher::DispatchEvent(Event *event) {
+bool EventDispatcher::DispatchEvent(Event *event) {
     
+	bool dispatched = false;
+
     int eventID = event->GetID();
-    
+	
     if (_eventHash.count(eventID)) {
         
 		// Here is COPYING of whole set
 		// Because events could be removed in ProcessEvent method
+		// Need to optimize this place
         ComponentSet set = _eventHash[eventID]; 
 		
         for (ComponentSet::iterator it = set.begin(); it != set.end(); it++) {
             Component *component = *it;
             component->ProcessEvent(event);
+			dispatched = true;
         }
     }
+	
+	return dispatched;
 }

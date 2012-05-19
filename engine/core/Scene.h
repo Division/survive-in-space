@@ -15,6 +15,7 @@
 #include "ComponentDeclaration.h"
 #include "SceneGraph.h"
 #include "ObjectSearch.h"
+#include "Event.h"
 
 #ifdef ENABLE_PHYSICS
 #include "Physics.h"
@@ -86,6 +87,7 @@ private:
 	class Platform *_platform;
 	RenderPipelinePtr _renderPipeline;
 	RenderStatePtr _renderState;
+	EventDispatcher _globalDispatcher;
 };
 
 #endif

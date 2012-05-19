@@ -15,7 +15,7 @@
 class GameObject;
 class Scene;
 class TextRenderer;
-class GameUI;
+class TouchGameUI;
 class Button;
 class Texture;
 
@@ -39,7 +39,7 @@ namespace creation {
 	
 	TextRenderer *CreateTextLabel(std::string text, const Vector3 &position);
 	
-	GameUI *CreateGameUI();
+	TouchGameUI *CreateGameUI();
     
     Button *CreateButton(Texture *texture, float width, float height, int renderQueue = RenderQueueOverlay);
 }

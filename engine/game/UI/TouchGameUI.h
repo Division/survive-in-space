@@ -12,22 +12,24 @@
 #include "Component.h"
 #include "Button.h"
 
-class PlayerController;
+class TouchPlayerControllerGetDataEvent;
 class SpriteRenderer;
+class Event;
 
 /**
  Rendering of in-game user interface
  Sticker control, speed buttons, labels etc
  */
-class GameUI : public Component, public ButtonDelegate {
+class TouchGameUI : public Component, public ButtonDelegate {
 public:
-	GENERATE_COMPONENT_ID(GameUI);
+	GENERATE_COMPONENT_ID(TouchGameUI);
 	
 	//-------------------
 	// Component
 	virtual void Awake();
 	virtual void Update();
 	virtual void PreRender();
+	virtual void ProcessEvent(Event *event);
 	
 	//-------------------
 	// ButtonDelegate
@@ -36,7 +38,7 @@ public:
     
 private:
 	void SetStickerEnabled(bool enabled);
-    void ConfigureSticker(PlayerController *controller);
+    void ConfigureSticker(TouchPlayerControllerGetDataEvent *event);
     SpriteRenderer *CreateSprite(const std::string &texture, int renderQueue, Vector2 size, Vector2 position);
     Button *CreateButton(const std::string &texture, int RenderQueue, const Vector2 &size, const Vector2 &position, bool invertY);
     
@@ -45,8 +47,6 @@ private:
 	SpriteRenderer *_stickerButton;
 	Button *_speedUpButton;
 	Button *_speedDownButton;
-    
-    PlayerController *_playerController;
     
     bool _speedUpButtonDown;
     bool _speedDownButtonDown;

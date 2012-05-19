@@ -15,7 +15,7 @@
 #include "Prefab.h"
 #include "Rigidbody.h"
 #include "PlayerShip.h"
-#include "PlayerController.h"
+#include "TouchPlayerController.h"
 #include "MeshRenderer.h"
 #include "Camera.h"
 #include "CameraMover.h"
@@ -24,7 +24,7 @@
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
 #include "DebugText.h"
-#include "GameUI.h"
+#include "TouchGameUI.h"
 #include "Button.h"
 
 namespace creation {
@@ -144,7 +144,7 @@ namespace creation {
 		playerGO->Transform()->Position(position);
 		
 		playerGO->AddComponent<PlayerShip>();
-		playerGO->AddComponent<PlayerController>();
+		playerGO->AddComponent<TouchPlayerController>();
 		Rigidbody* body = playerGO->AddComponent<Rigidbody>();
 		
 		Material material;
@@ -196,10 +196,10 @@ namespace creation {
 	//******************************************************************************
 	// UI
 	
-	GameUI *CreateGameUI() {
+	TouchGameUI *CreateGameUI() {
 
 		GameObject *gameUIObject = scene->CreateGameObject("GameUI");
-		GameUI *gameUI = gameUIObject->AddComponent<GameUI>();
+		TouchGameUI *gameUI = gameUIObject->AddComponent<TouchGameUI>();
 
 		return gameUI;
 	}

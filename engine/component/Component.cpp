@@ -63,9 +63,9 @@ void Component::ProcessEvent(Event *event) {
 
 //------------------------------------------------------------------------------
 
-void Component::DispatchEvent(Event *event, int dispatchType) {
+bool Component::DispatchEvent(Event *event, int dispatchType) {
 	
-	GameObject()->DispatchEvent(event, (EventDispatchType)dispatchType);
+	return GameObject()->DispatchEvent(event, (EventDispatchType)dispatchType);
 }
 
 //******************************************************************************
