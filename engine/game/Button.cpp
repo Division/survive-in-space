@@ -165,6 +165,9 @@ void Button::ButtonPressed() {
     if (_delegate) {
         _delegate->ButtonPress(this);
     }
+
+	ButtonEvent buttonEvent(ButtonEvent::Press, this);
+	DispatchEvent(&buttonEvent, EventDispatchUpwards);
 }
 
 //------------------------------------------------------------------------------
@@ -174,6 +177,9 @@ void Button::ButtonDown() {
     if (_delegate) {
         _delegate->ButtonDown(this);
     }
+	
+	ButtonEvent buttonEvent(ButtonEvent::Down, this);
+	DispatchEvent(&buttonEvent, EventDispatchUpwards);
 }
 
 //------------------------------------------------------------------------------
@@ -183,5 +189,8 @@ void Button::ButtonUp() {
     if (_delegate) {
         _delegate->ButtonUp(this);
     }
+	
+	ButtonEvent buttonEvent(ButtonEvent::Up, this);
+	DispatchEvent(&buttonEvent, EventDispatchUpwards);
 }
 

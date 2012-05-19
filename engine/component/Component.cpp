@@ -50,7 +50,7 @@ void Component::RegisterEvent(int eventID) {
 
 //------------------------------------------------------------------------------
 
-void Component::RemoverEvent(int eventID) {
+void Component::RemoveEvent(int eventID) {
 
 	GameObject()->RemoveEvent(eventID, this);
 }

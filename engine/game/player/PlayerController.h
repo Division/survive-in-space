@@ -42,7 +42,6 @@ private:
 	void SetStickerValue(const Vector3 &value);
 	
 private:
-	PlayerShip *_player;
 	Vector3 _initialStickerPos;
 	bool _stickerEnabled;
 	Vector3 _normalizedStickerValue;

@@ -10,7 +10,6 @@
 #include "PlayerController.h"
 #include "Utils.h"
 #include "GameObject.h"
-#include "PlayerShip.h"
 #include "PlayerControllerEvent.h"
 
 static const float STICKER_RADIUS = 60;
@@ -31,7 +30,6 @@ float PlayerController::StickerRadius() const {
 
 void PlayerController::Start() {
 
-	_player = GameObject()->GetComponent<PlayerShip>();
     _touchID = -1;
 }
 
@@ -108,11 +106,9 @@ void PlayerController::ProcessDeviceInput() {
 		_stickerEnabled = false;
 	}
 	
-	_player->SetControlsValues(_normalizedStickerValue, 0, _speedControlValue);
-	
-	utils::Log("send");
 	PlayerControllerEvent event;
-	event.message = "Hello!";
+	event.sticker = _normalizedStickerValue;
+	event.acceleration = _speedControlValue;
 	DispatchEvent(&event);
 }
 

@@ -23,10 +23,9 @@ public:
 	virtual void PhysicsTick();
 	virtual void ProcessEvent(Event *event);
 	
-	void SetControlsValues(const Vector3 &sticker, float roll, float acceleration);
-	
 private:
 	void ProcessPhysicsControls();
+	void SetControlsValues(const Vector3 &sticker, float roll, float acceleration);
 	
 private:
 	Vector3 _stickerControl;

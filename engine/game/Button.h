@@ -12,8 +12,16 @@
 #include "Component.h"
 #include "SpriteRenderer.h"
 #include "MyMath.h"
+#include "Event.h"
 
 class Button;
+class Texture;
+
+//******************************************************************************
+//
+//  ButtonDelegate
+//
+//******************************************************************************
 
 class ButtonDelegate {
 public:
@@ -22,7 +30,28 @@ public:
     virtual void ButtonPress(Button *button) { /* empty */ }
 };
 
-class Texture;
+//******************************************************************************
+//
+//  ButtonEvent
+//
+//******************************************************************************
+
+class ButtonEvent : public Event {
+public:
+	GENERATE_EVENT_ID(ButtonEvent)
+
+	enum {Down, Up, Press};
+	
+	ButtonEvent(int type, Button *btn) : Event(type), button(btn) {}
+	
+	Button *button;
+};
+
+//******************************************************************************
+//
+//  Button
+//
+//******************************************************************************
 
 class Button : public Component {
 public:

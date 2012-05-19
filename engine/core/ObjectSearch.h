@@ -13,6 +13,10 @@
 
 class GameObject;
 
+/*
+ Interface for GameObject searching
+ Scene and GameObject implement it
+ */
 class ObjectSearch {
 public:
 

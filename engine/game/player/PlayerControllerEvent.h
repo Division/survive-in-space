@@ -18,13 +18,8 @@ public:
 	
 	enum { CONTROL_CHANGED = 1 };
 	
-	std::string message;
-	
-	
-//	PlayerControllerEvent(int id) : Event(id) {}
-	
-	
-	
+	Vector3 sticker;
+	float acceleration;
 };
 
 #endif

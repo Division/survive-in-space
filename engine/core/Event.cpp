@@ -79,8 +79,9 @@ void EventDispatcher::DispatchEvent(Event *event) {
     
     if (_eventHash.count(eventID)) {
         
-        ComponentSet set = _eventHash[eventID]; // Here is COPYING of whole set
-        
+		// Here is COPYING of whole set
+		// Because events could be removed in ProcessEvent method
+        ComponentSet set = _eventHash[eventID]; 
 		
         for (ComponentSet::iterator it = set.begin(); it != set.end(); it++) {
             Component *component = *it;

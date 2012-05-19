@@ -49,7 +49,8 @@ public:
 	void RegisterEvent(int eventID);
 	template <class T>
 	void RemoveEvent();
-	void RemoverEvent(int eventID);
+	
+	void RemoveEvent(int eventID);
 
 	void DispatchEvent(Event *event, int dispatchType = 0);
 	

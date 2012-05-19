@@ -17,11 +17,11 @@
 GameObject::GameObject(const std::string& name) {
 	
 	_name = name;
-	_transform = AddComponent<class Transform>();
-	_renderer = 0;
 	_inHierarchy = false;
+	_renderer = 0;
 	_rigidbody = 0;
 	_active = true;
+	_transform = AddComponent<class Transform>();
 }
 
 //------------------------------------------------------------------------------
@@ -102,6 +102,31 @@ void GameObject::RemoveEvent(int eventID, Component *component) {
 void GameObject::DispatchEvent(Event *event, EventDispatchType dispatchType) {
 	
 	_eventDispatcher.DispatchEvent(event);
+	
+	class Transform *parentTransform;
+	
+	switch (dispatchType) {
+		case EventDispatchUpwards:
+			parentTransform = Transform()->Parent();
+			if (parentTransform) {
+				parentTransform->DispatchEvent(event, dispatchType);
+			}
+			break;
+		
+		case EventDispatchBroadcast:
+			for (TransformList::const_iterator it = Transform()->Children().begin(); it != Transform()->Children().end(); it++) {
+				(*it)->DispatchEvent(event, dispatchType);
+			}
+			break;
+			
+		case EventDispatchComponents:
+			// Do nothing
+			break;
+			
+		default:
+			utils::Log("Unsupported dispatch type!");
+			break;
+	}
 }
 
 //******************************************************************************

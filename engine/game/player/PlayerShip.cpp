@@ -29,9 +29,6 @@ void PlayerShip::Start() {
 	Transform()->Find("Ship")->Rotation(shipRotation);
 	
 	RegisterEvent<PlayerControllerEvent>();
-	RegisterEvent<PlayerControllerEvent>();
-	RegisterEvent<PlayerControllerEvent>();
-	RegisterEvent<PlayerControllerEvent>();
 }
 
 
@@ -54,7 +51,7 @@ void PlayerShip::ProcessEvent(Event *event) {
 
 	PlayerControllerEvent *playerControllerEvent;
 	if (PlayerControllerEvent::Match(event, &playerControllerEvent)) {
-		utils::Log("msg: " + playerControllerEvent->message);
+		SetControlsValues(playerControllerEvent->sticker, 0, playerControllerEvent->acceleration);
 	}
 }
 
