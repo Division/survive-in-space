@@ -21,6 +21,7 @@ public:
 	virtual void Start();
 	virtual void Update();
 	virtual void PhysicsTick();
+	virtual void ProcessEvent(Event *event);
 	
 	void SetControlsValues(const Vector3 &sticker, float roll, float acceleration);
 	

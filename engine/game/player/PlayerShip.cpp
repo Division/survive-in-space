@@ -14,6 +14,7 @@
 #include "Rigidbody.h"
 #include "GameObject.h"
 #include "SpriteRenderer.h"
+#include "PlayerControllerEvent.h"
 
 void PlayerShip::Start() {
 
@@ -26,6 +27,11 @@ void PlayerShip::Start() {
 	math::Rotate(shipRotation, 180, Vector3(0,0,1));
 	
 	Transform()->Find("Ship")->Rotation(shipRotation);
+	
+	RegisterEvent<PlayerControllerEvent>();
+	RegisterEvent<PlayerControllerEvent>();
+	RegisterEvent<PlayerControllerEvent>();
+	RegisterEvent<PlayerControllerEvent>();
 }
 
 
@@ -41,6 +47,15 @@ void PlayerShip::Update() {
 void PlayerShip::PhysicsTick() {
 	
 	ProcessPhysicsControls();
+}
+
+
+void PlayerShip::ProcessEvent(Event *event) {
+
+	PlayerControllerEvent *playerControllerEvent;
+	if (PlayerControllerEvent::Match(event, &playerControllerEvent)) {
+		utils::Log("msg: " + playerControllerEvent->message);
+	}
 }
 
 

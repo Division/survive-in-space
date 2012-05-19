@@ -85,7 +85,24 @@ class Rigidbody *GameObject::Rigidbody() {
 //******************************************************************************
 // Event
 
+void GameObject::RegisterEvent(int eventID, Component *component) {
 
+	_eventDispatcher.RegisterEvent(eventID, component);
+}
+
+//------------------------------------------------------------------------------
+
+void GameObject::RemoveEvent(int eventID, Component *component) {
+	
+	_eventDispatcher.RemoveEvent(eventID, component);
+}
+
+//------------------------------------------------------------------------------
+
+void GameObject::DispatchEvent(Event *event, EventDispatchType dispatchType) {
+	
+	_eventDispatcher.DispatchEvent(event);
+}
 
 //******************************************************************************
 // Search
@@ -108,6 +125,7 @@ void GameObject::PreStart() {
 	}
 }
 
+//------------------------------------------------------------------------------
 
 void GameObject::Start() {
 	
@@ -118,6 +136,7 @@ void GameObject::Start() {
 	}
 }
 
+//------------------------------------------------------------------------------
 
 void ProcessPreUpdate(const ComponentPtr& component) {
     
@@ -126,11 +145,14 @@ void ProcessPreUpdate(const ComponentPtr& component) {
 	}
 }
 
+//------------------------------------------------------------------------------
+
 void GameObject::PreUpdate() {
 	
 	std::for_each(_components.begin(), _components.end(), ProcessPreUpdate);
 }
 
+//------------------------------------------------------------------------------
 
 void GameObject::Update() {
     
@@ -141,6 +163,7 @@ void GameObject::Update() {
 	}
 }
 
+//------------------------------------------------------------------------------
 
 void GameObject::Render() {
 	
@@ -151,6 +174,8 @@ void GameObject::Render() {
 	}
 }
 
+//------------------------------------------------------------------------------
+
 void ProcessPreRender(const ComponentPtr& component) {
 	
 	if (component->Active()) {
@@ -158,12 +183,14 @@ void ProcessPreRender(const ComponentPtr& component) {
 	}
 }
 
+//------------------------------------------------------------------------------
 
 void GameObject::PreRender() {
 	
 	std::for_each(_components.begin(), _components.end(), ProcessPreRender);	
 }
 
+//------------------------------------------------------------------------------
 
 void GameObject::PhysicsTick() {
 	
@@ -174,6 +201,7 @@ void GameObject::PhysicsTick() {
 	}
 }
 
+//------------------------------------------------------------------------------
 
 void GameObject::SendStart(const ComponentPtr& component) {
     

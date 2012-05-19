@@ -34,10 +34,13 @@ Event::Event(int messageType) {
 
 void EventDispatcher::RegisterEvent(int eventID, Component *component) {
 
-    if (_eventHash.count(eventID)) {
-        ComponentSet &set = _eventHash[eventID];
-        set.insert(component);
+    if (!_eventHash.count(eventID)) {
+		_eventHash[eventID] = ComponentSet();
     }
+	
+	ComponentSet &set = _eventHash[eventID];
+	set.insert(component);
+
 }
 
 //------------------------------------------------------------------------------
@@ -76,8 +79,9 @@ void EventDispatcher::DispatchEvent(Event *event) {
     
     if (_eventHash.count(eventID)) {
         
-        ComponentSet &set = _eventHash[eventID];
+        ComponentSet set = _eventHash[eventID]; // Here is COPYING of whole set
         
+		
         for (ComponentSet::iterator it = set.begin(); it != set.end(); it++) {
             Component *component = *it;
             component->ProcessEvent(event);

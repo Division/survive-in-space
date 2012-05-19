@@ -26,9 +26,13 @@ public:
 	
 	virtual int GetID() = 0;
 	
+	//-------------------
+	// Construct/destruct
 	Component();
 	~Component();
 	
+	//-------------------
+	// General properties
 	class Transform *Transform();
 	
 	class GameObject *GameObject() const { return _gameObject; }
@@ -37,6 +41,22 @@ public:
 	bool Active() const { return _active; }
 	void Active(bool active) { _active = active; }
 	
+	//-------------------
+	// Event
+	
+	template <class T>
+	void RegisterEvent();
+	void RegisterEvent(int eventID);
+	template <class T>
+	void RemoveEvent();
+	void RemoverEvent(int eventID);
+
+	void DispatchEvent(Event *event, int dispatchType = 0);
+	
+    virtual void ProcessEvent(Event *event);
+	
+	//-------------------
+	// Update methods
 	virtual void Awake();
 	virtual void PreStart();
 	virtual void Start();
@@ -45,7 +65,6 @@ public:
 	virtual void PreRender(); // Called after update and before render
 	virtual void PhysicsTick();
 	virtual void Render();
-    virtual void ProcessEvent(Event *event);
 	
 protected:
 	class GameObject *_gameObject;
@@ -53,6 +72,27 @@ protected:
 	
 };
 
+//******************************************************************************
+//
+//  Template methods
+//
+//******************************************************************************
 
+
+template <class T>
+void Component::RegisterEvent() {
+	
+	int eventID = T::ID();
+	RegisterEvent(eventID);
+}
+
+//------------------------------------------------------------------------------
+
+template <class T>
+void Component::RemoveEvent() {
+	
+	int eventID = T::ID();
+	RemoveEvent(eventID);
+}
 
 #endif

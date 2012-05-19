@@ -22,6 +22,13 @@ typedef std::unique_ptr<Component> ComponentPtr;
 typedef std::vector<ComponentPtr> ComponentList;
 class RenderPipeline;
 
+typedef enum {
+	EventDispatchComponents,
+	EventDispatchBroadcast,
+	EventDispatchUpwards
+} EventDispatchType;
+
+
 class GameObject : public ObjectSearch {
 public:
 
@@ -66,7 +73,8 @@ public:
     // Event
     void RegisterEvent(int eventID, Component *component);
     void RemoveEvent(int eventID, Component *component);
-    
+    void DispatchEvent(Event *event, EventDispatchType dispatchType = EventDispatchComponents);
+	
     //--------------------------
     // Search
     virtual GameObject *SearchGameObject(const std::string &objectName);
@@ -117,7 +125,6 @@ private:
 //
 //******************************************************************************
 
-
 template <class T>
 T* GameObject::AddComponent() {
 	
@@ -137,6 +144,7 @@ T* GameObject::AddComponent() {
 	return component;
 }
 
+//------------------------------------------------------------------------------
 
 class ComponentFinder {
 public:
@@ -152,6 +160,7 @@ private:
 	
 };
 
+//------------------------------------------------------------------------------
 
 template <class T>
 T* GameObject::GetComponent() const {

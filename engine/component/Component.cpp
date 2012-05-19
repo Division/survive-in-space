@@ -12,55 +12,107 @@
 #include "Transform.h"
 #include "Event.h"
 
+//******************************************************************************
+// Construct/destruct
+
 Component::Component() {
 
 }
 
-void Component::GameObject(class GameObject *gameObject) {
-	_gameObject = gameObject;	
-}
+//------------------------------------------------------------------------------
 
 Component::~Component() {
 	
 }
+
+//******************************************************************************
+// Properties
+
+void Component::GameObject(class GameObject *gameObject) {
+	
+	_gameObject = gameObject;	
+}
+
+//------------------------------------------------------------------------------
 
 class Transform *Component::Transform() {
 	
 	return _gameObject->Transform();
 }
 
+//******************************************************************************
+// Event
+
+void Component::RegisterEvent(int eventID) {
+	
+	GameObject()->RegisterEvent(eventID, this);
+}
+
+//------------------------------------------------------------------------------
+
+void Component::RemoverEvent(int eventID) {
+
+	GameObject()->RemoveEvent(eventID, this);
+}
+
+//------------------------------------------------------------------------------
+
+void Component::ProcessEvent(Event *event) {
+	
+}
+
+//------------------------------------------------------------------------------
+
+void Component::DispatchEvent(Event *event, int dispatchType) {
+	
+	GameObject()->DispatchEvent(event, (EventDispatchType)dispatchType);
+}
+
+//******************************************************************************
+// Update methods
+
 void Component::PreUpdate() {
 	
 }
+
+//------------------------------------------------------------------------------
 
 void Component::Update() {
 
 }
 
+//------------------------------------------------------------------------------
+
 void Component::Awake() {
 	
 }
+
+//------------------------------------------------------------------------------
 
 void Component::PreStart() {
 	
 }
 
+//------------------------------------------------------------------------------
+
 void Component::Start() {
 	
 }
+
+//------------------------------------------------------------------------------
 
 void Component::PreRender() {
 	
 }
 
+//------------------------------------------------------------------------------
+
 void Component::Render() {
 	
 }
 
-void Component::PhysicsTick() {
-	
-}
+//------------------------------------------------------------------------------
 
-void Component::ProcessEvent(Event *event) {
+void Component::PhysicsTick() {
 	
 }

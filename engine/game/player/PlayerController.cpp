@@ -11,6 +11,7 @@
 #include "Utils.h"
 #include "GameObject.h"
 #include "PlayerShip.h"
+#include "PlayerControllerEvent.h"
 
 static const float STICKER_RADIUS = 60;
 
@@ -108,6 +109,11 @@ void PlayerController::ProcessDeviceInput() {
 	}
 	
 	_player->SetControlsValues(_normalizedStickerValue, 0, _speedControlValue);
+	
+	utils::Log("send");
+	PlayerControllerEvent event;
+	event.message = "Hello!";
+	DispatchEvent(&event);
 }
 
 //------------------------------------------------------------------------------

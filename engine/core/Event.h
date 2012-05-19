@@ -9,14 +9,25 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+#include "Utils.h"
 #include <set>
 #include <map>
 
 #define GENERATE_EVENT_ID(eventName) \
 static int ID() { return utils::Hash(#eventName); } \
-int GetID() { return \
+\
+virtual int GetID() const { return \
 eventName::ID(); \
-}
+} \
+\
+static bool Match(Event *event, eventName **castEvent) { \
+bool match = event->GetID() == ID(); \
+if (match) *castEvent = static_cast<eventName *>(event); \
+return match; \
+} \
+\
+static bool Match(Event *event) { return event->GetID() == ID(); }
+
 
 class Component;
 
