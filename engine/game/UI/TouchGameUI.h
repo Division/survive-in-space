@@ -19,6 +19,7 @@ class Event;
 /**
  Rendering of in-game user interface
  Sticker control, speed buttons, labels etc
+ Broadcasts button events
  */
 class TouchGameUI : public Component, public ButtonDelegate {
 public:
@@ -28,8 +29,6 @@ public:
 	// Component
 	virtual void Awake();
 	virtual void Update();
-	virtual void PreRender();
-	virtual void ProcessEvent(Event *event);
 	
 	//-------------------
 	// ButtonDelegate

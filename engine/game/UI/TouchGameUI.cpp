@@ -54,12 +54,16 @@ void TouchGameUI::Awake() {
 
 void TouchGameUI::Update() {
 
+	// Getting values from TouchPlayerController
 	TouchPlayerControllerGetDataEvent getDataEvent;
 	// Received in TouchPlayerController.
-	DispatchEvent(&getDataEvent, EventDispatchGlobalBroadcast);
-
-	SetStickerEnabled(getDataEvent.stickerEnabled);
-	ConfigureSticker(&getDataEvent);
+	if (DispatchEvent(&getDataEvent, EventDispatchGlobalBroadcast)) {
+		// Applying values
+		SetStickerEnabled(getDataEvent.stickerEnabled);
+		ConfigureSticker(&getDataEvent);
+	} else {
+		SetStickerEnabled(false);		
+	}
 	
 	//
 	
@@ -69,21 +73,6 @@ void TouchGameUI::Update() {
 
 	// Received in TouchPlayerController
 	DispatchEvent(&buttonEvent, EventDispatchGlobalBroadcast);
-}
-
-//------------------------------------------------------------------------------
-
-void TouchGameUI::PreRender() {
-	
-	
-}
-
-//******************************************************************************
-// Events
-
-void TouchGameUI::ProcessEvent(Event *event) {
-	
-	
 }
 
 //******************************************************************************

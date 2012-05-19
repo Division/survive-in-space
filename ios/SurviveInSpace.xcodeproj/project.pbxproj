@@ -375,8 +375,8 @@
 				1C6217FB15679EE800F64745 /* Button.h */,
 				1C6217FA15679EE800F64745 /* Button.cpp */,
 				1C4AF1A31562D9CA005E471E /* TouchGameUI.h */,
-				1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */,
 				1C6217F815679E5C00F64745 /* TouchGameUIEvent.h */,
+				1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
