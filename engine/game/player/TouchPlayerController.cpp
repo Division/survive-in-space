@@ -38,6 +38,7 @@ void TouchPlayerController::Start() {
 
 //------------------------------------------------------------------------------
 
+
 void TouchPlayerController::PreUpdate() {
 
 	ProcessDeviceInput();
@@ -135,6 +136,7 @@ void TouchPlayerController::ProcessDeviceInput() {
 	TouchPlayerControllerEvent event;
 	event.sticker = _normalizedStickerValue;
 	event.acceleration = _speedControlValue;
+	event.roll = GetRollFactor();
 	
 	// Received in PlayerShip
 	DispatchEvent(&event);
@@ -187,6 +189,33 @@ void TouchPlayerController::ProcessStickerTouch(input::Touch *touch) {
 			
 			break;
 	}
+}
+
+float TouchPlayerController::GetRollFactor() {
+	
+	float factor = 0;
+	
+	Vector3 acc;
+	if (input::GetAccelerometerData(acc)) {
+		
+		float minValue = 0.15;
+		float multKoef = 4;
+		float maxValue = 1;
+		
+		float power = math::abs(acc.y);
+		if (power > minValue) {
+			power = power - minValue;
+			power *= multKoef;
+			if (power > maxValue) power = maxValue;
+			
+			bool inverse = (acc.y < 0) ^ (acc.x < 0);
+			if (inverse) power *= -1;
+
+			factor = power;
+		}
+	}
+	
+	return factor;
 }
 
 //******************************************************************************

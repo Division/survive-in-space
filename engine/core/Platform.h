@@ -49,14 +49,15 @@ public:
 	
 	virtual Vector2 GetInputResolution() = 0;
 	
-	virtual const platform::TouchList& GetTouches() = 0;
-	
-	virtual bool TouchesChanged() = 0;
-	
     virtual int InputMessageCount() = 0;
     virtual int GetTouchCount(int messageID) = 0;
     virtual platform::Touch * GetTouch(int messageID, int touchID) = 0;
     
+	//-------------------
+	// Motion
+	virtual bool GetGyroData(Vector3 &outData) = 0;
+	virtual bool GetAccelerometerData(Vector3 &outData) = 0;
+	
 	//******************************************************************************
 	// Time
 	

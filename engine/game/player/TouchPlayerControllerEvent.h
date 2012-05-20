@@ -26,6 +26,7 @@ public:
 	enum { CONTROL_CHANGED = 0 };
 	
 	Vector3 sticker;
+	float roll;
 	float acceleration;
 };
 

@@ -10,6 +10,7 @@
 #import "Platform.h"
 #include "Input.h"
 #import "GameView.h"
+#import "MotionMonitor.h"
 
 #define IOS_MAX_TOUCHES 11
 #define IOS_MAX_TOUCH_MESSAGES 20
@@ -22,29 +23,35 @@ public:
 	// Touch input
 	
     void ClearTouchMessages();
-	void SetTouches(const input::TouchList& list);
-	void TouchesChanged(bool changed) { _touchesChanged = changed; };
 	void ProcessChangedTouches(NSSet *touches);
     
 	//******************************************************************************
 	// Platform abstract methods
 	
+	//-------------------
+	// Resource
 	bool GetResourcePath(const std::string& resourceName, std::string& outString);
 	
+	//-------------------
+	// Resolution
 	Vector2 GetScreenResolution();
-	
 	Vector2 GetInputResolution();
 	
-	const input::TouchList& GetTouches();
-	
-	bool TouchesChanged() { return _touchesChanged; };
+	//-------------------
+	// Touch Input
     int InputMessageCount();
     int GetTouchCount(int messageID);
     platform::Touch * GetTouch(int messageID, int touchID);
 
+	//-------------------
+	// Time
 	double GetTime();
+	
+	//-------------------
+	// Motion
+	bool GetGyroData(Vector3 &outData);
+	bool GetAccelerometerData(Vector3 &outData);
     
-
 private:
     int GetTouchID(UITouch *touch);
     int AddTouch(UITouch *touch);
@@ -52,12 +59,10 @@ private:
     
 private:
 	double _startTime;
-	input::TouchList _touches;
-	bool _touchesChanged;
     GameView *_view;
-  
     
     void *_touchPointers[IOS_MAX_TOUCHES];
     input::TouchList _touchMessages[IOS_MAX_TOUCH_MESSAGES];
     int _touchMessageCount;
+	MotionMonitor *_motionMonitor;
 };

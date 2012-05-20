@@ -13,10 +13,8 @@ namespace input {
 
 	static Platform *platform;
 	
-	void Init(Platform *thePlatform) {
-		
-		platform = thePlatform;
-	}
+	//******************************************************************************
+	// Touch
 	
 	void PrintTouches(const TouchList &touches) {
 
@@ -31,6 +29,8 @@ namespace input {
 			i++;
 		}
 	}
+	
+	//------------------------------------------------------------------------------
 	
 	void PrintTouchesCount() {
 		
@@ -48,17 +48,21 @@ namespace input {
 		}
 	}
 	
+	//------------------------------------------------------------------------------
+	
 	int TouchCount(int messageID) {
 		
 		return platform->GetTouchCount(messageID);
 	}
 
+	//------------------------------------------------------------------------------
 	
 	int TouchMessageCount() {
         
         return platform->InputMessageCount();
     }
     
+	//------------------------------------------------------------------------------
     
 	Touch *GetTouch(int messageID, int touchIndex) {
 		
@@ -67,9 +71,88 @@ namespace input {
 		return result;
 	}
 	
+	//------------------------------------------------------------------------------
+	
 	bool IsTouchDead(const Touch& touch) {
 
 		return touch.phase == TouchPhaseEnd;
+	}
+	
+	//******************************************************************************
+	// Motion
+	
+	static Vector3 currentAccelerometer;
+	static bool accelerometerReady;
+	static Vector3 currentGyro;
+	static bool gyroReady;
+	
+	Vector3 LowPassFilter(const Vector3 &newValue, const Vector3 &prevValue, float filterFactor) {
+		
+		return newValue * filterFactor + prevValue * (1 - filterFactor);
+	}
+	
+	Vector3 HighPassFilter(const Vector3 &newValue, const Vector3 &prevValue, float filterFactor) {
+		
+		return newValue - (newValue * filterFactor + prevValue * (1 - filterFactor));
+	}
+	
+	//------------------------------------------------------------------------------
+	
+	void UpdateMotionData() {
+		
+		Vector3 newAccelerometeValue;
+		accelerometerReady = platform->GetAccelerometerData(newAccelerometeValue);
+		if (accelerometerReady) {
+			currentAccelerometer = LowPassFilter(newAccelerometeValue, currentAccelerometer, 0.5);
+		}
+		
+		Vector3 newGyroData;
+		gyroReady = platform->GetGyroData(newGyroData);
+		if (gyroReady) {
+			currentGyro = newGyroData;
+		}
+	}
+
+	//------------------------------------------------------------------------------
+	
+	bool GetGyroData(Vector3 &outData) {
+		
+		bool result = false;
+		
+		if (gyroReady) {
+			result = true;
+			outData = currentGyro;
+		}
+			
+		return result;
+	}
+	
+	//------------------------------------------------------------------------------
+	
+	bool GetAccelerometerData(Vector3 &outData) {
+	
+		bool result = false;
+		
+		if (accelerometerReady) {
+			result = true;
+			outData = currentAccelerometer;
+		}
+		
+		return result;
+	}
+	
+	//******************************************************************************
+	// Init/Update
+
+	void Init(Platform *thePlatform) {
+		
+		platform = thePlatform;
+	}
+	
+	//------------------------------------------------------------------------------
+	
+	void Update() {
+		UpdateMotionData();
 	}
 
 }

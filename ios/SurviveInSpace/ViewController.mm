@@ -103,7 +103,6 @@
 
     if (!_initialized) return;
     _game->Update(self.timeSinceLastUpdate);
-	_platform->TouchesChanged(false);
     _platform->ClearTouchMessages();
 }
 

@@ -40,6 +40,7 @@ private:
 	void ProcessStickerTouch(input::Touch *touch);
 	
 	void SetStickerValue(const Vector3 &value);
+	float GetRollFactor();
 	
 private:
 	Vector3 _initialStickerPos;

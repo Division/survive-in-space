@@ -20,14 +20,10 @@ Platform_iOS::Platform_iOS(GameView *view) {
     
     int touchPointersSize = sizeof(_touchPointers);
     memset(_touchPointers, 0, touchPointersSize);
+	_motionMonitor = [[MotionMonitor alloc] init];
 }
 
-
-void Platform_iOS::SetTouches(const input::TouchList& list) {
-	
-	_touches = list;
-}
-
+//------------------------------------------------------------------------------
 
 bool Platform_iOS::GetResourcePath(const std::string& resourceName, std::string& outString) {
 	
@@ -53,6 +49,8 @@ Vector2 Platform_iOS::GetScreenResolution() {
 	CGSize size = CGSizeMake([_view drawableWidth], [_view drawableHeight]);
 	return Vector2(size.width, size.height);
 }
+
+//------------------------------------------------------------------------------
 
 Vector2 Platform_iOS::GetInputResolution() {
 	
@@ -81,6 +79,8 @@ bool IsTouchDead(const input::Touch& touch) {
     return touch.phase == platform::TouchPhaseEnd;
 }
 
+//------------------------------------------------------------------------------
+
 void Platform_iOS::ClearTouchMessages() {
 
     if (_touchMessageCount > 1) {
@@ -104,19 +104,14 @@ void Platform_iOS::ClearTouchMessages() {
     
 }
 
-
-
-const input::TouchList& Platform_iOS::GetTouches() {
-
-	return _touches;
-}
-
+//------------------------------------------------------------------------------
 
 int Platform_iOS::InputMessageCount() {
     
     return _touchMessageCount;
 }
 
+//------------------------------------------------------------------------------
 
 int Platform_iOS::GetTouchCount(int messageID) {
     
@@ -125,6 +120,7 @@ int Platform_iOS::GetTouchCount(int messageID) {
     return _touchMessages[messageID].size();
 }
 
+//------------------------------------------------------------------------------
 
 platform::Touch * Platform_iOS::GetTouch(int messageID, int touchID) {
 
@@ -134,6 +130,7 @@ platform::Touch * Platform_iOS::GetTouch(int messageID, int touchID) {
     return &(_touchMessages[messageID][touchID]);
 }
 
+//------------------------------------------------------------------------------
 
 int Platform_iOS::GetTouchID(UITouch *touch) {
     
@@ -148,6 +145,7 @@ int Platform_iOS::GetTouchID(UITouch *touch) {
     return result;
 }
 
+//------------------------------------------------------------------------------
 
 int Platform_iOS::AddTouch(UITouch *touch) {
    
@@ -164,6 +162,7 @@ int Platform_iOS::AddTouch(UITouch *touch) {
     return result;
 }
 
+//------------------------------------------------------------------------------
 
 void Platform_iOS::RemoveTouch(UITouch *touch) {
     
@@ -174,6 +173,7 @@ void Platform_iOS::RemoveTouch(UITouch *touch) {
     }
 }
 
+//------------------------------------------------------------------------------
 
 void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
     
@@ -229,6 +229,35 @@ void Platform_iOS::ProcessChangedTouches(NSSet *touches) {
 		
 		touchList.push_back(gameTouch);
 	}
+}
+
+//******************************************************************************
+// Motion
+
+bool Platform_iOS::GetGyroData(Vector3 &outData) {
 	
-	TouchesChanged(true);
+	bool result = false;
+
+	CMGyroData *data = _motionMonitor.gyroData;
+	if (data) {
+		result = true;
+		outData = Vector3(data.rotationRate.x, data.rotationRate.y, data.rotationRate.z);
+	}
+
+	return result;
+}
+
+//------------------------------------------------------------------------------
+
+bool Platform_iOS::GetAccelerometerData(Vector3 &outData) {
+	
+	bool result = false;
+	
+	CMAccelerometerData *data = _motionMonitor.accelerometerData;
+	if (data) {
+		result = true;
+		outData = Vector3(data.acceleration.x, data.acceleration.y, data.acceleration.z);
+	}
+	
+	return result;
 }

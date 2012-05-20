@@ -24,13 +24,23 @@ namespace input {
 	
 	typedef platform::Touch Touch;
 	typedef platform::TouchList TouchList;
-
+	
+	//-------------------
+	// Touch
 	void PrintTouchesCount();
 	int TouchMessageCount();
 	int TouchCount(int messageID);
 	Touch *GetTouch(int messageID, int touchIndex);
 	
+	//-------------------
+	// Motion
+	bool GetGyroData(Vector3 &outData);
+	bool GetAccelerometerData(Vector3 &outData);
+	
+	//-------------------
+	// Init/update
 	void Init(Platform *thePlatform);
+	void Update();
 }
 
 #endif

@@ -64,7 +64,7 @@ void PlayerShip::ProcessEvent(Event *event) {
 
 	TouchPlayerControllerEvent *playerControllerEvent;
 	if (TouchPlayerControllerEvent::Match(event, &playerControllerEvent)) {
-		SetControlsValues(playerControllerEvent->sticker, 0, playerControllerEvent->acceleration);
+		SetControlsValues(playerControllerEvent->sticker, playerControllerEvent->roll, playerControllerEvent->acceleration);
 		return;
 	}
 }
@@ -85,7 +85,7 @@ void PlayerShip::ProcessPhysicsControls() {
 	
 	float moveKoef = _currentSpeed;
 	btVector3 moveForce = btVector3(0,0,-moveKoef);
-	btVector3 torqueForce = btVector3(-_stickerControl.y, -_stickerControl.x, 0.0);
+	btVector3 torqueForce = btVector3(-_stickerControl.y, -_stickerControl.x, -_rollControl * 1.5);
 	torqueForce *= 15;
 
 	torqueForce = body->getWorldTransform().getBasis() * torqueForce;

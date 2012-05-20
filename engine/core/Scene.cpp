@@ -174,6 +174,8 @@ void ProcessUpdate(const GameObjectPtr& object) {
 
 void Scene::Update() {
 
+	input::Update();
+	
 	MoveAddedObjectsToScene();
 	_sceneGraph.Rebuild();
 	UpdateTransforms();

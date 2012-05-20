@@ -12,6 +12,16 @@
 
 namespace math {
     
+	float abs(float val) {
+		
+		return glm::abs(val);
+	}
+	
+	int abs(int val) {
+		
+		return glm::abs(val);
+	}
+	
     Matrix4 Translation(Vector3 const & offset) {
         
         return Translate(Matrix4(), offset);

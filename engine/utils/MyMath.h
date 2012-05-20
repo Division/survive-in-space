@@ -44,8 +44,11 @@ namespace math {
         Rect(const Vector2 &center, const Vector2 &rectSize);
         Rect(float x, float y, float width, float height);
     };
-
-    
+	
+	int abs(int val);
+	
+	float abs(float val);
+	
 	Matrix4 Translation(Vector3 const & offset);    
 
 	Matrix4 RotationMatrix(float angle, Vector3 axis);
@@ -89,7 +92,7 @@ namespace math {
     float Length(const Vector2 &vector);
     
     bool PointInRect(const Vector2 &point, const Rect &rect);
-    
+
 }
 
 #endif
