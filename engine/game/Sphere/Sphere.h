@@ -10,8 +10,10 @@
 #define SPHERE_H
 
 #include "Component.h"
+#include <vector>
 
 class Transform;
+class Spawn;
 
 class Sphere : public Component {
 public:
@@ -20,9 +22,13 @@ public:
 	virtual void Awake();
 	
 private:
+	void InitSpawns();
+	void CreateSpawn(const class Transform *transform);
 	
-	class Transform *triangles;
-	class GameObject *sphereGeometry;
+private:
+	std::vector<Spawn *> _spawns;
+	class Transform *_triangles;
+	class GameObject *_sphereGeometry;
 	
 };
 

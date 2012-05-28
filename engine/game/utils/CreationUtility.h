@@ -18,6 +18,8 @@ class TextRenderer;
 class TouchGameUI;
 class Button;
 class Texture;
+class Spawn;
+class Transform;
 
 namespace creation {
 
@@ -26,6 +28,8 @@ namespace creation {
 	void InitLevel();
 	
 	GameObject *CreateWorldContainer();
+	
+	Spawn *CreateSpawn(Transform *parent);
 	
 	GameObject *CreateBoxField(const Vector3& offset, float distance);
 	

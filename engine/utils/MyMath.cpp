@@ -35,7 +35,6 @@ namespace math {
 	
     Matrix4 RotationMatrix(float angle, Vector3 axis) {
         
-        
         return Rotate(Matrix4(), angle, axis);
     }
 	
@@ -126,6 +125,11 @@ namespace math {
 	Vector3 Normalize(const Vector3 &v) {
 		
 		return glm::normalize(v);
+	}
+	
+	Vector3 Cross(const Vector3 &v1, const Vector3 &v2) {
+		
+		return glm::cross(v1, v2);
 	}
     
     float Length(const Vector3 &vector) {

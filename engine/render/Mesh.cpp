@@ -154,8 +154,6 @@ bool Mesh::Load(std::istream& readStream, bool useVBO) {
 		
 		_useVBO = useVBO;
 		
-		std::cout << "Mesh loaded, " << _triangleCount << " triangles";
-		
 		_isValid = true;
 	} catch (std::exception e) {
 		// Error, false returned
@@ -234,6 +232,24 @@ bool Mesh::GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVer
 		result = true;
 	}
 
+	return result;
+}
+
+
+bool Mesh::GetTriangleNormal(int triangleIndex, int normalIndex, Vector3& outNormal) const {
+	
+	if (!_hasNormals) return false;
+	bool result = false;
+	
+	int dataIndex = GetVertexIndex(triangleIndex, normalIndex);
+	
+	if (dataIndex >= 0 && dataIndex < _vertexCount) {
+		int stride = NORMAL_STRIDE * sizeof(float);
+		int offset = dataIndex * stride;
+		outNormal =  *((Vector3 *)&_normalData.get()[offset]);
+		result = true;
+	}
+	
 	return result;
 }
 

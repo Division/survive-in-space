@@ -17,7 +17,7 @@
 
  **********************/
 #include "CppTweener.h"
-namespace tween {
+namespace cpptween {
 	/***** LINEAR ****/
 	float Linear::easeNone (float t,float b , float c, float d) {
 		return c*t/d + b;

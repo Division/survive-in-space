@@ -12,7 +12,6 @@
 		1C2C3DF6154FFEF7002BF68D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F351547D53D003B5AB9 /* UIKit.framework */; };
 		1C2C3DF7154FFEF7002BF68D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F371547D53D003B5AB9 /* Foundation.framework */; };
 		1C2C3DF8154FFEF7002BF68D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
-		1C2C44DF15501299002BF68D /* libBullet_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */; };
 		1C2C44E0155012A6002BF68D /* libBullet_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DB1550128F002BF68D /* libBullet_iOS_device.a */; };
 		1C4AF184155CF3FE005E471E /* TouchPlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF175155CF3FE005E471E /* TouchPlayerController.cpp */; };
 		1C4AF185155CF3FE005E471E /* TouchPlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AF175155CF3FE005E471E /* TouchPlayerController.cpp */; };
@@ -124,6 +123,10 @@
 		1C62180F15682FBA00F64745 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C62180D15682FAE00F64745 /* CoreMotion.framework */; };
 		1C70FDE215656C63000DFA9B /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C70FDE115656C63000DFA9B /* Event.cpp */; };
 		1C70FDE315656C63000DFA9B /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C70FDE115656C63000DFA9B /* Event.cpp */; };
+		1C81EC0E1573E6E000AA70F9 /* tonnel.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C81EC0D1573E6E000AA70F9 /* tonnel.mdl */; };
+		1C81EC0F1573E6E000AA70F9 /* tonnel.mdl in Resources */ = {isa = PBXBuildFile; fileRef = 1C81EC0D1573E6E000AA70F9 /* tonnel.mdl */; };
+		1C81EC131573E8B300AA70F9 /* Spawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C81EC121573E8B300AA70F9 /* Spawn.cpp */; };
+		1C81EC141573E8B300AA70F9 /* Spawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C81EC121573E8B300AA70F9 /* Spawn.cpp */; };
 		1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */; };
 		1CB63AEF155983EC008D79D4 /* libFreetype2_iOS_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */; };
 		1CB63AF1155988DB008D79D4 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB63AF0155988DB008D79D4 /* Arial.ttf */; };
@@ -140,6 +143,11 @@
 		1CE215AF1558565A00BD2D2D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215A11558565A00BD2D2D /* ViewController.mm */; };
 		1CE215BD15597D2200BD2D2D /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215BC15597D2200BD2D2D /* Font.cpp */; };
 		1CE215BE15597D2200BD2D2D /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CE215BC15597D2200BD2D2D /* Font.cpp */; };
+		1CEC537D157098AC001DE6D7 /* Tween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC537C157098AC001DE6D7 /* Tween.cpp */; };
+		1CEC537E157098AC001DE6D7 /* Tween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC537C157098AC001DE6D7 /* Tween.cpp */; };
+		1CEC53A415709EF4001DE6D7 /* libBullet_iOS_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2C44DC1550128F002BF68D /* libBullet_iOS_simulator.a */; };
+		1CEC53AA15709F68001DE6D7 /* CppTweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC53A815709F68001DE6D7 /* CppTweener.cpp */; };
+		1CEC53AB15709F68001DE6D7 /* CppTweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC53A815709F68001DE6D7 /* CppTweener.cpp */; };
 		8E976F361547D53D003B5AB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F351547D53D003B5AB9 /* UIKit.framework */; };
 		8E976F381547D53D003B5AB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F371547D53D003B5AB9 /* Foundation.framework */; };
 		8E976F3A1547D53D003B5AB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E976F391547D53D003B5AB9 /* CoreGraphics.framework */; };
@@ -247,6 +255,9 @@
 		1C62180D15682FAE00F64745 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		1C70FDDF15656C5A000DFA9B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1C70FDE115656C63000DFA9B /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
+		1C81EC0D1573E6E000AA70F9 /* tonnel.mdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = tonnel.mdl; sourceTree = "<group>"; };
+		1C81EC111573E88900AA70F9 /* Spawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spawn.h; sourceTree = "<group>"; };
+		1C81EC121573E8B300AA70F9 /* Spawn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spawn.cpp; sourceTree = "<group>"; };
 		1CAEE45F1567714100990B79 /* TouchPlayerControllerEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPlayerControllerEvent.h; sourceTree = "<group>"; };
 		1CB63AEB155983E4008D79D4 /* libFreetype2_iOS_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_simulator.a; sourceTree = "<group>"; };
 		1CB63AEE155983EC008D79D4 /* libFreetype2_iOS_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2_iOS_device.a; sourceTree = "<group>"; };
@@ -265,6 +276,10 @@
 		1CE215A11558565A00BD2D2D /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		1CE215BB15597D1B00BD2D2D /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
 		1CE215BC15597D2200BD2D2D /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		1CEC537B1570989A001DE6D7 /* Tween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tween.h; sourceTree = "<group>"; };
+		1CEC537C157098AC001DE6D7 /* Tween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tween.cpp; sourceTree = "<group>"; };
+		1CEC53A815709F68001DE6D7 /* CppTweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppTweener.cpp; sourceTree = "<group>"; };
+		1CEC53A915709F68001DE6D7 /* CppTweener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppTweener.h; sourceTree = "<group>"; };
 		8E976F311547D53D003B5AB9 /* SurviveInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurviveInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E976F351547D53D003B5AB9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8E976F371547D53D003B5AB9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -295,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CEC53A415709EF4001DE6D7 /* libBullet_iOS_simulator.a in Frameworks */,
 				1C62180E15682FAF00F64745 /* CoreMotion.framework in Frameworks */,
 				1CB63AEC155983E4008D79D4 /* libFreetype2_iOS_simulator.a in Frameworks */,
 				8E976F9A1547F589003B5AB9 /* OpenGLES.framework in Frameworks */,
@@ -302,7 +318,6 @@
 				8E976F361547D53D003B5AB9 /* UIKit.framework in Frameworks */,
 				8E976F381547D53D003B5AB9 /* Foundation.framework in Frameworks */,
 				8E976F3A1547D53D003B5AB9 /* CoreGraphics.framework in Frameworks */,
-				1C2C44DF15501299002BF68D /* libBullet_iOS_simulator.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,8 +362,10 @@
 		1C4AF17C155CF3FE005E471E /* Sphere */ = {
 			isa = PBXGroup;
 			children = (
-				1C4AF17D155CF3FE005E471E /* Sphere.cpp */,
 				1C4AF17E155CF3FE005E471E /* Sphere.h */,
+				1C4AF17D155CF3FE005E471E /* Sphere.cpp */,
+				1C81EC111573E88900AA70F9 /* Spawn.h */,
+				1C81EC121573E8B300AA70F9 /* Spawn.cpp */,
 			);
 			path = Sphere;
 			sourceTree = "<group>";
@@ -384,8 +401,8 @@
 				1C6217FB15679EE800F64745 /* Button.h */,
 				1C6217FA15679EE800F64745 /* Button.cpp */,
 				1C4AF1A31562D9CA005E471E /* TouchGameUI.h */,
-				1C6217F815679E5C00F64745 /* TouchGameUIEvent.h */,
 				1C4AF1A51562D9E4005E471E /* TouchGameUI.cpp */,
+				1C6217F815679E5C00F64745 /* TouchGameUIEvent.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -411,6 +428,7 @@
 				1C5A9134155849290095209F /* sphere.mdl */,
 				1C5A9135155849290095209F /* texture-inspiration16.jpg */,
 				1C5A9136155849290095209F /* texture.pvr */,
+				1C81EC0D1573E6E000AA70F9 /* tonnel.mdl */,
 				1C5A9137155849290095209F /* trooper.pvr */,
 			);
 			name = Resources;
@@ -502,10 +520,13 @@
 		1C5A9405155854660095209F /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				1C5A9406155854660095209F /* MyMath.cpp */,
+				1CEC53A715709F68001DE6D7 /* cpptweener */,
 				1C5A9407155854660095209F /* MyMath.h */,
-				1C5A9408155854660095209F /* Utils.cpp */,
+				1C5A9406155854660095209F /* MyMath.cpp */,
 				1C5A9409155854660095209F /* Utils.h */,
+				1C5A9408155854660095209F /* Utils.cpp */,
+				1CEC537B1570989A001DE6D7 /* Tween.h */,
+				1CEC537C157098AC001DE6D7 /* Tween.cpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -529,6 +550,16 @@
 				1C62180915682C4D00F64745 /* MotionMonitor.mm */,
 			);
 			path = SurviveInSpace;
+			sourceTree = "<group>";
+		};
+		1CEC53A715709F68001DE6D7 /* cpptweener */ = {
+			isa = PBXGroup;
+			children = (
+				1CEC53A815709F68001DE6D7 /* CppTweener.cpp */,
+				1CEC53A915709F68001DE6D7 /* CppTweener.h */,
+			);
+			name = cpptweener;
+			path = ../../external/cpptweener;
 			sourceTree = "<group>";
 		};
 		8E976F261547D53C003B5AB9 = {
@@ -657,6 +688,7 @@
 				1C4AF1A01562D8D5005E471E /* sticker.pvr in Resources */,
 				1C4AF1A21562D8D5005E471E /* sticker_back.pvr in Resources */,
 				8EA88DF71563A2E200604051 /* SpeedButton.pvr in Resources */,
+				1C81EC0F1573E6E000AA70F9 /* tonnel.mdl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +717,7 @@
 				1C4AF19F1562D8D5005E471E /* sticker.pvr in Resources */,
 				1C4AF1A11562D8D5005E471E /* sticker_back.pvr in Resources */,
 				8EA88DF61563A2E200604051 /* SpeedButton.pvr in Resources */,
+				1C81EC0E1573E6E000AA70F9 /* tonnel.mdl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +769,9 @@
 				1C70FDE315656C63000DFA9B /* Event.cpp in Sources */,
 				1C6217FD15679EE900F64745 /* Button.cpp in Sources */,
 				1C62180B15682C4E00F64745 /* MotionMonitor.mm in Sources */,
+				1CEC537E157098AC001DE6D7 /* Tween.cpp in Sources */,
+				1CEC53AB15709F68001DE6D7 /* CppTweener.cpp in Sources */,
+				1C81EC141573E8B300AA70F9 /* Spawn.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +820,9 @@
 				1C70FDE215656C63000DFA9B /* Event.cpp in Sources */,
 				1C6217FC15679EE900F64745 /* Button.cpp in Sources */,
 				1C62180A15682C4E00F64745 /* MotionMonitor.mm in Sources */,
+				1CEC537D157098AC001DE6D7 /* Tween.cpp in Sources */,
+				1CEC53AA15709F68001DE6D7 /* CppTweener.cpp in Sources */,
+				1C81EC131573E8B300AA70F9 /* Spawn.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,10 +851,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/cpptweener,
 					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = SurviveInSpace/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -840,10 +881,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/cpptweener,
 					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = SurviveInSpace/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -917,10 +960,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/cpptweener,
 					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = SurviveInSpace/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -951,10 +996,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = (
+					../external/cpptweener,
 					../external/freetype,
 					../external/Bullet,
 					../external,
 				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				INFOPLIST_FILE = SurviveInSpace/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (

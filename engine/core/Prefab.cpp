@@ -39,6 +39,8 @@ bool Prefab::Load(const std::string& filename) {
 	
 	if (!result) {
 		utils::Log("Error loading prefab: " + filename);
+	} else {
+		utils::Log("Prefab loaded: " + filename);
 	}
 	
 	_isValid = result;

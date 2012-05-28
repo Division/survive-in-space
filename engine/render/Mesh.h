@@ -54,6 +54,7 @@ public:
 	
 	// Geometry access
 	bool GetTriangleVertex(int triangleIndex, int vertexIndex, Vector3& outVertex) const;
+	bool GetTriangleNormal(int triangleIndex, int normalIndex, Vector3& outNormal) const;
 	int GetVertexIndex(int triangleIndex, int vertexIndex) const;
 	
 	// no VBO

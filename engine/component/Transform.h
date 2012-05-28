@@ -35,7 +35,7 @@ public:
 	
 	const TransformList& Children() const { return _children; };
 	
-	const Matrix4& TransformToWorldMatrix() { return _transformToWorldMatrix; }
+	const Matrix4& TransformToWorldMatrix() const { return _transformToWorldMatrix; }
 	
 	void CalculateTransformMatrix(bool recursively = false);
 	
