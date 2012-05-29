@@ -49,6 +49,8 @@ namespace math {
 	
 	float abs(float val);
 	
+	Matrix3 MatrixFromBasis(const Vector3 &left, const Vector3 &up, const Vector3 &front);
+	
 	Matrix4 Translation(Vector3 const & offset);    
 
 	Matrix4 RotationMatrix(float angle, Vector3 axis);

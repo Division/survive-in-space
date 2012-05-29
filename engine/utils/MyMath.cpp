@@ -27,6 +27,17 @@ namespace math {
         return Translate(Matrix4(), offset);
     }
     
+	
+	Matrix3 MatrixFromBasis(const Vector3 &left, const Vector3 &up, const Vector3 &front) {
+		
+		Matrix3 result;
+		result = glm::column(result, 0, left);
+		result = glm::column(result, 1, up);
+		result = glm::column(result, 2, front);
+		return result;
+	}
+	
+	
 	Vector3 GetTranslation(const Matrix4& m) {
 
 		Vector4 result = glm::column(m, 3);

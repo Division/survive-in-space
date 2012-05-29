@@ -15,6 +15,10 @@ class Spawn : public Component {
 public:
 	GENERATE_COMPONENT_ID(Spawn)
 	
+	Vector3 normal;
+	Vector3 position;
+	Quaternion q;
+	
 	Spawn();
 	~Spawn();
 	

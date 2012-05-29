@@ -83,12 +83,28 @@ void Sphere::CreateSpawn(const class Transform *transform) {
 	average /= 3.0f;
 	
 	average = Vector3(m * Vector4(average, 0));
-//	normal = normal * rotation;
+//	normal = -normal * rotation;
+	
 	normal =  math::Normalize(math::Cross(vertices[2] - vertices[1], vertices[2] - vertices[0]));
 //	normal = math::Normalize(Transform()->Position() + _sphereGeometry->Transform()->Position() - average);
+	Vector3 left = math::Normalize(math::Cross(normal, vertices[1] - vertices[0]));
+	Vector3 up = math::Normalize(math::Cross(normal, left));
+	Matrix3 orientation = math::MatrixFromBasis(left, up, normal);
+	Quaternion quat = Quaternion(orientation);
+	quat = math::Rotate(quat, 90, Vector3(1,0,0));
+//	quat = math::Rotate(quat, 20 + 80, Vector3(0,1,0));
+	
+//	quat = math::Rotation(1, up);
+	
 	Spawn *spawn = creation::CreateSpawn(NULL);
+
+	spawn->normal = normal;
+	spawn->position = average;
+	spawn->q = quat;
+	
+	spawn->Transform()->ForceWorldTransform(true);
 	spawn->Transform()->Position(average);
-	spawn->Transform()->Rotation(math::Rotation(45, normal));
+	spawn->Transform()->Rotation(quat);
 	
 	_spawns.push_back(spawn);
 }
