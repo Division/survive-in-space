@@ -63,6 +63,8 @@ public:
 	
 	// Returns time since app startup in seconds
 	virtual double GetTime() = 0;
+    
+    virtual ~Platform() {}
 	
 };
 

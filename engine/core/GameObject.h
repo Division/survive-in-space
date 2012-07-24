@@ -36,7 +36,7 @@ public:
     //--------------------------
     // Construct/destruct
 	GameObject(const std::string& name = "GameObject");
-	~GameObject();
+	virtual ~GameObject();
 
     //--------------------------
     // General parameters

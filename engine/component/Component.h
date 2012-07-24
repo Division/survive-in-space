@@ -29,7 +29,7 @@ public:
 	//-------------------
 	// Construct/destruct
 	Component();
-	~Component();
+	virtual ~Component();
 	
 	//-------------------
 	// General properties

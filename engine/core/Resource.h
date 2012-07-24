@@ -16,6 +16,7 @@
 class IResource {
 public:
 	virtual bool Load(const std::string& name) = 0;
+    virtual ~IResource() {}
 };
 
 class Mesh;
