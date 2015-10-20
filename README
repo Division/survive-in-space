@@ -1,7 +1,18 @@
-Space shooter game
+Space shooter game prototype.
 
-Controls:
-  Sticker in the left part of the screen
+C++ multiplatform engine (only iOS wrappers awailable at the moment)
+Custom static mesh format (multiple UV maps supported).
+Compressed PVR texture support.
+Rendering is done by collecting render operations and sorting them by material to minimize shader switches.
+
+External dependencies:
+
+GLM used as the math library
+http://glm.g-truc.net/0.9.7/index.html
+
+Integrated Bullet Physics engine
+http://bulletphysics.org/wordpress/
+
+Controls: sticker in the left part of the screen
   
-Description:
-  Survivive inside large space station.
+![](https://github.com/Division/survive-in-space/blob/master/Screens/1.png)
