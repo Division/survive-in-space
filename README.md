@@ -16,3 +16,5 @@ http://bulletphysics.org/wordpress/
 Controls: sticker in the left part of the screen
   
 ![](https://github.com/Division/survive-in-space/blob/master/Screens/1.png)
+![](https://github.com/Division/survive-in-space/blob/master/Screens/2.png)
+![](https://github.com/Division/survive-in-space/blob/master/Screens/4.png)
